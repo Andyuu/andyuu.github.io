@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>Minecraft Damage Calculator</title>
+    <link rel='stylesheet' href='style.css'>
+  </head>
+<body>
+
+Left and Right click boxes to change gear! Save setups with "Profiles" to keep them for later.
+<h1>Minecraft Java</h1>
+<!-- WEAPONS THING -->
+<div class="container" id="leftHalf"><h1 id="weapon">Weapon</h1>
+  
+  <div class="dice" id="dice1">
+    <div class="pip"></div>
+  </div>
+  <table id="weaponTable" border="0">
+    <tr>
+      <th>Material</th>
+      <th>Tool</th>
+      <th>Strength</th>
+      <th>Weakness</th>
+      <th>Crit</th>
+      <th>Sharpness</th>
+    </tr>
+    <tr>
+      <td><div class="box" id="toolMaterial"></div></td>
+      <td><div class="box" id="tool"></div></td>
+      <td><div class="box potion" id="strength"></div></td>
+      <td><div class="box potion" id="weakness"></div></td>
+      <td><div class="box" id="crit"></div></td>      
+      <td><div class="box number" id="sharpness">
+        <button class="arrow arrowUp" id="sharpnessUp">+</button>
+        <input type="text" class="inputValue" id="sharpnessValue" value=0>
+        <button class="arrow arrowDown" id="sharpnessDown">-</button>
+        </div></td>
+    </tr>
+    <tr>
+      <td colspan="2"><span id="toolDescription">No Sword</span></td>
+      <td>Str &nbsp;<span id="strengthLevel">0</span></td>
+      <td>Weak &nbsp;<span id="weaknessLevel">0</span></td>
+      <td><span id="critBool">No Crit</span></td>
+      <td>Sharp &nbsp;<span id="sharpnessLevel">0</span></td>
+    </tr>
+    <tr>
+      <td colspan="2">Base damage: &nbsp;(<span class="damageBonus" id="baseDamage">1</span></td>
+      <td>+<span class="damageBonus" id="strengthBonus">0</span></td>
+      <td>-<span class="damageBonus" id="weaknessBonus">0</span>)</td>
+      <td>×<span class="damageBonus" id="critBonus">1</span></td>
+      <td>+<span class="damageBonus" id="sharpnessBonus">0</span></td>
+    </tr>
+    <tr>
+      <td colspan="2">Attack speed: &nbsp;<span class="damageBonus" id="attackSpeed">4.0</span></td>
+
+      <td id="immunityInfo" colspan="3">Damage immunity limits DPS</td>
+    </tr>
+    <tr>
+      <td colspan="2">Hit Cooldown: &nbsp;<span id="attackCooldown">0.50</span></td>
+      <td colspan="2">DPS: &nbsp;<span id="damagePerSecond">2</span></td>
+      <td colspan="2">Attack Damage: &nbsp;<span class="finalValues" id="attackDamage">1</span></td>
+    </tr>
+  </table>
+  <hr>
+<!-- WEAPON PROFILES -->
+  <button class="buttons" id="saveWeapon">New Weapon Profile [ALT+W]</button>
+  <button class="buttons collapser">-</button>
+  <button class="buttons expander">+</button>
+  <button class="buttons folder">Profile Folder</button>
+  <div class="profileContainer" id="weaponProfiles">
+  </div>
+<!-- RESULTS BIT -->
+</div><div class= "container" id="middleHalf">
+  <h1 id="vs">VS</h1>
+  <h1 id="results">Results</h1>
+  <table border="0">
+    <tr>
+      <td>Damage Dealt:</td>
+      <td><span id="damageDealt">1</span></td>
+      <td><span id="percentDamageDealt">100</span>%</td>
+    </tr>
+    <tr>
+      <td>Per Second:</td>
+      <td><span id="damageDealtPerSecond">2</span></td>
+    </tr>
+    <tr>
+      <td>Hits to kill:</td>
+      <td><span id="hitsToKill">20</span></td>
+    </tr>
+    <tr>
+      <td>Time to kill:</td>
+      <td><span id="timeToKill">10</span>s</td>
+    </tr>
+    <tr><td></td></tr>
+    <tr>
+      <td>Reduced by:</td>
+      <td><span id="timeToKill"></span></td>
+    </tr>
+    <tr class="reductions" id="armourReductionRow">
+      <td>- Armour</td>
+      <td><span id="armourReduction">0</span>%</td>
+    </tr>
+    <tr class="reductions" id="defenceReductionRow">
+      <td>&nbsp;&nbsp;^ Defence</td>
+      <td><span id="defenceReduction">0</span>%</td>
+    </tr>
+    <tr class="reductions" id="toughnessReductionRow">
+      <td>&nbsp;&nbsp;^ Toughness</td>
+      <td><span id="toughnessReduction">0</span>%</td>
+    </tr>
+    <tr class="reductions" id="protectionReductionRow">
+      <td>- Protection</td>
+      <td><span id="protectionReduction">0</span>%</td>
+    </tr>
+    <tr class="reductions" id="resistanceReductionRow">
+      <td>- Resistance</td>
+      <td><span id="resistanceReduction">0</span>%</td>
+    </tr>
+  </table>
+</div><div class= container id="rightHalf">
+<!-- ARMOUR BIT  -->
+  <h1 id="armour">Armour</h1>
+  <div class="dice" id="dice2">
+    <div class="pip"></div>
+    <div class="pip"></div>
+  </div>
+  <table id="armourTable" border="0">
+    <tr>
+      <th>Helmet</th>
+      <th>Chestplate</th>
+      <th>Leggings</th>
+      <th>Boots</th>
+      <th>Protection</th>
+      <th>Resistance</th>
+      <th>Hitpoints</th>
+    </tr>
+    <tr>
+      <td><div class="box armour" id="helmet"></div></td>
+      <td><div class="box armour" id="chestplate"></div></td>
+      <td><div class="box armour" id="leggings"></div></td>
+      <td><div class="box armour" id="boots"></div></td>
+      <td><div class="box number" id="protection">
+        <button class="arrow arrowUp" id="protectionUp">+</button>
+        <input type="text" class="inputValue" id="protectionValue" value=0>
+        <button class="arrow arrowDown" id="protectionDown">-</button></div></td>
+      <td><div class="box potion" id="resistance"></div></td>
+      <td><div class="box number" id="hitpoints">
+        <button class="arrow arrowUp">+</button>
+        <input type="text" class="inputValue finalValues" id="hitpointsValue" value=20>
+        <button class="arrow arrowDown">-</button></div></td>
+    </tr>
+    <tr>
+      <td><span class="armourNames" id="helmetName">None</span></td>
+      <td><span class="armourNames" id="chestplateName">None</span></td>
+      <td><span class="armourNames" id="leggingsName">None</span></td>
+      <td><span class="armourNames" id="bootsName">None</span></td>
+      <td>Prot&nbsp;<span id="protectionLevel">0</span></td>
+      <td>Res &nbsp;<span id="resistanceLevel">0</span></td>
+      <td>HP &nbsp;<span id="hitpointsLevel">20</span></td>
+    </tr>
+    <tr>
+      <td><span class="armourDefence" id="helmetDefence">0</span>&nbsp;defence</td>
+      <td><span class="armourDefence" id="chestplateDefence">0</span>&nbsp;defence</td>
+      <td><span class="armourDefence" id="leggingsDefence">0</span>&nbsp;defence</td>
+      <td><span class="armourDefence" id="bootsDefence">0</span>&nbsp;defence</td>
+    </tr>
+    <tr>
+      <td><span class="armourToughness" id="helmetToughness">0</span>&nbsp;tufness</td> 
+      <td><span class="armourToughness" id="chestplateToughness">0</span>&nbsp;tufness</td> 
+      <td><span class="armourToughness" id="leggingsToughness">0</span>&nbsp;tufness</td> 
+      <td><span class="armourToughness" id="bootsToughness">0</span>&nbsp;tufness</td>
+      <td><span class="finalValues" id="protectionBonus">0</span>% Dmg</td>
+      <td><span class="finalValues" id="resistanceBonus">0</span>% Dmg</td>
+    </tr>
+    <tr>
+      <td colspan="2">Total Defence:&nbsp;<span class="finalValues" id="totalDefence">0</span></td> 
+      <td colspan="2">Total Toughness:&nbsp;<span class="finalValues" id="totalToughness">0</span></td> 
+      <td>Reduction</td>
+      <td>Reduction</td>
+
+    </tr>
+
+  </table>
+  <hr>
+  <!-- ARMOUR PROFILES -->
+  <button class="buttons" id="saveArmour">New Armour Profile [ALT+A]</button>
+  <button class="buttons collapser">-</button>
+  <button class="buttons expander">+</button>
+  <button class="buttons folder">Profile Folder</button>
+  <div class="profileContainer" id="armourProfiles">
+  </div>
+</div>
+
+
+<div id="folderModal" class="modal">
+  <div class="modalContent">
+    <span class="closeModal" id="closeModal">&times;</span>
+    <h1>The Folder</h1>
+    <p>The Folder holds the key to every profile group. Weapon and Armour profiles are stored together. </p>
+
+    <div id="profileGroups">
+      <h2>Groups</h2>
+      <div class="profileFolder"><span class="profileDeleteFolder">&times;</span>
+        <span class="profileFolderNameWidth"></span>
+        <input class="profileFolderName" value="Blockwars">
+
+      </div>
+      <div class="profileGroup">Original</div>
+      <div class="profileGroup">Overpowered</div>
+      <div class="profileGroup">Updated</div>
+      <div class="profileGroup">Updated-OP</div>
+      <div class="profileFolder collapse"><span class="profileDeleteFolder">&times;</span>
+        <span class="profileFolderNameWidth"></span>
+        <input class="profileFolderName" value="Eggwars">
+
+      </div>
+      <div class="profileFolder"><span class="profileDeleteFolder">&times;</span>
+        <span class="profileFolderNameWidth"></span>
+        <input class="profileFolderName" value="FFA">
+
+      </div>
+      <div class="profileGroup">Basic</div>
+      <div class="profileGroup">Normal</div>
+      <div class="profileAddFolder">+ New Folder</div>
+    </div>
+    <div id="groupPreview">
+      <h2>Preview</h2>
+      <p id="previewText">Choose a group to preview!</p>
+      <!-- &#8204; is used to prevent autofill    -->
+      <div id="groupSelected">
+        <label>N&#8204;ame</label><br><input type="text" id="groupName" spellcheck="false"><br><br>
+        <label>Description</label><br><textarea id="groupDescription" spellcheck="false"></textarea><br><br>
+        <div class="previewMove" id="previewBack"></div>
+        <div id="previewReel"></div>
+        <div class="previewMove" id="previewForward"></div>
+        <div class="clear"></div><br>
+        <div class="groupButton" id="deleteGroup">Delete</div>
+        <div class="groupButton" id="updateGroup">Update</div>
+        <div class="groupButton" id="addGroup">Add</div>
+        <div class="groupButton" id="selectGroup">Select</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+<script src='https://cdn.jsdelivr.net/gh/jeresig/jquery.hotkeys/jquery.hotkeys.js'></script>
+<script src='script.js'></script>
+</body>
+</html>
