@@ -122,23 +122,23 @@ table {
   background-color: #777;
   padding: 3px;
   border: 3px solid #999;
-  background-image: url(images/Barrier.webp);
+  background-image: url(Images/Barrier.webp);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100%;
   transition: 0.2s;
 }
 #helmet.box {
-  background-image: url(images/Helmet/Empty_Helmet.webp);
+  background-image: url(Images/Helmet/Empty_Helmet.webp);
 }
 #chestplate.box {
-  background-image: url(images/Chestplate/Empty_Chestplate.webp);
+  background-image: url(Images/Chestplate/Empty_Chestplate.webp);
 }
 #leggings.box {
-  background-image: url(images/Leggings/Empty_Leggings.webp);
+  background-image: url(Images/Leggings/Empty_Leggings.webp);
 }
 #boots.box {
-  background-image: url(images/Boots/Empty_Boots.webp);
+  background-image: url(Images/Boots/Empty_Boots.webp);
 }
 .profile .box, .profile p, .profile table{
   cursor: default;
