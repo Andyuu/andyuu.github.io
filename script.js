@@ -46,7 +46,7 @@ var hoes = [["Images/Barrier.webp",1,4],
                ["Images/Hoe/Netherite_Hoe.webp",1,4]]
 
 var helmets = [["Images/Helmet/empty_Helmet.webp",0,0],
-               ["Images/Helmet/leather_Helmet.webp",1,0],
+               ["Images/Helmet/Leather_Helmet.webp",1,0],
                ["Images/Helmet/Golden_Helmet.webp",2,0],
                ["Images/Helmet/Chainmail_Helmet.webp",2,0],
                ["Images/Helmet/Iron_Helmet.webp",2,0],
@@ -55,7 +55,7 @@ var helmets = [["Images/Helmet/empty_Helmet.webp",0,0],
                ["Images/Helmet/Netherite_Helmet.webp",3,3]]
 
 var chestplates = [["Images/Chestplate/empty_Chestplate.webp",0,0],
-               ["Images/Chestplate/leather_Chestplate.webp",3,0],
+               ["Images/Chestplate/Leather_Chestplate.webp",3,0],
                ["Images/Chestplate/Golden_Chestplate.webp",5,0],
                ["Images/Chestplate/Chainmail_Chestplate.webp",5,0],
                ["Images/Chestplate/Iron_Chestplate.webp",6,0],
@@ -63,7 +63,7 @@ var chestplates = [["Images/Chestplate/empty_Chestplate.webp",0,0],
                ["Images/Chestplate/Netherite_Chestplate.webp",8,3]]
 
 var leggings = [["Images/Leggings/empty_Leggings.webp",0,0],
-               ["Images/Leggings/leather_Leggings.webp",2,0],
+               ["Images/Leggings/Leather_Leggings.webp",2,0],
                ["Images/Leggings/Golden_Leggings.webp",3,0],
                ["Images/Leggings/Chainmail_Leggings.webp",4,0],
                ["Images/Leggings/Iron_Leggings.webp",5,0],
@@ -71,7 +71,7 @@ var leggings = [["Images/Leggings/empty_Leggings.webp",0,0],
                ["Images/Leggings/Netherite_Leggings.webp",6,3]]
 
 var boots = [["Images/Boots/empty_Boots.webp",0,0],
-               ["Images/Boots/leather_Boots.webp",1,0],
+               ["Images/Boots/Leather_Boots.webp",1,0],
                ["Images/Boots/Golden_Boots.webp",1,0],
                ["Images/Boots/Chainmail_Boots.webp",1,0],
                ["Images/Boots/Iron_Boots.webp",2,0],
