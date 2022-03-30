@@ -1,100 +1,100 @@
-var toolMaterials = ["images/barrier.webp",
-                 "images/oak_planks.webp",
-                 "images/gold_ingot.webp",
-                 "images/cobblestone.webp",
-                 "images/iron_ingot.webp",
-                 "images/diamond.webp",
-                 "images/netherite_ingot.webp"]
+var toolMaterials = ["Images/Barrier.webp",
+                 "Images/Oak_planks.webp",
+                 "Images/Gold_ingot.webp",
+                 "Images/Cobblestone.webp",
+                 "Images/Iron_ingot.webp",
+                 "Images/Diamond.webp",
+                 "Images/Netherite_ingot.webp"]
 
-var swords = [["images/barrier.webp",1,4],
-               ["images/sword/wooden_sword.webp",4,1.6],
-               ["images/sword/stone_sword.webp",5,1.6],
-               ["images/sword/iron_sword.webp",6,1.6],
-               ["images/sword/diamond_sword.webp",7,1.6],
-               ["images/sword/netherite_sword.webp",8,1.6]]
+var swords = [["Images/Barrier.webp",1,4],
+               ["Images/Sword/Wooden_Sword.webp",4,1.6],
+               ["Images/Sword/Stone_Sword.webp",5,1.6],
+               ["Images/Sword/Iron_Sword.webp",6,1.6],
+               ["Images/Sword/Diamond_Sword.webp",7,1.6],
+               ["Images/Sword/Netherite_Sword.webp",8,1.6]]
 
-var axes = [["images/barrier.webp",1,4],
-               ["images/axe/wooden_axe.webp",7,0.8],
-               ["images/axe/golden_axe.webp",7,1],
-               ["images/axe/stone_axe.webp",9,0.8],
-               ["images/axe/iron_axe.webp",9,0.9],
-               ["images/axe/diamond_axe.webp",9,1],
-               ["images/axe/netherite_axe.webp",10,1]]
+var axes = [["Images/Barrier.webp",1,4],
+               ["Images/Axe/Wooden_Axe.webp",7,0.8],
+               ["Images/Axe/Golden_Axe.webp",7,1],
+               ["Images/Axe/stone_Axe.webp",9,0.8],
+               ["Images/Axe/Iron_Axe.webp",9,0.9],
+               ["Images/Axe/Diamond_Axe.webp",9,1],
+               ["Images/Axe/Netherite_Axe.webp",10,1]]
 
-var pickaxes = [["images/barrier.webp",1,4],
-               ["images/pickaxe/wooden_pickaxe.webp",2,1.2],
-               ["images/pickaxe/golden_pickaxe.webp",2,1.2],
-               ["images/pickaxe/stone_pickaxe.webp",3,1.2],
-               ["images/pickaxe/iron_pickaxe.webp",4,1.2],
-               ["images/pickaxe/diamond_pickaxe.webp",5,1.2],
-               ["images/pickaxe/netherite_pickaxe.webp",6,1.2]]
+var pickaxes = [["Images/Barrier.webp",1,4],
+               ["Images/Pickaxe/Wooden_Pickaxe.webp",2,1.2],
+               ["Images/Pickaxe/Golden_Pickaxe.webp",2,1.2],
+               ["Images/Pickaxe/stone_Pickaxe.webp",3,1.2],
+               ["Images/Pickaxe/Iron_Pickaxe.webp",4,1.2],
+               ["Images/Pickaxe/Diamond_Pickaxe.webp",5,1.2],
+               ["Images/Pickaxe/Netherite_Pickaxe.webp",6,1.2]]
 
-var shovels = [["images/barrier.webp",1,4],
-               ["images/shovel/wooden_shovel.webp",2.5,1],
-               ["images/shovel/golden_shovel.webp",2.5,1],
-               ["images/shovel/stone_shovel.webp",3.5,1],
-               ["images/shovel/iron_shovel.webp",4.5,1],
-               ["images/shovel/diamond_shovel.webp",5.5,1],
-               ["images/shovel/netherite_shovel.webp",6.5,1]]
+var shovels = [["Images/Barrier.webp",1,4],
+               ["Images/Shovel/Wooden_Shovel.webp",2.5,1],
+               ["Images/Shovel/Golden_Shovel.webp",2.5,1],
+               ["Images/Shovel/stone_Shovel.webp",3.5,1],
+               ["Images/Shovel/Iron_Shovel.webp",4.5,1],
+               ["Images/Shovel/Diamond_Shovel.webp",5.5,1],
+               ["Images/Shovel/Netherite_Shovel.webp",6.5,1]]
 
-var hoes = [["images/barrier.webp",1,4],
-               ["images/hoe/wooden_hoe.webp",1,1],
-               ["images/hoe/golden_hoe.webp",1,1],
-               ["images/hoe/stone_hoe.webp",1,2],
-               ["images/hoe/iron_hoe.webp",1,3],
-               ["images/hoe/diamond_hoe.webp",1,4],
-               ["images/hoe/netherite_hoe.webp",1,4]]
+var hoes = [["Images/Barrier.webp",1,4],
+               ["Images/Hoe/Wooden_Hoe.webp",1,1],
+               ["Images/Hoe/Golden_Hoe.webp",1,1],
+               ["Images/Hoe/stone_Hoe.webp",1,2],
+               ["Images/Hoe/Iron_Hoe.webp",1,3],
+               ["Images/Hoe/Diamond_Hoe.webp",1,4],
+               ["Images/Hoe/Netherite_Hoe.webp",1,4]]
 
-var helmets = [["images/helmet/empty_helmet.webp",0,0],
-               ["images/helmet/leather_helmet.webp",1,0],
-               ["images/helmet/golden_helmet.webp",2,0],
-               ["images/helmet/chainmail_helmet.webp",2,0],
-               ["images/helmet/iron_helmet.webp",2,0],
-               ["images/helmet/turtle_helmet.webp",2,0],
-               ["images/helmet/diamond_helmet.webp",3,2],
-               ["images/helmet/netherite_helmet.webp",3,3]]
+var helmets = [["Images/Helmet/empty_Helmet.webp",0,0],
+               ["Images/Helmet/leather_Helmet.webp",1,0],
+               ["Images/Helmet/Golden_Helmet.webp",2,0],
+               ["Images/Helmet/Chainmail_Helmet.webp",2,0],
+               ["Images/Helmet/Iron_Helmet.webp",2,0],
+               ["Images/Helmet/Turtle_Helmet.webp",2,0],
+               ["Images/Helmet/Diamond_Helmet.webp",3,2],
+               ["Images/Helmet/Netherite_Helmet.webp",3,3]]
 
-var chestplates = [["images/chestplate/empty_chestplate.webp",0,0],
-               ["images/chestplate/leather_chestplate.webp",3,0],
-               ["images/chestplate/golden_chestplate.webp",5,0],
-               ["images/chestplate/chainmail_chestplate.webp",5,0],
-               ["images/chestplate/iron_chestplate.webp",6,0],
-               ["images/chestplate/diamond_chestplate.webp",8,2],
-               ["images/chestplate/netherite_chestplate.webp",8,3]]
+var chestplates = [["Images/Chestplate/empty_Chestplate.webp",0,0],
+               ["Images/Chestplate/leather_Chestplate.webp",3,0],
+               ["Images/Chestplate/Golden_Chestplate.webp",5,0],
+               ["Images/Chestplate/Chainmail_Chestplate.webp",5,0],
+               ["Images/Chestplate/Iron_Chestplate.webp",6,0],
+               ["Images/Chestplate/Diamond_Chestplate.webp",8,2],
+               ["Images/Chestplate/Netherite_Chestplate.webp",8,3]]
 
-var leggings = [["images/leggings/empty_leggings.webp",0,0],
-               ["images/leggings/leather_leggings.webp",2,0],
-               ["images/leggings/golden_leggings.webp",3,0],
-               ["images/leggings/chainmail_leggings.webp",4,0],
-               ["images/leggings/iron_leggings.webp",5,0],
-               ["images/leggings/diamond_leggings.webp",6,2],
-               ["images/leggings/netherite_leggings.webp",6,3]]
+var leggings = [["Images/Leggings/empty_Leggings.webp",0,0],
+               ["Images/Leggings/leather_Leggings.webp",2,0],
+               ["Images/Leggings/Golden_Leggings.webp",3,0],
+               ["Images/Leggings/Chainmail_Leggings.webp",4,0],
+               ["Images/Leggings/Iron_Leggings.webp",5,0],
+               ["Images/Leggings/Diamond_Leggings.webp",6,2],
+               ["Images/Leggings/Netherite_Leggings.webp",6,3]]
 
-var boots = [["images/boots/empty_boots.webp",0,0],
-               ["images/boots/leather_boots.webp",1,0],
-               ["images/boots/golden_boots.webp",1,0],
-               ["images/boots/chainmail_boots.webp",1,0],
-               ["images/boots/iron_boots.webp",2,0],
-               ["images/boots/diamond_boots.webp",3,2],
-               ["images/boots/netherite_boots.webp",3,3]]
+var boots = [["Images/Boots/empty_Boots.webp",0,0],
+               ["Images/Boots/leather_Boots.webp",1,0],
+               ["Images/Boots/Golden_Boots.webp",1,0],
+               ["Images/Boots/Chainmail_Boots.webp",1,0],
+               ["Images/Boots/Iron_Boots.webp",2,0],
+               ["Images/Boots/Diamond_Boots.webp",3,2],
+               ["Images/Boots/Netherite_Boots.webp",3,3]]
 
 
-var barrierImage = "images/barrier.webp";
-var strengthImage = "images/strength.webp";
-var weaknessImage = "images/weakness.webp";
-var resistanceImage = "images/resistance.webp";
-var enchantmentImage = "images/enchanted_book.webp";
-var critImage = "images/crit.webp";
-var editImage = "images/book_and_quill.webp";
-var deleteImage = "images/fire_charge.webp";
-var heartImage = "images/heart.webp";
-var halfHeartImage = "images/half_heart.webp";
-var emptyHeartImage = "images/empty_heart.webp";
-var armourImage = "images/armour.webp";
-var halfArmourImage = "images/half_armour.webp";
-var emptyArmourImage = "images/empty_armour.webp";
-var toughnessImage = "images/toughness.webp";
-var halfToughnessImage = "images/half_toughness.webp";
+var barrierImage = "Images/Barrier.webp";
+var strengthImage = "Images/Strength.webp";
+var weaknessImage = "Images/Weakness.webp";
+var resistanceImage = "Images/Resistance.webp";
+var enchantmentImage = "Images/Enchanted_Book.webp";
+var critImage = "Images/Crit.webp";
+var editImage = "Images/Book_And_Quill.webp";
+var deleteImage = "Images/Fire_Charge.webp";
+var heartImage = "Images/Heart.webp";
+var halfHeartImage = "Images/Half_Heart.webp";
+var emptyHeartImage = "Images/Empty_Heart.webp";
+var armourImage = "Images/Armour.webp";
+var halfArmourImage = "Images/Half_Armour.webp";
+var emptyArmourImage = "Images/Empty_Armour.webp";
+var toughnessImage = "Images/Toughness.webp";
+var halfToughnessImage = "Images/Half_Toughness.webp";
 
 var maxProfiles = 16
 var weaponProfileNum = 0
