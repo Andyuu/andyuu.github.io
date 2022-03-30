@@ -1,94 +1,100 @@
-var toolMaterials = ["https://minecraftitemids.com/item/64/barrier.png",
-                 "https://minecraftitemids.com/item/64/oak_planks.png",
-                 "https://minecraftitemids.com/item/64/gold_ingot.png",
-                 "https://minecraftitemids.com/item/64/cobblestone.png",
-                 "https://minecraftitemids.com/item/64/iron_ingot.png",
-                 "https://minecraftitemids.com/item/64/diamond.png",
-                 "https://minecraftitemids.com/item/64/netherite_ingot.png"]
+var toolMaterials = ["images/barrier.webp",
+                 "images/oak_planks.webp",
+                 "images/gold_ingot.webp",
+                 "images/cobblestone.webp",
+                 "images/iron_ingot.webp",
+                 "images/diamond.webp",
+                 "images/netherite_ingot.webp"]
 
-var swords = [["https://minecraftitemids.com/item/64/barrier.png",1,4],
-               ["https://minecraftitemids.com/item/64/wooden_sword.png",4,1.6],
-               ["https://minecraftitemids.com/item/64/golden_sword.png",4,1.6],
-               ["https://minecraftitemids.com/item/64/stone_sword.png",5,1.6],
-               ["https://minecraftitemids.com/item/64/iron_sword.png",6,1.6],
-               ["https://minecraftitemids.com/item/64/diamond_sword.png",7,1.6],
-               ["https://minecraftitemids.com/item/64/netherite_sword.png",8,1.6]]
+var swords = [["images/barrier.webp",1,4],
+               ["images/sword/wooden_sword.webp",4,1.6],
+               ["images/sword/stone_sword.webp",5,1.6],
+               ["images/sword/iron_sword.webp",6,1.6],
+               ["images/sword/diamond_sword.webp",7,1.6],
+               ["images/sword/netherite_sword.webp",8,1.6]]
 
-var axes = [["https://minecraftitemids.com/item/64/barrier.png",1,4],
-               ["https://minecraftitemids.com/item/64/wooden_axe.png",7,0.8],
-               ["https://minecraftitemids.com/item/64/golden_axe.png",7,1],
-               ["https://minecraftitemids.com/item/64/stone_axe.png",9,0.8],
-               ["https://minecraftitemids.com/item/64/iron_axe.png",9,0.9],
-               ["https://minecraftitemids.com/item/64/diamond_axe.png",9,1],
-               ["https://minecraftitemids.com/item/64/netherite_axe.png",10,1]]
+var axes = [["images/barrier.webp",1,4],
+               ["images/axe/wooden_axe.webp",7,0.8],
+               ["images/axe/golden_axe.webp",7,1],
+               ["images/axe/stone_axe.webp",9,0.8],
+               ["images/axe/iron_axe.webp",9,0.9],
+               ["images/axe/diamond_axe.webp",9,1],
+               ["images/axe/netherite_axe.webp",10,1]]
 
-var pickaxes = [["https://minecraftitemids.com/item/64/barrier.png",1,4],
-               ["https://minecraftitemids.com/item/64/wooden_pickaxe.png",2,1.2],
-               ["https://minecraftitemids.com/item/64/golden_pickaxe.png",2,1.2],
-               ["https://minecraftitemids.com/item/64/stone_pickaxe.png",3,1.2],
-               ["https://minecraftitemids.com/item/64/iron_pickaxe.png",4,1.2],
-               ["https://minecraftitemids.com/item/64/diamond_pickaxe.png",5,1.2],
-               ["https://minecraftitemids.com/item/64/netherite_pickaxe.png",6,1.2]]
+var pickaxes = [["images/barrier.webp",1,4],
+               ["images/pickaxe/wooden_pickaxe.webp",2,1.2],
+               ["images/pickaxe/golden_pickaxe.webp",2,1.2],
+               ["images/pickaxe/stone_pickaxe.webp",3,1.2],
+               ["images/pickaxe/iron_pickaxe.webp",4,1.2],
+               ["images/pickaxe/diamond_pickaxe.webp",5,1.2],
+               ["images/pickaxe/netherite_pickaxe.webp",6,1.2]]
 
-var shovels = [["https://minecraftitemids.com/item/64/barrier.png",1,4],
-               ["https://minecraftitemids.com/item/64/wooden_shovel.png",2.5,1],
-               ["https://minecraftitemids.com/item/64/golden_shovel.png",2.5,1],
-               ["https://minecraftitemids.com/item/64/stone_shovel.png",3.5,1],
-               ["https://minecraftitemids.com/item/64/iron_shovel.png",4.5,1],
-               ["https://minecraftitemids.com/item/64/diamond_shovel.png",5.5,1],
-               ["https://minecraftitemids.com/item/64/netherite_shovel.png",6.5,1]]
+var shovels = [["images/barrier.webp",1,4],
+               ["images/shovel/wooden_shovel.webp",2.5,1],
+               ["images/shovel/golden_shovel.webp",2.5,1],
+               ["images/shovel/stone_shovel.webp",3.5,1],
+               ["images/shovel/iron_shovel.webp",4.5,1],
+               ["images/shovel/diamond_shovel.webp",5.5,1],
+               ["images/shovel/netherite_shovel.webp",6.5,1]]
 
-var hoes = [["https://minecraftitemids.com/item/64/barrier.png",1,4],
-               ["https://minecraftitemids.com/item/64/wooden_hoe.png",1,1],
-               ["https://minecraftitemids.com/item/64/golden_hoe.png",1,1],
-               ["https://minecraftitemids.com/item/64/stone_hoe.png",1,2],
-               ["https://minecraftitemids.com/item/64/iron_hoe.png",1,3],
-               ["https://minecraftitemids.com/item/64/diamond_hoe.png",1,4],
-               ["https://minecraftitemids.com/item/64/netherite_hoe.png",1,4]]
+var hoes = [["images/barrier.webp",1,4],
+               ["images/hoe/wooden_hoe.webp",1,1],
+               ["images/hoe/golden_hoe.webp",1,1],
+               ["images/hoe/stone_hoe.webp",1,2],
+               ["images/hoe/iron_hoe.webp",1,3],
+               ["images/hoe/diamond_hoe.webp",1,4],
+               ["images/hoe/netherite_hoe.webp",1,4]]
 
-var helmets = [["https://minecraftitemids.com/item/64/barrier.png",0,0],
-               ["https://minecraftitemids.com/item/64/leather_helmet.png",1,0],
-               ["https://minecraftitemids.com/item/64/golden_helmet.png",2,0],
-               ["https://minecraftitemids.com/item/64/chainmail_helmet.png",2,0],
-               ["https://minecraftitemids.com/item/64/iron_helmet.png",2,0],
-               ["https://minecraftitemids.com/item/64/turtle_helmet.png",2,0],
-               ["https://minecraftitemids.com/item/64/diamond_helmet.png",3,2],
-               ["https://minecraftitemids.com/item/64/netherite_helmet.png",3,3]]
+var helmets = [["images/helmet/empty_helmet.webp",0,0],
+               ["images/helmet/leather_helmet.webp",1,0],
+               ["images/helmet/golden_helmet.webp",2,0],
+               ["images/helmet/chainmail_helmet.webp",2,0],
+               ["images/helmet/iron_helmet.webp",2,0],
+               ["images/helmet/turtle_helmet.webp",2,0],
+               ["images/helmet/diamond_helmet.webp",3,2],
+               ["images/helmet/netherite_helmet.webp",3,3]]
 
-var chestplates = [["https://minecraftitemids.com/item/64/barrier.png",0,0],
-               ["https://minecraftitemids.com/item/64/leather_chestplate.png",3,0],
-               ["https://minecraftitemids.com/item/64/golden_chestplate.png",5,0],
-               ["https://minecraftitemids.com/item/64/chainmail_chestplate.png",5,0],
-               ["https://minecraftitemids.com/item/64/iron_chestplate.png",6,0],
-               ["https://minecraftitemids.com/item/64/diamond_chestplate.png",8,2],
-               ["https://minecraftitemids.com/item/64/netherite_chestplate.png",8,3]]
+var chestplates = [["images/chestplate/empty_chestplate.webp",0,0],
+               ["images/chestplate/leather_chestplate.webp",3,0],
+               ["images/chestplate/golden_chestplate.webp",5,0],
+               ["images/chestplate/chainmail_chestplate.webp",5,0],
+               ["images/chestplate/iron_chestplate.webp",6,0],
+               ["images/chestplate/diamond_chestplate.webp",8,2],
+               ["images/chestplate/netherite_chestplate.webp",8,3]]
 
-var leggings = [["https://minecraftitemids.com/item/64/barrier.png",0,0],
-               ["https://minecraftitemids.com/item/64/leather_leggings.png",2,0],
-               ["https://minecraftitemids.com/item/64/golden_leggings.png",3,0],
-               ["https://minecraftitemids.com/item/64/chainmail_leggings.png",4,0],
-               ["https://minecraftitemids.com/item/64/iron_leggings.png",5,0],
-               ["https://minecraftitemids.com/item/64/diamond_leggings.png",6,2],
-               ["https://minecraftitemids.com/item/64/netherite_leggings.png",6,3]]
+var leggings = [["images/leggings/empty_leggings.webp",0,0],
+               ["images/leggings/leather_leggings.webp",2,0],
+               ["images/leggings/golden_leggings.webp",3,0],
+               ["images/leggings/chainmail_leggings.webp",4,0],
+               ["images/leggings/iron_leggings.webp",5,0],
+               ["images/leggings/diamond_leggings.webp",6,2],
+               ["images/leggings/netherite_leggings.webp",6,3]]
 
-var boots = [["https://minecraftitemids.com/item/64/barrier.png",0,0],
-               ["https://minecraftitemids.com/item/64/leather_boots.png",1,0],
-               ["https://minecraftitemids.com/item/64/golden_boots.png",1,0],
-               ["https://minecraftitemids.com/item/64/chainmail_boots.png",1,0],
-               ["https://minecraftitemids.com/item/64/iron_boots.png",2,0],
-               ["https://minecraftitemids.com/item/64/diamond_boots.png",3,2],
-               ["https://minecraftitemids.com/item/64/netherite_boots.png",3,3]]
+var boots = [["images/boots/empty_boots.webp",0,0],
+               ["images/boots/leather_boots.webp",1,0],
+               ["images/boots/golden_boots.webp",1,0],
+               ["images/boots/chainmail_boots.webp",1,0],
+               ["images/boots/iron_boots.webp",2,0],
+               ["images/boots/diamond_boots.webp",3,2],
+               ["images/boots/netherite_boots.webp",3,3]]
 
 
-var barrierImage = "https://minecraftitemids.com/item/64/barrier.png";
-var strengthImage = "https://minecraftitemids.com/item/64/373-8201.png";
-var weaknessImage = "https://minecraftitemids.com/item/64/373-8200.png";
-var resistanceImage = "https://minecraftitemids.com/item/64/373-0.png";
-var enchantmentImage = "https://minecraftitemids.com/item/64/enchanted_book.png";
-var critImage = "https://icons.iconarchive.com/icons/ph03nyx/super-mario/64/Star-icon.png";
-var editImage = "https://minecraftitemids.com/item/64/writable_book.png";
-var deleteImage = "https://minecraftitemids.com/item/64/fire_charge.png";
-var heartImage = "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.attagirlsays.com%2Fwp-content%2Fuploads%2F2015%2F02%2Fheart_pixelart.png&f=1&nofb=1";
+var barrierImage = "images/barrier.webp";
+var strengthImage = "images/strength.webp";
+var weaknessImage = "images/weakness.webp";
+var resistanceImage = "images/resistance.webp";
+var enchantmentImage = "images/enchanted_book.webp";
+var critImage = "images/crit.webp";
+var editImage = "images/book_and_quill.webp";
+var deleteImage = "images/fire_charge.webp";
+var heartImage = "images/heart.webp";
+var halfHeartImage = "images/half_heart.webp";
+var emptyHeartImage = "images/empty_heart.webp";
+var armourImage = "images/armour.webp";
+var halfArmourImage = "images/half_armour.webp";
+var emptyArmourImage = "images/empty_armour.webp";
+var toughnessImage = "images/toughness.webp";
+var halfToughnessImage = "images/half_toughness.webp";
 
 var maxProfiles = 16
 var weaponProfileNum = 0
@@ -686,6 +692,44 @@ $(document).ready(function() {
   loadModalHandlers()
   // defaultProfiles()
 });
+function armourPointImages(num) {
+  let span = $('<span />');
+  let full = (num/2) << 0;
+  let half = num % 2;
+  if (num > 0) {
+    for (let i = 0; i < full; i++) {
+      span.append("<img src="+armourImage+ " height='18px' width='18px' >");
+    }
+    for (let i = 0; i < half; i++) {
+      span.append("<img src="+halfArmourImage +" height='18px' width='18px' >");
+
+    }
+  } else {
+    span.append("<img src="+emptyArmourImage +" height='18px' width='18px' >");
+
+  }
+  return span;
+};
+
+function toughnessPointImages(num) {
+  let span = $('<span />');
+  let full = (num/2) << 0;
+  let half = num % 2;
+  if (num > 0) {
+    for (let i = 0; i < full; i++) {
+      span.append("<img src="+toughnessImage+ " height='18px' width='18px' >");
+    }
+    for (let i = 0; i < half; i++) {
+      span.append("<img src="+halfToughnessImage +" height='18px' width='18px' >");
+
+    }
+  } else {
+    span.append("<img src="+emptyArmourImage +" height='18px' width='18px' >");
+
+  }
+  return span;
+};
+
 
 function updateHTML(){
   //Tool
@@ -722,30 +766,26 @@ function updateHTML(){
   }
   // (weapon.attackSpeed > 2) ? $("#immunityInfo").text("Damage immunity limits DPS") : $("#immunityInfo").text("");
   $("#damagePerSecond").text(round(weapon.DPS,3));
-  
+
   //Helmet
   $("#helmet").css("background-image", "url(" + armour.helmetImage + ")");    
-  $("#helmetName").text(armour.helmetName);
-  $("#helmetDefence").text(armour.helmetDefence);
-  $("#helmetToughness").text(armour.helmetToughness);
+  $("#helmetDefence").empty().append(armourPointImages(armour.helmetDefence));
+  $("#helmetToughness").empty().append(toughnessPointImages(armour.helmetToughness));
   //Chestplate
   $("#chestplate").css("background-image", "url(" + armour.chestplateImage + ")");    
-  $("#chestplateName").text(armour.chestplateName);
-  $("#chestplateDefence").text(armour.chestplateDefence);
-  $("#chestplateToughness").text(armour.chestplateToughness);
+  $("#chestplateDefence").empty().append(armourPointImages(armour.chestplateDefence));
+  $("#chestplateToughness").empty().append(toughnessPointImages(armour.chestplateToughness));
   //Leggings
   $("#leggings").css("background-image", "url(" + armour.leggingsImage + ")");    
-  $("#leggingsName").text(armour.leggingsName);
-  $("#leggingsDefence").text(armour.leggingsDefence);
-  $("#leggingsToughness").text(armour.leggingsToughness);
+  $("#leggingsDefence").empty().append(armourPointImages(armour.leggingsDefence));
+  $("#leggingsToughness").empty().append(toughnessPointImages(armour.leggingsToughness));
   //Boots
-  $("#boots").css("background-image", "url(" + armour.bootsImage + ")");    
-  $("#bootsName").text(armour.bootsName);
-  $("#bootsDefence").text(armour.bootsDefence);
-  $("#bootsToughness").text(armour.bootsToughness);  
+  $("#boots").css("background-image", "url(" + armour.bootsImage + ")");
+  $("#bootsDefence").empty().append(armourPointImages(armour.bootsDefence));
+  $("#bootsToughness").empty().append(toughnessPointImages(armour.bootsToughness));
   //Armour
-  $("#totalDefence").text(armour.defence);
-  $("#totalToughness").text(armour.toughness);
+  $("#totalDefence").empty().append(armourPointImages(armour.defence)).append(" ("+armour.defence+")");
+  $("#totalToughness").empty().append(toughnessPointImages(armour.toughness)).append(" ("+armour.toughness+")");
   //Protection
   $("#protectionLevel").text(armour.protection);
   $("#protectionBonus").text(armour.protectionBonus);

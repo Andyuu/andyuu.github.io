@@ -126,19 +126,14 @@ Left and Right click boxes to change gear! Save setups with "Profiles" to keep t
   </div>
   <table id="armourTable" border="0">
     <tr>
-      <th>Helmet</th>
-      <th>Chestplate</th>
-      <th>Leggings</th>
-      <th>Boots</th>
       <th>Protection</th>
       <th>Resistance</th>
       <th>Hitpoints</th>
+      <td><div class="box armour" id="helmet"></div></td>
+      <td><span class="armourDefence" id="helmetDefence">0</span>&nbsp;<br><span class="armourToughness" id="helmetToughness"></span>&nbsp;</td> 
+
     </tr>
     <tr>
-      <td><div class="box armour" id="helmet"></div></td>
-      <td><div class="box armour" id="chestplate"></div></td>
-      <td><div class="box armour" id="leggings"></div></td>
-      <td><div class="box armour" id="boots"></div></td>
       <td><div class="box number" id="protection">
         <button class="arrow arrowUp" id="protectionUp">+</button>
         <input type="text" class="inputValue" id="protectionValue" value=0>
@@ -148,35 +143,30 @@ Left and Right click boxes to change gear! Save setups with "Profiles" to keep t
         <button class="arrow arrowUp">+</button>
         <input type="text" class="inputValue finalValues" id="hitpointsValue" value=20>
         <button class="arrow arrowDown">-</button></div></td>
+      <td><div class="box armour" id="chestplate"></div></td>
+      <td><span class="armourDefence" id="chestplateDefence">0</span>&nbsp;<br><span class="armourToughness" id="chestplateToughness"></span>&nbsp;</td> 
     </tr>
     <tr>
-      <td><span class="armourNames" id="helmetName">None</span></td>
-      <td><span class="armourNames" id="chestplateName">None</span></td>
-      <td><span class="armourNames" id="leggingsName">None</span></td>
-      <td><span class="armourNames" id="bootsName">None</span></td>
       <td>Prot&nbsp;<span id="protectionLevel">0</span></td>
       <td>Res &nbsp;<span id="resistanceLevel">0</span></td>
       <td>HP &nbsp;<span id="hitpointsLevel">20</span></td>
+      <td><div class="box armour" id="leggings"></div></td>
+      <td><span class="armourDefence" id="leggingsDefence">0</span>&nbsp;<br><span class="armourToughness" id="leggingsToughness"></span>&nbsp;</td> 
     </tr>
     <tr>
-      <td><span class="armourDefence" id="helmetDefence">0</span>&nbsp;defence</td>
-      <td><span class="armourDefence" id="chestplateDefence">0</span>&nbsp;defence</td>
-      <td><span class="armourDefence" id="leggingsDefence">0</span>&nbsp;defence</td>
-      <td><span class="armourDefence" id="bootsDefence">0</span>&nbsp;defence</td>
+      <td colspan="3"></td>
+      <td><div class="box armour" id="boots"></div></td>
+      <td><span class="armourDefence" id="bootsDefence">0</span>&nbsp;<br><span class="armourToughness" id="bootsToughness"></span>&nbsp;</td>
     </tr>
     <tr>
-      <td><span class="armourToughness" id="helmetToughness">0</span>&nbsp;tufness</td> 
-      <td><span class="armourToughness" id="chestplateToughness">0</span>&nbsp;tufness</td> 
-      <td><span class="armourToughness" id="leggingsToughness">0</span>&nbsp;tufness</td> 
-      <td><span class="armourToughness" id="bootsToughness">0</span>&nbsp;tufness</td>
       <td><span class="finalValues" id="protectionBonus">0</span>% Dmg</td>
       <td><span class="finalValues" id="resistanceBonus">0</span>% Dmg</td>
     </tr>
     <tr>
-      <td colspan="2">Total Defence:&nbsp;<span class="finalValues" id="totalDefence">0</span></td> 
-      <td colspan="2">Total Toughness:&nbsp;<span class="finalValues" id="totalToughness">0</span></td> 
       <td>Reduction</td>
       <td>Reduction</td>
+      <td colspan="2"><span class="finalValues" id="totalDefence"></span><br><span class="finalValues" id="totalToughness"></span></td> 
+
 
     </tr>
 
