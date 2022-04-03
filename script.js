@@ -1,82 +1,83 @@
 var toolMaterials = ["Images/Barrier.webp",
-                 "Images/Oak_planks.webp",
-                 "Images/Gold_ingot.webp",
-                 "Images/Cobblestone.webp",
-                 "Images/Iron_ingot.webp",
-                 "Images/Diamond.webp",
-                 "Images/Netherite_ingot.webp"]
+  "Images/Oak_planks.webp",
+  "Images/Gold_ingot.webp",
+  "Images/Cobblestone.webp",
+  "Images/Iron_ingot.webp",
+  "Images/Diamond.webp",
+  "Images/Netherite_ingot.webp"]
 
-var swords = [["Images/Barrier.webp",1,4],
-               ["Images/Sword/Wooden_Sword.webp",4,1.6],
-               ["Images/Sword/Stone_Sword.webp",5,1.6],
-               ["Images/Sword/Iron_Sword.webp",6,1.6],
-               ["Images/Sword/Diamond_Sword.webp",7,1.6],
-               ["Images/Sword/Netherite_Sword.webp",8,1.6]]
+var swords = [["Images/Barrier.webp", 1, 4],
+["Images/Sword/Wooden_Sword.webp", 4, 1.6],
+["Images/Sword/Golden_Sword.webp", 4, 1.6],
+["Images/Sword/Stone_Sword.webp", 5, 1.6],
+["Images/Sword/Iron_Sword.webp", 6, 1.6],
+["Images/Sword/Diamond_Sword.webp", 7, 1.6],
+["Images/Sword/Netherite_Sword.webp", 8, 1.6]]
 
-var axes = [["Images/Barrier.webp",1,4],
-               ["Images/Axe/Wooden_Axe.webp",7,0.8],
-               ["Images/Axe/Golden_Axe.webp",7,1],
-               ["Images/Axe/stone_Axe.webp",9,0.8],
-               ["Images/Axe/Iron_Axe.webp",9,0.9],
-               ["Images/Axe/Diamond_Axe.webp",9,1],
-               ["Images/Axe/Netherite_Axe.webp",10,1]]
+var axes = [["Images/Barrier.webp", 1, 4],
+["Images/Axe/Wooden_Axe.webp", 7, 0.8],
+["Images/Axe/Golden_Axe.webp", 7, 1],
+["Images/Axe/stone_Axe.webp", 9, 0.8],
+["Images/Axe/Iron_Axe.webp", 9, 0.9],
+["Images/Axe/Diamond_Axe.webp", 9, 1],
+["Images/Axe/Netherite_Axe.webp", 10, 1]]
 
-var pickaxes = [["Images/Barrier.webp",1,4],
-               ["Images/Pickaxe/Wooden_Pickaxe.webp",2,1.2],
-               ["Images/Pickaxe/Golden_Pickaxe.webp",2,1.2],
-               ["Images/Pickaxe/stone_Pickaxe.webp",3,1.2],
-               ["Images/Pickaxe/Iron_Pickaxe.webp",4,1.2],
-               ["Images/Pickaxe/Diamond_Pickaxe.webp",5,1.2],
-               ["Images/Pickaxe/Netherite_Pickaxe.webp",6,1.2]]
+var pickaxes = [["Images/Barrier.webp", 1, 4],
+["Images/Pickaxe/Wooden_Pickaxe.webp", 2, 1.2],
+["Images/Pickaxe/Golden_Pickaxe.webp", 2, 1.2],
+["Images/Pickaxe/stone_Pickaxe.webp", 3, 1.2],
+["Images/Pickaxe/Iron_Pickaxe.webp", 4, 1.2],
+["Images/Pickaxe/Diamond_Pickaxe.webp", 5, 1.2],
+["Images/Pickaxe/Netherite_Pickaxe.webp", 6, 1.2]]
 
-var shovels = [["Images/Barrier.webp",1,4],
-               ["Images/Shovel/Wooden_Shovel.webp",2.5,1],
-               ["Images/Shovel/Golden_Shovel.webp",2.5,1],
-               ["Images/Shovel/stone_Shovel.webp",3.5,1],
-               ["Images/Shovel/Iron_Shovel.webp",4.5,1],
-               ["Images/Shovel/Diamond_Shovel.webp",5.5,1],
-               ["Images/Shovel/Netherite_Shovel.webp",6.5,1]]
+var shovels = [["Images/Barrier.webp", 1, 4],
+["Images/Shovel/Wooden_Shovel.webp", 2.5, 1],
+["Images/Shovel/Golden_Shovel.webp", 2.5, 1],
+["Images/Shovel/stone_Shovel.webp", 3.5, 1],
+["Images/Shovel/Iron_Shovel.webp", 4.5, 1],
+["Images/Shovel/Diamond_Shovel.webp", 5.5, 1],
+["Images/Shovel/Netherite_Shovel.webp", 6.5, 1]]
 
-var hoes = [["Images/Barrier.webp",1,4],
-               ["Images/Hoe/Wooden_Hoe.webp",1,1],
-               ["Images/Hoe/Golden_Hoe.webp",1,1],
-               ["Images/Hoe/stone_Hoe.webp",1,2],
-               ["Images/Hoe/Iron_Hoe.webp",1,3],
-               ["Images/Hoe/Diamond_Hoe.webp",1,4],
-               ["Images/Hoe/Netherite_Hoe.webp",1,4]]
+var hoes = [["Images/Barrier.webp", 1, 4],
+["Images/Hoe/Wooden_Hoe.webp", 1, 1],
+["Images/Hoe/Golden_Hoe.webp", 1, 1],
+["Images/Hoe/stone_Hoe.webp", 1, 2],
+["Images/Hoe/Iron_Hoe.webp", 1, 3],
+["Images/Hoe/Diamond_Hoe.webp", 1, 4],
+["Images/Hoe/Netherite_Hoe.webp", 1, 4]]
 
-var helmets = [["Images/Helmet/empty_Helmet.webp",0,0],
-               ["Images/Helmet/Leather_Helmet.webp",1,0],
-               ["Images/Helmet/Golden_Helmet.webp",2,0],
-               ["Images/Helmet/Chainmail_Helmet.webp",2,0],
-               ["Images/Helmet/Iron_Helmet.webp",2,0],
-               ["Images/Helmet/Turtle_Helmet.webp",2,0],
-               ["Images/Helmet/Diamond_Helmet.webp",3,2],
-               ["Images/Helmet/Netherite_Helmet.webp",3,3]]
+var helmets = [["Images/Helmet/Empty_Helmet.webp", 0, 0],
+["Images/Helmet/Leather_Helmet.webp", 1, 0],
+["Images/Helmet/Golden_Helmet.webp", 2, 0],
+["Images/Helmet/Chainmail_Helmet.webp", 2, 0],
+["Images/Helmet/Iron_Helmet.webp", 2, 0],
+["Images/Helmet/Turtle_Helmet.webp", 2, 0],
+["Images/Helmet/Diamond_Helmet.webp", 3, 2],
+["Images/Helmet/Netherite_Helmet.webp", 3, 3]]
 
-var chestplates = [["Images/Chestplate/empty_Chestplate.webp",0,0],
-               ["Images/Chestplate/Leather_Chestplate.webp",3,0],
-               ["Images/Chestplate/Golden_Chestplate.webp",5,0],
-               ["Images/Chestplate/Chainmail_Chestplate.webp",5,0],
-               ["Images/Chestplate/Iron_Chestplate.webp",6,0],
-               ["Images/Chestplate/Diamond_Chestplate.webp",8,2],
-               ["Images/Chestplate/Netherite_Chestplate.webp",8,3]]
+var chestplates = [["Images/Chestplate/Empty_Chestplate.webp", 0, 0],
+["Images/Chestplate/Leather_Chestplate.webp", 3, 0],
+["Images/Chestplate/Golden_Chestplate.webp", 5, 0],
+["Images/Chestplate/Chainmail_Chestplate.webp", 5, 0],
+["Images/Chestplate/Iron_Chestplate.webp", 6, 0],
+["Images/Chestplate/Diamond_Chestplate.webp", 8, 2],
+["Images/Chestplate/Netherite_Chestplate.webp", 8, 3]]
 
-var leggings = [["Images/Leggings/empty_Leggings.webp",0,0],
-               ["Images/Leggings/Leather_Leggings.webp",2,0],
-               ["Images/Leggings/Golden_Leggings.webp",3,0],
-               ["Images/Leggings/Chainmail_Leggings.webp",4,0],
-               ["Images/Leggings/Iron_Leggings.webp",5,0],
-               ["Images/Leggings/Diamond_Leggings.webp",6,2],
-               ["Images/Leggings/Netherite_Leggings.webp",6,3]]
+var leggings = [["Images/Leggings/Empty_Leggings.webp", 0, 0],
+["Images/Leggings/Leather_Leggings.webp", 2, 0],
+["Images/Leggings/Golden_Leggings.webp", 3, 0],
+["Images/Leggings/Chainmail_Leggings.webp", 4, 0],
+["Images/Leggings/Iron_Leggings.webp", 5, 0],
+["Images/Leggings/Diamond_Leggings.webp", 6, 2],
+["Images/Leggings/Netherite_Leggings.webp", 6, 3]]
 
-var boots = [["Images/Boots/empty_Boots.webp",0,0],
-               ["Images/Boots/Leather_Boots.webp",1,0],
-               ["Images/Boots/Golden_Boots.webp",1,0],
-               ["Images/Boots/Chainmail_Boots.webp",1,0],
-               ["Images/Boots/Iron_Boots.webp",2,0],
-               ["Images/Boots/Diamond_Boots.webp",3,2],
-               ["Images/Boots/Netherite_Boots.webp",3,3]]
+var boots = [["Images/Boots/Empty_Boots.webp", 0, 0],
+["Images/Boots/Leather_Boots.webp", 1, 0],
+["Images/Boots/Golden_Boots.webp", 1, 0],
+["Images/Boots/Chainmail_Boots.webp", 1, 0],
+["Images/Boots/Iron_Boots.webp", 2, 0],
+["Images/Boots/Diamond_Boots.webp", 3, 2],
+["Images/Boots/Netherite_Boots.webp", 3, 3]]
 
 
 var barrierImage = "Images/Barrier.webp";
@@ -101,33 +102,34 @@ var weaponProfileNum = 0
 var armourProfileNum = 0
 
 //These values can be reset
-var armourMaterialList = ["None","Leather","Golden","Chainmail","Iron","Diamond","Netherite"]
-var helmetMaterialList = ["None","Leather","Golden","Chainmail","Iron","Turtle","Diamond","Netherite"]
-var armourNames = ["None","None","None","None"]
-var armourMaterials = [0,0,0,0]
-var armourDefence = [0,0,0,0]
-var armourToughness = [0,0,0,0]
+var armourMaterialList = ["None", "Leather", "Golden", "Chainmail", "Iron", "Diamond", "Netherite"]
+var helmetMaterialList = ["None", "Leather", "Golden", "Chainmail", "Iron", "Turtle", "Diamond", "Netherite"]
+var armourNames = ["None", "None", "None", "None"]
+var armourMaterials = [0, 0, 0, 0]
+var armourDefence = [0, 0, 0, 0]
+var armourToughness = [0, 0, 0, 0]
 var totalArmour = 0
 var totalToughness = 0
 var protection = 0
 var protectionBonus = 0
 var hitpoints = 20
-var toolMaterialList = ["No","Wooden","Golden","Stone","Iron","Diamond","Netherite"]
+var toolMaterialList = ["No", "Wooden", "Golden", "Stone", "Iron", "Diamond", "Netherite"]
 var toolMaterialName = "No"
-var toolList = ["Sword","Axe","Pickaxe","Shovel","Hoe"]
+var toolList = ["Sword", "Axe", "Pickaxe", "Shovel", "Hoe"]
 var toolName = "Sword"
 var toolOptions = swords
-var tools = [swords,axes,pickaxes,shovels,hoes]
+var tools = [swords, axes, pickaxes, shovels, hoes]
 var toolMaterial = 0
 var tool = 0
 var baseDamage = 1
 var attackSpeed = 4
 //Effects order: Strength, Weakness, Resistance
-var effect = [0,0,0]
+var effect = [0, 0, 0]
 var effectsMax = 5
-var effectBonus = [0,0,0]
-var effectLevelDivs = ["strengthLevel","weaknessLevel","resistanceLevel"]
-var effectBonusDivs = ["strengthBonus","weaknessBonus","resistanceBonus"]
+var maxHitpoints = 99 //Doesnt work
+var effectBonus = [0, 0, 0]
+var effectLevelDivs = ["strengthLevel", "weaknessLevel", "resistanceLevel"]
+var effectBonusDivs = ["strengthBonus", "weaknessBonus", "resistanceBonus"]
 var crit = false
 var critBonus = 1
 var sharpness = 0
@@ -143,23 +145,25 @@ var hitsToKill = 20
 var timeToKill = 10
 
 const random = (max = 100) => {
-    return Math.floor(Math.random() * max)
+  return Math.floor(Math.random() * max)
 };
+const pluralise = (count, noun, suffix = 's') =>
+  `${count} ${noun}${count !== 1 ? suffix : ''}`;
 //Unused
 function reset() {
-  armourMaterialList = ["None","Leather","Golden","Chainmail","Iron","Diamond","Netherite"]
-  armourNames = ["None","None","None","None"]
-  armourMaterials = [0,0,0,0]
-  armourDefence = [0,0,0,0]
-  armourToughness = [0,0,0,0]
+  armourMaterialList = ["None", "Leather", "Golden", "Chainmail", "Iron", "Diamond", "Netherite"]
+  armourNames = ["None", "None", "None", "None"]
+  armourMaterials = [0, 0, 0, 0]
+  armourDefence = [0, 0, 0, 0]
+  armourToughness = [0, 0, 0, 0]
   totalArmour = 0
   totalToughness = 0
   protection = 0
   protectionBonus = 0
   hitpoints = 20
-  toolMaterialList = ["No","Wooden","Golden","Stone","Iron","Diamond","Netherite"]
+  toolMaterialList = ["No", "Wooden", "Golden", "Stone", "Iron", "Diamond", "Netherite"]
   toolMaterialName = "No"
-  toolList = ["Sword","Axe","Pickaxe","Shovel","Hoe"]
+  toolList = ["Sword", "Axe", "Pickaxe", "Shovel", "Hoe"]
   toolName = "Sword"
   toolOptions = swords
   toolMaterial = 0
@@ -167,11 +171,11 @@ function reset() {
   baseDamage = 1
   attackSpeed = 4
   //Effects order: Strength, Weakness, Resistance
-  effect = [0,0,0]
+  effect = [0, 0, 0]
   effectsMax = 5
-  effectBonus = [0,0,0]
-  effectLevelDivs = ["strengthLevel","weaknessLevel","resistanceLevel"]
-  effectBonusDivs = ["strengthBonus","weaknessBonus","resistanceBonus"]
+  effectBonus = [0, 0, 0]
+  effectLevelDivs = ["strengthLevel", "weaknessLevel", "resistanceLevel"]
+  effectBonusDivs = ["strengthBonus", "weaknessBonus", "resistanceBonus"]
   crit = false
   critBonus = 1
   sharpness = 0
@@ -188,7 +192,7 @@ function reset() {
 };
 
 class Weapon {
-  constructor(){
+  constructor() {
     this.material = 0
     this.tool = 0
     this.strength = 0
@@ -203,7 +207,7 @@ class Weapon {
     return toolMaterialList[this.material]
   }
   get name() {
-    return this.materialName + " "+this.toolName
+    return this.materialName + " " + this.toolName
   }
   get materialImage() {
     return toolMaterials[this.material]
@@ -217,24 +221,24 @@ class Weapon {
   get attackSpeed() {
     return tools[this.tool][this.material][2]
   }
-  get attackCooldown(){
-    var attackCooldown = 1/this.attackSpeed- 0.025
-    attackCooldown = (Math.ceil(attackCooldown*20)/20);
+  get attackCooldown() {
+    var attackCooldown = 1 / this.attackSpeed - 0.025
+    attackCooldown = (Math.ceil(attackCooldown * 20) / 20);
     if (attackCooldown < 0.5) {
       attackCooldown = 0.5
     }
     return attackCooldown
   }
-  get strengthBonus(){
+  get strengthBonus() {
     return this.strength * 3
   }
-  get weaknessBonus(){
+  get weaknessBonus() {
     return this.weakness * 4
   }
-  get critBonus(){
+  get critBonus() {
     return (this.crit) ? 1.5 : 1;
   }
-  get sharpnessBonus(){
+  get sharpnessBonus() {
     return (this.sharpness) ? this.sharpness * 0.5 + 0.5 : 0;
   }
   get damage() {
@@ -245,36 +249,36 @@ class Weapon {
     return damage;
   }
   get DPS() {
-    return this.damage/this.attackCooldown
+    return this.damage / this.attackCooldown
   }
-  get strengthImage(){
+  get strengthImage() {
     if (this.strength == 0) {
       return barrierImage
     } else {
       return strengthImage
     }
   }
-  get weaknessImage(){
+  get weaknessImage() {
     if (this.weakness == 0) {
       return barrierImage
     } else {
       return weaknessImage
     }
   }
-  get critImage(){
+  get critImage() {
     if (this.crit == false) {
       return barrierImage
     } else {
       return critImage
     }
   }
-  effectColor(level){
-    let colors = ["#777","#FF6D6A","#EFBE7D","#E9EC6B","#8BD3E6","#B1A2CA"]
+  effectColor(level) {
+    let colors = ["#777", "#FF6D6A", "#EFBE7D", "#E9EC6B", "#8BD3E6", "#B1A2CA"]
     return colors[level]
   }
 }
 class Armour {
-  constructor(){
+  constructor() {
     this.helmet = 0
     this.chestplate = 0
     this.leggings = 0
@@ -332,10 +336,10 @@ class Armour {
     return boots[this.boots][2]
   }
   get defence() {
-    return this.helmetDefence+this.chestplateDefence+this.leggingsDefence+this.bootsDefence
+    return this.helmetDefence + this.chestplateDefence + this.leggingsDefence + this.bootsDefence
   }
   get toughness() {
-    return this.helmetToughness+this.chestplateToughness+this.leggingsToughness+this.bootsToughness
+    return this.helmetToughness + this.chestplateToughness + this.leggingsToughness + this.bootsToughness
   }
   get protectionBonus() {
     return this.protection * 4
@@ -343,102 +347,102 @@ class Armour {
   get resistanceBonus() {
     return this.resistance * 20
   }
-  get resistanceImage(){
+  get resistanceImage() {
     if (this.resistance == 0) {
       return barrierImage
     } else {
-      return strengthImage
+      return resistanceImage
     }
   }
-  effectColor(level){
-    let colors = ["#777","#FF6D6A","#EFBE7D","#E9EC6B","#8BD3E6","#B1A2CA"]
+  effectColor(level) {
+    let colors = ["#777", "#FF6D6A", "#EFBE7D", "#E9EC6B", "#8BD3E6", "#B1A2CA"]
     return colors[level]
   }
 }
 class Results {
-  constructor(attacker, defender){
+  constructor(attacker, defender) {
     this.attacker = attacker
     this.defender = defender
-  }  
+  }
   get damageDealt() {
     // return this.attacker.damage
-    let dmg = this.attacker.damage*(1-(Math.min(20,Math.max(this.defender.defence/5,this.defender.defence-4*this.attacker.damage/(this.defender.toughness+8))))/25);
-    dmg *= (1- this.defender.resistanceBonus/100) * (1- this.defender.protectionBonus/100);
+    let dmg = this.attacker.damage * (1 - (Math.min(20, Math.max(this.defender.defence / 5, this.defender.defence - 4 * this.attacker.damage / (this.defender.toughness + 8)))) / 25);
+    dmg *= (1 - this.defender.resistanceBonus / 100) * (1 - this.defender.protectionBonus / 100);
     return dmg
   }
   get armourReduction() {
-    let dmg = this.attacker.damage*(1-(Math.min(20,Math.max(this.defender.defence/5,this.defender.defence-4*this.attacker.damage/(this.defender.toughness+8))))/25);
-    return (1 - dmg/this.attacker.damage) * 100
+    let dmg = this.attacker.damage * (1 - (Math.min(20, Math.max(this.defender.defence / 5, this.defender.defence - 4 * this.attacker.damage / (this.defender.toughness + 8)))) / 25);
+    return (1 - dmg / this.attacker.damage) * 100
   }
   get defenceReduction() {
-    let altDamageDealt = this.attacker.damage*(1-(Math.min(20,Math.max(this.defender.defence/5,this.defender.defence-4*this.attacker.damage/8)))/25);
-    return (1 - altDamageDealt/this.attacker.damage) * 100    
+    let altDamageDealt = this.attacker.damage * (1 - (Math.min(20, Math.max(this.defender.defence / 5, this.defender.defence - 4 * this.attacker.damage / 8))) / 25);
+    return (1 - altDamageDealt / this.attacker.damage) * 100
   }
   get toughnessReduction() {
-    let dmg = this.attacker.damage*(1-(Math.min(20,Math.max(this.defender.defence/5,this.defender.defence-4*this.attacker.damage/(this.defender.toughness+8))))/25);
-    let altDamageDealt = this.attacker.damage*(1-(Math.min(20,Math.max(this.defender.defence/5,this.defender.defence-4*this.attacker.damage/8)))/25);
-    return (1 - dmg/altDamageDealt) * 100   
+    let dmg = this.attacker.damage * (1 - (Math.min(20, Math.max(this.defender.defence / 5, this.defender.defence - 4 * this.attacker.damage / (this.defender.toughness + 8)))) / 25);
+    let altDamageDealt = this.attacker.damage * (1 - (Math.min(20, Math.max(this.defender.defence / 5, this.defender.defence - 4 * this.attacker.damage / 8))) / 25);
+    return (1 - dmg / altDamageDealt) * 100
   }
-  get percentDamageDealt(){
+  get percentDamageDealt() {
     return this.damageDealt / this.attacker.damage * 100;
   }
-  get DPS(){
+  get DPS() {
     return this.damageDealt / this.attacker.attackCooldown
   }
-  get hitsToKill(){
-    return Math.ceil(this.defender.hitpoints/ this.damageDealt);
+  get hitsToKill() {
+    return Math.ceil(this.defender.hitpoints / this.damageDealt);
   }
-  get timeToKill(){
+  get timeToKill() {
     return this.hitsToKill * this.attacker.attackCooldown;
   }
-  
-  
+
+
 }
 const weapon = new Weapon();
 const armour = new Armour();
-const results = new Results(weapon,armour);
+const results = new Results(weapon, armour);
 
-$(document).ready(function() {
+$(document).ready(function () {
   // Sortable 
   $("#weaponProfiles, #armourProfiles").sortable({
     axis: "y",
     opacity: 0.9,
     distance: 25,
-    helper: function(event, elm) {
+    helper: function (event, elm) {
       return $(elm).clone().position({
         my: "left",
         at: "left",
         of: elm
       });
     }
-    }); //Sort profile list
+  }); //Sort profile list
   $("#profileGroups").sortable({
     axis: "y",
     opacity: 0.9,
     distance: 25,
     items: "> .profileGroup, .profileFolder",
-    helper: function(event, ui){
-      var $clone =  $(ui).clone();
-      $clone .css('position','absolute');
+    helper: function (event, ui) {
+      var $clone = $(ui).clone();
+      $clone.css('position', 'absolute');
       return $clone.get(0);
     }
   }); //Sort profile group list
   //Folder 
-  $("#closeModal, #folderModal").on('click', function() {
-    $("#folderModal").css("display","none");
-  }).children().click(function(event) {   event.stopPropagation(); });
-  $(".folder").on('click', function() {
-    $("#folderModal").css("display","block");
-  }); 
+  $("#closeModal, #folderModal").on('click', function () {
+    $("#folderModal").css("display", "none");
+  }).children().click(function (event) { event.stopPropagation(); });
+  $(".folder").on('click', function () {
+    $("#folderModal").css("display", "block");
+  });
 
 
   //Profiles
-  $('.box').contextmenu(function() {
+  $(".box").contextmenu(function () {
     return false;
   }); //Hide context menu on right click
-  $('.box').mousedown(function(event) {
+  $(".box").mousedown(function (event) {
     //Find if it is a user click
-    if(event.hasOwnProperty('originalEvent')) {
+    if (event.hasOwnProperty('originalEvent')) {
 
       //Deselect weapon profile
       if ($(this).closest('table').attr('id') == "weaponTable") {
@@ -454,26 +458,26 @@ $(document).ready(function() {
 
     }
   }); //Deselect Profiles on user click  
-  $(document).bind('keydown', 'alt+w', function() {
+  $(document).bind('keydown', 'alt+w', function () {
     if ($("#saveWeapon").attr("disabled") == "disabled") {
       return false;
     } else {
       $("#saveWeapon").trigger("click");
     }
   }); //Alt + W triggers "#saveWeapon"
-  $("#saveWeapon").click(function() {
+  $("#saveWeapon").click(function () {
     //Increase profile number if below max
     if (weaponProfileNum < maxProfiles) {
       weaponProfileNum++
     } else {
 
       //Warn user that profile number is max
-      $(this).after($("<span>").css("color", "red").css("fontWeight","bold").text(" Reached max profiles ").fadeOut(2000));
+      $(this).after($("<span>").css("color", "red").css("fontWeight", "bold").text(" Reached max profiles ").fadeOut(2000));
 
       //Disable button to prevent spam
       $(this).attr("disabled", true);
       var that = $(this);
-      setTimeout(function() { enableButton(that) }, 3000);
+      setTimeout(function () { enableButton(that) }, 3000);
       return false;
     }
 
@@ -482,26 +486,26 @@ $(document).ready(function() {
 
 
   }); //Save weapon profile
-  $(document).bind('keydown', 'alt+a', function() {
+  $(document).bind('keydown', 'alt+a', function () {
     if ($("#saveArmour").attr("disabled") == "disabled") {
       return false;
     } else {
       $("#saveArmour").trigger("click");
     }
   }); //Alt + A triggers "#saveArmour"
-  $("#saveArmour").click(function() {
+  $("#saveArmour").click(function () {
     //Increase profile number if below max
     if (armourProfileNum < maxProfiles) {
       armourProfileNum++
     } else {
-      
+
       //Warn user that profile number is max
-      $(this).after($("<span>").css("color", "red").css("fontWeight","bold").text(" Reached max profiles ").fadeOut(2000));
-      
+      $(this).after($("<span>").css("color", "red").css("fontWeight", "bold").text(" Reached max profiles ").fadeOut(2000));
+
       //Disable button to prevent spam
       $(this).attr("disabled", true);
       var button = $(this);
-      setTimeout(function() { enableButton(button) }, 3000);
+      setTimeout(function () { enableButton(button) }, 3000);
       return false;
     }
 
@@ -510,15 +514,15 @@ $(document).ready(function() {
 
 
   }); //Save armour profile
-  $(".collapser").click(function() {
+  $(".collapser").click(function () {
     $(this).siblings(".profileContainer").children().addClass("collapse")
   });
-  $(".expander").click(function() {
+  $(".expander").click(function () {
     $(this).siblings(".profileContainer").children().removeClass("collapse")
   });
-  
+
   //Normal boxes
-  $("#toolMaterial").mousedown(function(event) {
+  $("#toolMaterial").mousedown(function (event) {
     //Update on left click, Reset on right click
     if (event.which === 3) {
       weapon.material = 0
@@ -527,7 +531,7 @@ $(document).ready(function() {
     }
     updateHTML()
   });
-  $("#tool").mousedown(function(event) {
+  $("#tool").mousedown(function (event) {
     if (event.which === 3) {
       weapon.tool = 0
     } else {
@@ -535,7 +539,7 @@ $(document).ready(function() {
     }
     updateHTML()
   });
-  $("#strength").mousedown(function(event) {
+  $("#strength").mousedown(function (event) {
     if (event.which === 3) {
       weapon.strength = 0
     } else {
@@ -543,7 +547,7 @@ $(document).ready(function() {
     }
     updateHTML()
   });
-  $("#weakness").mousedown(function(event) {
+  $("#weakness").mousedown(function (event) {
     if (event.which === 3) {
       weapon.weakness = 0
     } else {
@@ -551,7 +555,7 @@ $(document).ready(function() {
     }
     updateHTML()
   });
-  $("#resistance").mousedown(function(event) {
+  $("#resistance").mousedown(function (event) {
     if (event.which === 3) {
       armour.resistance = 0
     } else {
@@ -559,15 +563,15 @@ $(document).ready(function() {
     }
     updateHTML();
   });
-  $("#crit").mousedown(function(event) {
+  $("#crit").mousedown(function (event) {
     if (event.which === 3) {
       weapon.crit = false
     } else {
       weapon.crit = !weapon.crit;
     }
-    updateHTML();    
+    updateHTML();
   });
-  $("#helmet").mousedown(function(event) {
+  $("#helmet").mousedown(function (event) {
     if (event.which === 3) {
       armour.helmet = 0
     } else {
@@ -575,7 +579,7 @@ $(document).ready(function() {
     }
     updateHTML();
   });
-  $("#chestplate").mousedown(function(event) {
+  $("#chestplate").mousedown(function (event) {
     if (event.which === 3) {
       armour.chestplate = 0
     } else {
@@ -583,7 +587,7 @@ $(document).ready(function() {
     }
     updateHTML();
   });
-  $("#leggings").mousedown(function(event) {
+  $("#leggings").mousedown(function (event) {
     if (event.which === 3) {
       armour.leggings = 0
     } else {
@@ -591,7 +595,7 @@ $(document).ready(function() {
     }
     updateHTML();
   });
-  $("#boots").mousedown(function(event) {
+  $("#boots").mousedown(function (event) {
     if (event.which === 3) {
       armour.boots = 0
     } else {
@@ -599,21 +603,21 @@ $(document).ready(function() {
     }
     updateHTML();
   });
-  $('.dice').contextmenu(function() {
+  $('.dice').contextmenu(function () {
     return false;
   });
-  $(".dice").mousedown(function(event) {
+  $(".dice").mousedown(function (event) {
     $(this).removeClass("animate");
     $(this).width(); // trigger a DOM reflow
     $(this).addClass("animate");
     $(this).children('.pip').remove();
     if (event.which !== 3) {
-      for (i=0; i<=random(6); i++) {
+      for (i = 0; i <= random(6); i++) {
         $(this).append($("<div>").addClass("pip"));
       }
     }
   });
-  $("#dice1").mousedown(function(event) {
+  $("#dice1").mousedown(function (event) {
     if (event.which === 3) {
       weapon.material = 0
       weapon.tool = 0
@@ -631,7 +635,7 @@ $(document).ready(function() {
     }
     updateHTML()
   });
-  $("#dice2").mousedown(function(event) {
+  $("#dice2").mousedown(function (event) {
     if (event.which === 3) {
       armour.helmet = 0
       armour.chestplate = 0
@@ -647,91 +651,108 @@ $(document).ready(function() {
       armour.boots = random(6)
       armour.protection = (random(2) * random(2)) ? random(21) : 0;
       armour.resistance = (random(2) * random(2)) ? random(6) : 0;
-      armour.hitpoints = 1+random(40);
+      armour.hitpoints = 1 + random(40);
     }
     updateHTML()
   });
-    
+// rfgddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddrrrgsrgfgfg
   //Number boxes
-  $(".arrowUp").mousedown(function() {
+  $(".arrowUp").mousedown(function () {
     var temp = $(this).next().val();
-    if (temp<99) {
+    if (temp < 99) {
       temp++
       $(this).next().val(temp).trigger('change');
     };
   });
-  $(".arrowDown").mousedown(function() {
+  $(".arrowDown").mousedown(function () {
     var temp = $(this).prev().val();
-    if (temp>0) {
+    if (temp > 0) {
       temp--
       $(this).prev().val(temp).trigger('change');
     };
-  });  
-  $("#sharpnessValue").change(function() {
+  });
+  $("#sharpnessValue").change(function () {
     weapon.sharpness = $(this).val();
     updateHTML();
   });
-  $("#protectionValue").change(function() {
+  $("#protectionValue").change(function () {
     armour.protection = $(this).val();
-    if (armour.protection>20) {
+    if (armour.protection > 20) {
       $(this).val(20).trigger('change');
     }
     updateHTML();
 
   });
-  $("#hitpointsValue").change(function() {
+  $("#hitpointsValue").change(function () {
     armour.hitpoints = $(this).val();
-    if (armour.hitpoints==0) {
+    if (armour.hitpoints == 0) {
       $(this).val(1).trigger('change');
     }
     updateHTML();
-  });   
+  });
 
-  updateProfiles()    
-  
+  updateProfiles()
+  updateHTML()
+
   loadModalHandlers()
   // defaultProfiles()
 });
 function armourPointImages(num) {
   let span = $('<span />');
-  let full = (num/2) << 0;
+  let full = (num / 2) << 0;
   let half = num % 2;
   if (num > 0) {
     for (let i = 0; i < full; i++) {
-      span.append("<img src="+armourImage+ " height='18px' width='18px' >");
+      span.append("<img src=" + armourImage + " height='18px' width='18px' >");
     }
     for (let i = 0; i < half; i++) {
-      span.append("<img src="+halfArmourImage +" height='18px' width='18px' >");
+      span.append("<img src=" + halfArmourImage + " height='18px' width='18px' >");
 
     }
   } else {
-    span.append("<img src="+emptyArmourImage +" height='18px' width='18px' >");
+    span.append("<img src=" + emptyArmourImage + " height='18px' width='18px' >");
 
   }
   return span;
 };
-
+function hitpointImages(num) {
+  let span = $('<span />');
+  let fullLines = (num / 20) << 0;
+  let extra = num % 20;
+  let full = (extra / 2) << 0;
+  let half = extra % 2;
+  for (let i = 0; i < full; i++) {
+    span.append("<img src=" + heartImage + " height='18px' width='18px' >");
+  }
+  for (let i = 0; i < half; i++) {
+    span.append("<img src=" + halfHeartImage + " height='18px' width='18px' >");
+  }
+  for (let i = 0; i < fullLines; i++) {
+    if (num % 20 || i>0 ) {
+    span.append("<br class='hitpointBreak'>");
+    }
+    for (let i = 0; i < 10; i++) {
+      span.append("<img src=" + heartImage + " height='18px' width='18px' >");
+    }
+  }
+  return span;
+};
 function toughnessPointImages(num) {
   let span = $('<span />');
-  let full = (num/2) << 0;
+  let full = (num / 2) << 0;
   let half = num % 2;
-  if (num > 0) {
-    for (let i = 0; i < full; i++) {
-      span.append("<img src="+toughnessImage+ " height='18px' width='18px' >");
-    }
-    for (let i = 0; i < half; i++) {
-      span.append("<img src="+halfToughnessImage +" height='18px' width='18px' >");
-
-    }
-  } else {
-    span.append("<img src="+emptyArmourImage +" height='18px' width='18px' >");
+  for (let i = 0; i < full; i++) {
+    span.append("<img src=" + toughnessImage + " height='18px' width='18px' >");
+  }
+  for (let i = 0; i < half; i++) {
+    span.append("<img src=" + halfToughnessImage + " height='18px' width='18px' >");
 
   }
   return span;
 };
 
 
-function updateHTML(){
+function updateHTML() {
   //Tool
   $("#toolMaterial").css("background-image", "url(" + weapon.materialImage + ")");
   $("#tool").css("background-image", "url(" + weapon.toolImage + ")");
@@ -751,12 +772,12 @@ function updateHTML(){
   $("#weakness").css("background-color", weapon.effectColor(weapon.weakness));
   //Crit
   $("#crit").css("background-image", "url(" + weapon.critImage + ")");
-  (weapon.crit) ?  $("#critBool").text("Crit") : $("#critBool").text("No Crit");
+  (weapon.crit) ? $("#critBool").text("Crit") : $("#critBool").text("No Crit");
   $("#critBonus").text(weapon.critBonus);
   //Sharpness
   $("#sharpnessLevel").text(weapon.sharpness);
   $("#sharpnessBonus").text(weapon.sharpnessBonus);
-  $("#sharpnessValue").attr("value",weapon.sharpness);
+  $("#sharpnessValue").attr("value", weapon.sharpness);
   //Damage
   $("#attackDamage").text(weapon.damage)
   if (weapon.attackSpeed > 2) {
@@ -765,40 +786,40 @@ function updateHTML(){
     $("#immunityInfo").text("");
   }
   // (weapon.attackSpeed > 2) ? $("#immunityInfo").text("Damage immunity limits DPS") : $("#immunityInfo").text("");
-  $("#damagePerSecond").text(round(weapon.DPS,3));
+  $("#damagePerSecond").text(round(weapon.DPS, 3));
 
   //Helmet
-  $("#helmet").css("background-image", "url(" + armour.helmetImage + ")");    
-  $("#helmetDefence").empty().append(armourPointImages(armour.helmetDefence));
-  $("#helmetToughness").empty().append(toughnessPointImages(armour.helmetToughness));
+  $("#helmet").css("background-image", "url(" + armour.helmetImage + ")");
+  $("#helmetDefence").empty().append(armourPointImages(armour.helmetDefence)).attr("title", pluralise(armour.helmetDefence / 2, "armour point"));
+  $("#helmetToughness").empty().append(toughnessPointImages(armour.helmetToughness)).attr("title", pluralise(armour.helmetToughness / 2, "toughness point"));
   //Chestplate
-  $("#chestplate").css("background-image", "url(" + armour.chestplateImage + ")");    
-  $("#chestplateDefence").empty().append(armourPointImages(armour.chestplateDefence));
-  $("#chestplateToughness").empty().append(toughnessPointImages(armour.chestplateToughness));
+  $("#chestplate").css("background-image", "url(" + armour.chestplateImage + ")");
+  $("#chestplateDefence").empty().append(armourPointImages(armour.chestplateDefence)).attr("title", pluralise(armour.chestplateDefence / 2, "armour point"));
+  $("#chestplateToughness").empty().append(toughnessPointImages(armour.chestplateToughness)).attr("title", pluralise(armour.chestplateToughness / 2, "toughness point"));
   //Leggings
-  $("#leggings").css("background-image", "url(" + armour.leggingsImage + ")");    
-  $("#leggingsDefence").empty().append(armourPointImages(armour.leggingsDefence));
-  $("#leggingsToughness").empty().append(toughnessPointImages(armour.leggingsToughness));
+  $("#leggings").css("background-image", "url(" + armour.leggingsImage + ")");
+  $("#leggingsDefence").empty().append(armourPointImages(armour.leggingsDefence)).attr("title", pluralise(armour.leggingsDefence / 2, "armour point"));
+  $("#leggingsToughness").empty().append(toughnessPointImages(armour.leggingsToughness)).attr("title", pluralise(armour.leggingsToughness / 2, "toughness point"));
   //Boots
   $("#boots").css("background-image", "url(" + armour.bootsImage + ")");
-  $("#bootsDefence").empty().append(armourPointImages(armour.bootsDefence));
-  $("#bootsToughness").empty().append(toughnessPointImages(armour.bootsToughness));
+  $("#bootsDefence").empty().append(armourPointImages(armour.bootsDefence)).attr("title", pluralise(armour.bootsDefence / 2, "armour point"));
+  $("#bootsToughness").empty().append(toughnessPointImages(armour.bootsToughness)).attr("title", pluralise(armour.bootsToughness / 2, "toughness point"));
   //Armour
-  $("#totalDefence").empty().append(armourPointImages(armour.defence)).append(" ("+armour.defence+")");
-  $("#totalToughness").empty().append(toughnessPointImages(armour.toughness)).append(" ("+armour.toughness+")");
+  $("#totalDefence").empty().append(armourPointImages(armour.defence)).attr("title", pluralise(armour.defence / 2, "armour point"));
+  $("#totalToughness").empty().append(toughnessPointImages(armour.toughness)).attr("title", pluralise(armour.toughness / 2, "toughness point"));
   //Protection
   $("#protectionLevel").text(armour.protection);
   $("#protectionBonus").text(armour.protectionBonus);
-  $("#protectionValue").attr("value",armour.protection);
+  $("#protectionValue").attr("value", armour.protection);
   //Resistance
   $("#resistanceLevel").text(armour.resistance);
   $("#resistanceBonus").text(armour.resistanceBonus);
   $("#resistance").css("background-image", "url(" + armour.resistanceImage + ")");
   $("#resistance").css("background-color", armour.effectColor(armour.resistance));
   //Hitpoints
-  $("#hitpointsLevel").text(armour.hitpoints);
-  $("#hitpointsValue").attr("value",armour.hitpoints);
-  
+  $("#totalHitpoints").empty().append(hitpointImages(armour.hitpoints)).attr("title", pluralise(armour.hitpoints / 2, "heart"));
+  $("#hitpointsValue").attr("value", armour.hitpoints);
+  $(".hitpointBreak").css( "margin-top", Math.min(8,(armour.hitpoints-1)/20 << 0)*-2+"px");
   //Results 
   if (weapon.damage && armour.defence) {
     $("#armourReductionRow").show()
@@ -820,66 +841,66 @@ function updateHTML(){
   } else {
     $('#resistanceReductionRow').hide();
   }
-  $("#armourReduction").text(round(results.armourReduction,2));
-  $("#defenceReduction").text(round(results.defenceReduction,2));
-  $("#toughnessReduction").text(round(results.toughnessReduction,2));
+  $("#armourReduction").text(round(results.armourReduction, 2));
+  $("#defenceReduction").text(round(results.defenceReduction, 2));
+  $("#toughnessReduction").text(round(results.toughnessReduction, 2));
   $("#resistanceReduction").text(armour.resistanceBonus);
   $("#protectionReduction").text(armour.protectionBonus);
-  $("#damageDealt").text(round(results.damageDealt,3));
-  $("#percentDamageDealt").text(round(results.percentDamageDealt,2));
-  $("#damageDealtPerSecond").text(round(results.DPS,3));
+  $("#damageDealt").text(round(results.damageDealt, 3));
+  $("#percentDamageDealt").text(round(results.percentDamageDealt, 2));
+  $("#damageDealtPerSecond").text(round(results.DPS, 3));
   $("#hitsToKill").text(results.hitsToKill);
-  $("#timeToKill").text(round(results.timeToKill,2));
+  $("#timeToKill").text(round(results.timeToKill, 2));
 };
 
 function loadProfileHandlers() {
   //Update profile to current values
-  $(".editWeaponProfile").off("mousedown").on("mousedown", function(event) {
+  $(".editWeaponProfile").off("mousedown").on("mousedown", function (event) {
     event.stopPropagation();
     var weaponProfile = $(this).parent();
     var name = weaponProfile.find(".profileName").val()
     $("#saveWeapon").next("span").remove();
-    $("#saveWeapon").after($("<span>").css("color", "forestgreen").css("fontWeight","bold").text(" Updated "+ name).fadeOut(2000));
+    $("#saveWeapon").after($("<span>").css("color", "forestgreen").css("fontWeight", "bold").text(" Updated " + name).fadeOut(2000));
     weaponProfile.empty();
     setWeaponProfile(name, false, weaponProfile);
   });
-  $(".editArmourProfile").off("mousedown").on("mousedown", function(event) {
+  $(".editArmourProfile").off("mousedown").on("mousedown", function (event) {
     event.stopPropagation();
     var armourProfile = $(this).parent();
     var name = armourProfile.find(".profileName").val()
     $("#saveArmour").next("span").remove();
-    $("#saveArmour").after($("<span>").css("color", "forestgreen").css("fontWeight","bold").text(" Updated "+ name).fadeOut(2000));
+    $("#saveArmour").after($("<span>").css("color", "forestgreen").css("fontWeight", "bold").text(" Updated " + name).fadeOut(2000));
     armourProfile.empty();
     setArmourProfile(name, false, armourProfile);
   });
-  
+
   //Delete profile
-  $(".deleteWeaponProfile").off("mousedown").on("mousedown", function(event) {
+  $(".deleteWeaponProfile").off("mousedown").on("mousedown", function (event) {
     event.stopPropagation();
     weaponProfile = $(this).parent();
     var name = weaponProfile.find(".profileName").val()
     $("#saveWeapon").next("span").remove();
-    $("#saveWeapon").after($("<span>").css("color", "red").css("fontWeight","bold").text(" Deleted "+ name).fadeOut(2000));
+    $("#saveWeapon").after($("<span>").css("color", "red").css("fontWeight", "bold").text(" Deleted " + name).fadeOut(2000));
     weaponProfile.remove();
     weaponProfileNum--
     $('#weaponProfiles > .weaponProfile').each(function (index) {
       var currentName = $(this).find(".profileName").val()
       var substringName = currentName.substring(0, 8);
-      if (substringName == "Profile-") {       
-        $(this).find(".profileName").attr("value", "Profile-"+(index+1));
-        $(this).find(".profileName").val("Profile-"+(index+1)).trigger("change");
+      if (substringName == "Profile-") {
+        $(this).find(".profileName").attr("value", "Profile-" + (index + 1));
+        $(this).find(".profileName").val("Profile-" + (index + 1)).trigger("change");
       }
     });
 
-  }); 
-  $(".deleteArmourProfile").off("mousedown").on("mousedown", function(event) {
+  });
+  $(".deleteArmourProfile").off("mousedown").on("mousedown", function (event) {
     event.stopPropagation();
     armourProfile = $(this).parent();
 
     //Red text to show deletion
     var name = armourProfile.find(".profileName").val()
     $("#saveArmour").next("span").remove();
-    $("#saveArmour").after($("<span>").css("color", "red").css("fontWeight","bold").text(" Deleted "+ name).fadeOut(2000));
+    $("#saveArmour").after($("<span>").css("color", "red").css("fontWeight", "bold").text(" Deleted " + name).fadeOut(2000));
 
     //Remove and reduce profile count
     armourProfile.remove();
@@ -889,20 +910,20 @@ function loadProfileHandlers() {
       var currentName = $(this).find(".profileName").val()
       var substringName = currentName.substring(0, 8);
       if (substringName == "Profile-") {
-        $(this).find(".profileName").attr("value", "Profile-"+(index+1));
-        $(this).find(".profileName").val("Profile-"+(index+1)).trigger("change");
+        $(this).find(".profileName").attr("value", "Profile-" + (index + 1));
+        $(this).find(".profileName").val("Profile-" + (index + 1)).trigger("change");
       }
     });
 
   });
 
   //Disable context menu
-  $("#weaponProfiles, #armourProfiles").contextmenu(function() {
+  $("#weaponProfiles, #armourProfiles").contextmenu(function () {
     return false;
   });
 
   //Select the profile
-  $(".weaponProfile").on("mousedown", function(event) {
+  $(".weaponProfile").on("mousedown", function (event) {
     //On right click, collapse the profile
     if (event.which === 3) {
       event.stopImmediatePropagation();
@@ -943,7 +964,7 @@ function loadProfileHandlers() {
       $("#weapon").text($(this).data("name"));
     }
   });
-  $(".armourProfile").on("mousedown", function(event) {
+  $(".armourProfile").on("mousedown", function (event) {
     //On right click, collapse the profile
     if (event.which === 3) {
       event.stopImmediatePropagation();
@@ -981,28 +1002,28 @@ function loadProfileHandlers() {
   });
 
   //Updating profile name
-  $(".profileName").change(function() {
+  $(".profileName").change(function () {
     var name = $(this).val()
 
     //Reset the name if profile is empty
     if (name == "") {
-      var defaultName = "Profile-"+($(this).parent().parent().prevAll().length+1);
+      var defaultName = "Profile-" + ($(this).parent().parent().prevAll().length + 1);
       $(this).val(defaultName);
       name = defaultName;
     }
     //Weapons
-    if ( $(this).closest(".weaponProfile").length) {
-      $(this).closest(".weaponProfile").data( "name", name);
+    if ($(this).closest(".weaponProfile").length) {
+      $(this).closest(".weaponProfile").data("name", name);
 
       //Set header if profile is selected
       if ($(this).closest(".weaponProfile").hasClass("selected")) {
         $("#weapon").text(name);
       }
     }
-    
+
     //Armour
-    if ( $(this).closest(".armourProfile").length) {
-      $(this).closest(".armourProfile").data( "name", name);
+    if ($(this).closest(".armourProfile").length) {
+      $(this).closest(".armourProfile").data("name", name);
 
       //Set header if profile is selected
       if ($(this).closest(".armourProfile").hasClass("selected")) {
@@ -1010,41 +1031,41 @@ function loadProfileHandlers() {
       }
     }
 
-    
-   
+
+
 
   });
-  
+
 };
 
 function loadModalHandlers() {
   //off to prevent duplicate events
-  $(".profileFolder").off("click").on('click', function() {
-    if ($(this).hasClass( "collapse" )) {
-      $(this).removeClass( "collapse" );
-      $(this).nextUntil('.profileFolder').filter(".profileGroup").css("display","block");
+  $(".profileFolder").off("click").on('click', function () {
+    if ($(this).hasClass("collapse")) {
+      $(this).removeClass("collapse");
+      $(this).nextUntil('.profileFolder').filter(".profileGroup").css("display", "block");
     } else {
-      $(this).addClass( "collapse" );
-      $(this).nextUntil('.profileFolder').filter(".profileGroup").css("display","none");
+      $(this).addClass("collapse");
+      $(this).nextUntil('.profileFolder').filter(".profileGroup").css("display", "none");
     }
-  }).children().click(function(event) {   event.stopPropagation(); });
-  
-  $(".profileGroup").off("click").on('click', function() {
+  }).children().click(function (event) { event.stopPropagation(); });
+
+  $(".profileGroup").off("click").on('click', function () {
     $(".profileGroup").removeClass("selected");
     $(this).addClass("selected");
-    $("#previewText").css("display","none");
-    $("#groupSelected").css("display","block");
-    $("#groupName").attr("value",$(this).html())
-    
+    $("#previewText").css("display", "none");
+    $("#groupSelected").css("display", "block");
+    $("#groupName").attr("value", $(this).html())
+
   });
-  
-  $(".profileAddFolder").off("click").on('click', function() {
+
+  $(".profileAddFolder").off("click").on('click', function () {
     if ($(this).prevAll(".profileFolder").length < 10) {
       $(this).removeClass("full")
       var folder = $('<div>').addClass("profileFolder collapse");
       var span = $('<span>').addClass("profileDeleteFolder").text("× ")
       var inputWidth = $('<span>').addClass("profileFolderNameWidth");
-      var input = $('<input>').addClass("profileFolderName").attr("value","Folder");
+      var input = $('<input>').addClass("profileFolderName").attr("value", "Folder");
       folder.append(span)
       folder.append(inputWidth)
       folder.append(input)
@@ -1054,32 +1075,32 @@ function loadModalHandlers() {
     }
     loadModalHandlers()
   });
-  $(".profileDeleteFolder").off("click").on('click', function() {
-    if ($(this).parent().hasClass( "collapse" )) {
-      $(this).parent().removeClass( "collapse" );
-      $(this).parent().nextUntil('.profileFolder').css("display","block");
+  $(".profileDeleteFolder").off("click").on('click', function () {
+    if ($(this).parent().hasClass("collapse")) {
+      $(this).parent().removeClass("collapse");
+      $(this).parent().nextUntil('.profileFolder').css("display", "block");
     }
     if ($(this).parent().nextUntil('.profileFolder').length > 0) {
-      $(this).parent().prevAll(".profileFolder:first").removeClass( "collapse" );
-      $(this).parent().prevUntil('.profileFolder').css("display","block");
+      $(this).parent().prevAll(".profileFolder:first").removeClass("collapse");
+      $(this).parent().prevUntil('.profileFolder').css("display", "block");
     }
     $(this).parent().remove();
   });
-  
+
   //Width of input field
-  $(".profileFolderName").off("input").on('input', function(event) {
+  $(".profileFolderName").off("input").on('input', function (event) {
     var inputWidth = $(this).prev('.profileFolderNameWidth')
     inputWidth.text($(this).val());
     $(this).width((inputWidth).width());
   });
-  $(".folder").on('click', function(event) {
-    $(".profileFolderName").each(function(){
+  $(".folder").on('click', function (event) {
+    $(".profileFolderName").each(function () {
       var inputWidth = $(this).prev('.profileFolderNameWidth')
       inputWidth.text($(this).val());
       $(this).width((inputWidth).width());
     });
   });
-  $(".profileFolderName").each(function(){
+  $(".profileFolderName").each(function () {
     var inputWidth = $(this).prev('.profileFolderNameWidth')
     inputWidth.text($(this).val());
     $(this).width((inputWidth).width());
@@ -1087,37 +1108,37 @@ function loadModalHandlers() {
 };
 
 function round(value, precision) {
-    var multiplier = Math.pow(10, precision || 0);
-    return Math.round(value * multiplier) / multiplier;
+  var multiplier = Math.pow(10, precision || 0);
+  return Math.round(value * multiplier) / multiplier;
 };
 
-var enableButton = function(ele) {
-    $(ele).removeAttr("disabled");
+var enableButton = function (ele) {
+  $(ele).removeAttr("disabled");
 }
 
-function setWeaponProfile(name="Profile-"+weaponProfileNum, create=false, weaponProfile) {
-  
+function setWeaponProfile(name = "Profile-" + weaponProfileNum, create = false, weaponProfile) {
+
   //Only when creating new div
   if (create) {
-    var weaponProfile = $("<div>").addClass('profile weaponProfile').attr("id","weaponProfile"+weaponProfileNum);
+    var weaponProfile = $("<div>").addClass('profile weaponProfile').attr("id", "weaponProfile" + weaponProfileNum);
   }
-  
+
   //Name input
   var label = $("<label>").text('> ');
   var input = $('<input type="text" spellcheck="false">').addClass('profileName').attr("value", name);
   input.appendTo(label);
   weaponProfile.append(label);
-  
+
   //Data values
-  weaponProfile.data( "name", name );
-  weaponProfile.data( "tool", tool );
-  weaponProfile.data( "toolMaterial", toolMaterial );
-  weaponProfile.data( "strength", effect[0] );
-  weaponProfile.data( "weakness", effect[1] );
-  weaponProfile.data( "crit", crit );
-  weaponProfile.data( "sharpness", sharpness );
-  weaponProfile.data( "attackDamage", attackDamage );
-  
+  weaponProfile.data("name", name);
+  weaponProfile.data("tool", tool);
+  weaponProfile.data("toolMaterial", toolMaterial);
+  weaponProfile.data("strength", effect[0]);
+  weaponProfile.data("weakness", effect[1]);
+  weaponProfile.data("crit", crit);
+  weaponProfile.data("sharpness", sharpness);
+  weaponProfile.data("attackDamage", attackDamage);
+
   //Edit and Delete buttons
   var editWeaponProfile = $('<div>').addClass("profileButton editProfile editWeaponProfile");
   var editTooltip = $('<span>').addClass("tooltip editTooltip").text("Update Profile");
@@ -1126,18 +1147,18 @@ function setWeaponProfile(name="Profile-"+weaponProfileNum, create=false, weapon
   var deleteWeaponProfile = $('<div>').addClass("profileButton deleteProfile deleteWeaponProfile");
   var deleteTooltip = $('<span>').addClass("tooltip deleteTooltip").text("Delete Profile");
   deleteWeaponProfile.append(deleteTooltip);
-  
+
   //Stat Values
-  weaponProfile.append(deleteWeaponProfile);   
-  var profileHitCooldown = $('<p>').text("Hit Cooldown: "+(attackCooldown.toFixed(2)));
+  weaponProfile.append(deleteWeaponProfile);
+  var profileHitCooldown = $('<p>').text("Hit Cooldown: " + (attackCooldown.toFixed(2)));
   weaponProfile.append(profileHitCooldown);
-  var profileDamagePerSecond = $('<p>').text("Damage Per Second: "+damagePerSecond);
+  var profileDamagePerSecond = $('<p>').text("Damage Per Second: " + damagePerSecond);
   weaponProfile.append(profileDamagePerSecond);
-  var profileDamage = $('<p>').addClass("profileShorthand profileDamage").text("Attack damage: "+attackDamage);
+  var profileDamage = $('<p>').addClass("profileShorthand profileDamage").text("Attack damage: " + attackDamage);
   weaponProfile.append(profileDamage);
-  var profileDamageDealt = $('<p>').addClass("profileShorthand profileDamageDealt").text("Damage dealt: "+damageDealt);
+  var profileDamageDealt = $('<p>').addClass("profileShorthand profileDamageDealt").text("Damage dealt: " + damageDealt);
   weaponProfile.append(profileDamageDealt);
-  
+
   //Make Table
   var tableContainer = $('<div>').addClass('profileTableContainer');
   var table = $('<table>').addClass('profileTable');
@@ -1146,22 +1167,22 @@ function setWeaponProfile(name="Profile-"+weaponProfileNum, create=false, weapon
   var clones = [];
   var values = [];
   clones.push($("#tool").clone());
-  
+
   //Table Headers
   table.append($('<th>').attr('colspan', "2").text('Weapon'));
-  
+
   //Only add values if not defualt
   if (effect[0] > 0) {
     table.append($('<th>').text('Strength'));
     clones.push($("#strength").clone());
-    values.push("Strength " +effect[0]);
+    values.push("Strength " + effect[0]);
   };
   if (effect[1] > 0) {
     table.append($('<th>').text('Weakness'));
     clones.push($("#weakness").clone());
-    values.push("Weakness "+effect[1]);
+    values.push("Weakness " + effect[1]);
   };
-  
+
   //Header and clone for crit
   table.append($('<th>').text('Crit'));
   clones.push($("#crit").clone());
@@ -1170,31 +1191,31 @@ function setWeaponProfile(name="Profile-"+weaponProfileNum, create=false, weapon
   } else {
     values.push("No Crit");
   }
-  
+
   //Only add sharpness if not defualt
   if (sharpness > 0) {
     table.append($('<th>').text('Sharpness'));
     var sharpnessBox = $("<div>").addClass("box number");
-    sharpnessBox.css("background-image", "url(" + enchantmentImage + ")"); 
+    sharpnessBox.css("background-image", "url(" + enchantmentImage + ")");
     clones.push(sharpnessBox);
-    values.push("Sharp "+sharpness);
+    values.push("Sharp " + sharpness);
   }
   table.append($('<tr>'));
-  
+
   //Add the boxes to table
-  for(i=0; i<clones.length; i++){
+  for (i = 0; i < clones.length; i++) {
     clones[i].css({ transform: 'scale(.875)' });
-    if (i==0) {
+    if (i == 0) {
       table.append($('<th>').attr('colspan', "2").append(clones[i]))
     } else {
       table.append($('<th>').append(clones[i]))
     }
   }
   table.append($('<tr>'));
-  
+
   //Add descriptions to table  
-  table.append($('<td>').attr('colspan', "2").text(toolMaterialName+" "+toolName));
-  for(i=0; i<values.length; i++){
+  table.append($('<td>').attr('colspan', "2").text(toolMaterialName + " " + toolName));
+  for (i = 0; i < values.length; i++) {
     table.append($('<td>').append(values[i]));
   }
   //Finish profile
@@ -1205,31 +1226,31 @@ function setWeaponProfile(name="Profile-"+weaponProfileNum, create=false, weapon
   }
   //Add input filter after the text box is added
   limitInputText();
-  
+
   loadProfileHandlers();
 
 
 }
-function setArmourProfile(name="Profile-"+armourProfileNum, create=false, armourProfile) {
-  
+function setArmourProfile(name = "Profile-" + armourProfileNum, create = false, armourProfile) {
+
   //Only when creating new div
   if (create) {
-    var armourProfile = $("<div>").addClass('profile armourProfile').attr("id","armourProfile"+armourProfileNum);
+    var armourProfile = $("<div>").addClass('profile armourProfile').attr("id", "armourProfile" + armourProfileNum);
   }
   //Name input
   var label = $("<label>").text('> ');
   var input = $('<input type="text" spellcheck="false">').addClass('profileName').attr("value", name);
   input.appendTo(label);
   armourProfile.append(label);
-  
+
   //Data values
-  armourProfile.data( "name", name );
-  armourProfile.data( "armourMaterials", [...armourMaterials] );
-  armourProfile.data( "protection", protection );
-  armourProfile.data( "resistance", effect[2] );
-  armourProfile.data( "hitpoints", hitpoints );
-  armourProfile.data( "totalArmour", totalArmour );
-  armourProfile.data( "totalToughness", totalToughness );
+  armourProfile.data("name", name);
+  armourProfile.data("armourMaterials", [...armourMaterials]);
+  armourProfile.data("protection", protection);
+  armourProfile.data("resistance", effect[2]);
+  armourProfile.data("hitpoints", hitpoints);
+  armourProfile.data("totalArmour", totalArmour);
+  armourProfile.data("totalToughness", totalToughness);
 
   //Edit and Delete buttons
   var editArmourProfile = $('<div>').addClass("profileButton editProfile editArmourProfile");
@@ -1240,36 +1261,36 @@ function setArmourProfile(name="Profile-"+armourProfileNum, create=false, armour
   var deleteTooltip = $('<span>').addClass("tooltip deleteTooltip").text("Delete Profile");
   deleteArmourProfile.append(deleteTooltip);
   armourProfile.append(deleteArmourProfile);
-  
+
   //Stat Values
-  var profileArmour = $('<p>').text("Armour: "+ totalArmour);
+  var profileArmour = $('<p>').text("Armour: " + totalArmour);
   armourProfile.append(profileArmour);
-  var profileToughness = $('<p>').text("Toughness: "+totalToughness);
+  var profileToughness = $('<p>').text("Toughness: " + totalToughness);
   armourProfile.append(profileToughness);
-  
-  var reductions = 1- (1-protection*0.04) * (1-effect[2]*0.2);
+
+  var reductions = 1 - (1 - protection * 0.04) * (1 - effect[2] * 0.2);
   reductions *= 100;
-  var profileReductions = $('<p>').text("Extra Reducs: "+ round(reductions,1)+"%");
+  var profileReductions = $('<p>').text("Extra Reducs: " + round(reductions, 1) + "%");
   armourProfile.append(profileReductions);
-  var profileDamageTaken = $('<p>').addClass("profileShorthand profileDamageTaken").text("Damage Taken: "+damageDealt);
+  var profileDamageTaken = $('<p>').addClass("profileShorthand profileDamageTaken").text("Damage Taken: " + damageDealt);
   armourProfile.append(profileDamageTaken);
-  
-  var damageReduced = round((100-percentDamageDealt),2)
-  var profileDamageReduced = $('<p>').addClass("profileShorthand profileDamageReduced").text("Reduced By: "+damageReduced+"%");
+
+  var damageReduced = round((100 - percentDamageDealt), 2)
+  var profileDamageReduced = $('<p>').addClass("profileShorthand profileDamageReduced").text("Reduced By: " + damageReduced + "%");
   armourProfile.append(profileDamageReduced);
-  
-  
+
+
   //Make Table
   var tableContainer = $('<div>').addClass('profileTableContainer');
   var table = $('<table>').addClass('profileTable');
-  
+
   //Create copies of boxes and table headers
   var clones = [];
   var values = [];
-  if (effect[2] || hitpoints!=20) {
+  if (effect[2] || hitpoints != 20) {
     var showAllArmour = false;
   } else {
-    var showAllArmour = true; 
+    var showAllArmour = true;
   }
   if (armourMaterials[0] || showAllArmour) {
     clones.push($("#helmet").clone());
@@ -1291,40 +1312,40 @@ function setArmourProfile(name="Profile-"+armourProfileNum, create=false, armour
     table.append($('<th>').text('Boots'));
     values.push(armourMaterialList[armourMaterials[3]]);
   }
-  
+
   //Only add values if not defualt
   if (protection > 0) {
     table.append($('<th>').text('Protection'));
     var protectionBox = $("<div>").addClass("box number");
-    protectionBox.css("background-image", "url(" + enchantmentImage + ")"); 
+    protectionBox.css("background-image", "url(" + enchantmentImage + ")");
     clones.push(protectionBox);
-    values.push("Prot "+protection);
+    values.push("Prot " + protection);
   }
   if (effect[2] > 0) {
     table.append($('<th>').text('Resistance'));
     clones.push($("#resistance").clone());
-    values.push("Res " +effect[2]);
+    values.push("Res " + effect[2]);
   };
   if (hitpoints != 20) {
     table.append($('<th>').text('Hitpoints'));
-    var hitpointsBox = $("<div>").addClass("box number").attr("id","hitpointsBox");
-    hitpointsBox.css("background-image", "url(" + heartImage + ")"); 
+    var hitpointsBox = $("<div>").addClass("box number").attr("id", "hitpointsBox");
+    hitpointsBox.css("background-image", "url(" + heartImage + ")");
     clones.push(hitpointsBox);
-    values.push(hitpoints+" HP");
+    values.push(hitpoints + " HP");
   }
-  table.append($('<tr>'));   
+  table.append($('<tr>'));
 
   //Add the boxes to table
-  for(i=0; i<clones.length; i++){
+  for (i = 0; i < clones.length; i++) {
     clones[i].css({ transform: 'scale(.875)' });
     table.append($('<th>').append(clones[i]))
   }
   table.append($('<tr>'));
-  
-  for(i=0; i<values.length; i++){
+
+  for (i = 0; i < values.length; i++) {
     table.append($('<td>').append(values[i]));
   }
-  
+
   //Finish profile
   tableContainer.append(table)
   armourProfile.append(tableContainer);
@@ -1333,7 +1354,7 @@ function setArmourProfile(name="Profile-"+armourProfileNum, create=false, armour
   }
   //Add input filter after the text box is added
   limitInputText();
-  
+
   loadProfileHandlers()
 
 
@@ -1342,31 +1363,31 @@ function setArmourProfile(name="Profile-"+armourProfileNum, create=false, armour
 function updateProfiles() {
   $("#weaponProfiles").children().each(function () {
     var thisAttackDamage = $(this).data("attackDamage");
-    var thisDamageDealt = thisAttackDamage*(1-(Math.min(20,Math.max(totalArmour/5,totalArmour-4*thisAttackDamage/(totalToughness+8))))/25);
-    thisDamageDealt= thisDamageDealt * (1- effectBonus[2]/100)
-    thisDamageDealt= thisDamageDealt * (1-protectionBonus/100);
-    thisDamageDealt= round(thisDamageDealt,3)
-    $(this).find(".profileDamageDealt").text("Damage dealt: "+thisDamageDealt);
+    var thisDamageDealt = thisAttackDamage * (1 - (Math.min(20, Math.max(totalArmour / 5, totalArmour - 4 * thisAttackDamage / (totalToughness + 8)))) / 25);
+    thisDamageDealt = thisDamageDealt * (1 - effectBonus[2] / 100)
+    thisDamageDealt = thisDamageDealt * (1 - protectionBonus / 100);
+    thisDamageDealt = round(thisDamageDealt, 3)
+    $(this).find(".profileDamageDealt").text("Damage dealt: " + thisDamageDealt);
   });
   $("#armourProfiles").children().each(function () {
     var thisTotalArmour = $(this).data("totalArmour");
     var thisTotalToughness = $(this).data("totalToughness");
     var thisResistance = $(this).data("resistance");
     var thisProtection = $(this).data("protection");
-    var thisDamageTaken = attackDamage*(1-(Math.min(20,Math.max(thisTotalArmour/5,thisTotalArmour-4*attackDamage/(thisTotalToughness+8))))/25);
-    thisDamageTaken = thisDamageTaken * (1- thisResistance/5)
-    thisDamageTaken = thisDamageTaken * (1- thisProtection/25);
-    thisDamageTaken = round(thisDamageTaken,3)
-    $(this).find(".profileDamageTaken").text("Damage Taken: "+thisDamageTaken);
-    var thisDamageReduced = 100 - 100*thisDamageTaken/attackDamage
-    thisDamageReduced = round(thisDamageReduced,2)
-    $(this).find(".profileDamageReduced").text("Reduced By: "+thisDamageReduced+"%");
+    var thisDamageTaken = attackDamage * (1 - (Math.min(20, Math.max(thisTotalArmour / 5, thisTotalArmour - 4 * attackDamage / (thisTotalToughness + 8)))) / 25);
+    thisDamageTaken = thisDamageTaken * (1 - thisResistance / 5)
+    thisDamageTaken = thisDamageTaken * (1 - thisProtection / 25);
+    thisDamageTaken = round(thisDamageTaken, 3)
+    $(this).find(".profileDamageTaken").text("Damage Taken: " + thisDamageTaken);
+    var thisDamageReduced = 100 - 100 * thisDamageTaken / attackDamage
+    thisDamageReduced = round(thisDamageReduced, 2)
+    $(this).find(".profileDamageReduced").text("Reduced By: " + thisDamageReduced + "%");
   });
 }
 
 function setInputFilter(textbox, inputFilter) {
-  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-    textbox.addEventListener(event, function() {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+    textbox.addEventListener(event, function () {
       if (inputFilter(this.value)) {
         this.oldValue = this.value;
         this.oldSelectionStart = this.selectionStart;
@@ -1381,24 +1402,26 @@ function setInputFilter(textbox, inputFilter) {
   });
 }
 function limitInputNum() {
-  var numberInputs =document.getElementsByClassName('inputValue');
+  var numberInputs = document.getElementsByClassName('inputValue');
   for (i = 0; i < numberInputs.length; i++) {
-    setInputFilter(numberInputs[i], function(value) {
-      return /^(?=.{0,2}$)\d*$/.test(value); });
+    setInputFilter(numberInputs[i], function (value) {
+      return /^(?=.{0,2}$)\d*$/.test(value);
+    });
   }
 }
 limitInputNum()
 function limitInputText() {
   var nameInputs = $('.profileName, .profileFolderName');
   for (i = 0; i < nameInputs.length; i++) {
-    setInputFilter(nameInputs[i], function(value) {
-      return /^[a-zA-Z0-9_-]{0,14}$/.test(value); });
+    setInputFilter(nameInputs[i], function (value) {
+      return /^[a-zA-Z0-9_-]{0,14}$/.test(value);
+    });
   }
 }
 
 
-function makeWeaponProfile({name, weapon: thisWeapon, material: thisMaterial, tool: thisTool, strength: thisStrength, weakness: thisWeakness, crit: thisCrit, sharpness: thisSharpness} = {}) {
-  
+function makeWeaponProfile({ name, weapon: thisWeapon, material: thisMaterial, tool: thisTool, strength: thisStrength, weakness: thisWeakness, crit: thisCrit, sharpness: thisSharpness } = {}) {
+
   weaponProfileNum++
   //Weapon
   if (thisWeapon) {
@@ -1408,7 +1431,7 @@ function makeWeaponProfile({name, weapon: thisWeapon, material: thisMaterial, to
       thisTool = thisWeapon[1]
     }
   }
-    
+
   //Material
   if (typeof thisMaterial === "string") {
     thisMaterial.toLowerCase();
@@ -1440,10 +1463,10 @@ function makeWeaponProfile({name, weapon: thisWeapon, material: thisMaterial, to
     case "netherite": case "n":
       toolMaterial = 6;
       break;
-      
+
   }
   $("#toolMaterial").trigger("mousedown", false);
-  
+
   //Tool
   if (typeof thisTool === "string") {
     thisTool.toLowerCase();
@@ -1472,7 +1495,7 @@ function makeWeaponProfile({name, weapon: thisWeapon, material: thisMaterial, to
   }
 
   $("#tool").trigger("mousedown", false);
-  
+
   //Strength
   if (thisStrength >= 0 && thisStrength <= 5) {
     effect[0] = thisStrength
@@ -1480,7 +1503,7 @@ function makeWeaponProfile({name, weapon: thisWeapon, material: thisMaterial, to
     effect[0] = 0
   }
   $("#strength").trigger("mousedown", false);
-  
+
   //Weakness
   if (thisWeakness >= 0 && thisWeakness <= 5) {
     effect[1] = thisWeakness
@@ -1488,18 +1511,18 @@ function makeWeaponProfile({name, weapon: thisWeapon, material: thisMaterial, to
     effect[1] = 0
   }
   $("#weakness").trigger("mousedown", false);
-  
+
   //Crit
   if (typeof thisCrit === "string") {
     thisCrit.toLowerCase();
-  } 
+  }
   if (thisCrit == true || thisCrit == "crit" || thisCrit == "yes" || thisCrit == 1) {
     crit = true
   } else {
     crit = false
   }
   $("#crit").trigger("mousedown", false);
-  
+
   //Sharpness
   if (thisSharpness >= 0 && thisSharpness <= 99) {
     sharpness = thisSharpness
@@ -1508,18 +1531,18 @@ function makeWeaponProfile({name, weapon: thisWeapon, material: thisMaterial, to
   }
   $("#sharpnessValue").val(sharpness).trigger("change");
   //Test for valid name
-  if ( !(/^[a-zA-Z0-9_-]{0,14}$/.test(name)) ) {
+  if (!(/^[a-zA-Z0-9_-]{0,14}$/.test(name))) {
     console.log("invalid profile name passed into makeWeaponProfile")
-    name = "Profile-"+weaponProfileNum
+    name = "Profile-" + weaponProfileNum
   }
-  
+
   //Make new profile
   setWeaponProfile(name, true);
-  
+
 }
-function makeArmourProfile({name, fullSet: thisFullSet, helmet: thisHelmet, chestplate: thisChestplate, leggings: thisLeggings, boots: thisBoots, protection: thisProtection, resistance: thisResistance, hp: thisHitpoints} = {}) {
+function makeArmourProfile({ name, fullSet: thisFullSet, helmet: thisHelmet, chestplate: thisChestplate, leggings: thisLeggings, boots: thisBoots, protection: thisProtection, resistance: thisResistance, hp: thisHitpoints } = {}) {
   armourProfileNum++
-  
+
   //Full set
   if (typeof thisFullSet === "string") {
     thisFullSet.toLowerCase();
@@ -1527,8 +1550,8 @@ function makeArmourProfile({name, fullSet: thisFullSet, helmet: thisHelmet, ches
   if (thisFullSet) {
     thisHelmet = thisChestplate = thisLeggings = thisBoots = thisFullSet
   }
-  var thisArmour = [thisHelmet,thisChestplate,thisLeggings,thisBoots]
-  
+  var thisArmour = [thisHelmet, thisChestplate, thisLeggings, thisBoots]
+
   //Armour
   for (let i = 0; i < 4; i++) {
     if (typeof thisArmour[i] === "string") {
@@ -1563,12 +1586,12 @@ function makeArmourProfile({name, fullSet: thisFullSet, helmet: thisHelmet, ches
         break;
     }
   }
-  
+
   $("#helmet").trigger("mousedown", false);
   $("#chestplate").trigger("mousedown", false);
   $("#leggings").trigger("mousedown", false);
   $("#boots").trigger("mousedown", false);
-  
+
   //Protection
   if (thisProtection >= 0 && thisProtection <= 20) {
     protection = thisProtection
@@ -1579,7 +1602,7 @@ function makeArmourProfile({name, fullSet: thisFullSet, helmet: thisHelmet, ches
     protection = 0
   }
   $("#protectionValue").val(protection).trigger("change");
-  
+
   //Resistance
   if (thisResistance >= 0 && thisResistance <= 5) {
     effect[2] = thisResistance
@@ -1589,17 +1612,17 @@ function makeArmourProfile({name, fullSet: thisFullSet, helmet: thisHelmet, ches
   $("#resistance").trigger("mousedown", false);
 
   //Hitpoints
-  if (thisHitpoints >= 1 && thisHitpoints <= 99) {
+  if (thisHitpoints >= 1 && thisHitpoints <= maxHitpoints) {
     hitpoints = thisHitpoints
   } else {
     hitpoints = 20
   }
   $("#hitpointsValue").val(hitpoints).trigger("change");
-  
+
   //Test for valid name
-  if ( !(/^[a-zA-Z0-9_-]{0,14}$/.test(name)) ) {
+  if (!(/^[a-zA-Z0-9_-]{0,14}$/.test(name))) {
     console.log("invalid profile name passed into makeWeaponProfile")
-    name = "Profile-"+armourProfileNum
+    name = "Profile-" + armourProfileNum
   }
 
   //Make new profile
@@ -1608,30 +1631,30 @@ function makeArmourProfile({name, fullSet: thisFullSet, helmet: thisHelmet, ches
 
 }
 
-function defaultProfiles() { 
+function defaultProfiles() {
   //WeaponProfiles: name, weapon or (material + tool), strength, weakness, crit, sharpness
   //ArmourProfiles: name, fullSet or (helmet, chestplate, leggings, boots), protection, resistance, hp
   //Armour Materials: leather/l, gold/g, chain/c, iron/i, diamond/d, netherite/n
-  makeWeaponProfile({name: "Ninja", weapon: "iron sword"});
-  makeWeaponProfile({name: "Warrior", weapon: "stone sword"});
-  makeWeaponProfile({name: "Runner", weapon: "wooden sword"})
-  makeWeaponProfile({name: "Tank", weapon: "stone pickaxe"})
-  makeWeaponProfile({name: "Archer"})
-  
-  makeArmourProfile({name: "Tank", chestplate: "i", leggings: "i", boots: "i"})
-  makeArmourProfile({name: "Jumper", leggings: "i", boots: "d", protection: 1})
-  makeArmourProfile({name: "Scout", leggings: "c", boots: "d", protection: 2})
-  makeArmourProfile({name: "Archer", chestplate: "d"})
-  makeArmourProfile({name: "Builder", helmet: "l", chestplate: "i"})
-  makeArmourProfile({name: "Miner", chestplate: "l", leggings: "c"})
-  makeArmourProfile({name: "Runner", chestplate: "c", boots: "i"})
-  makeArmourProfile({name: "Warrior", chestplate: "c", leggings: "l"})
-  makeArmourProfile({name: "Assassin", boots: "d", protection: 3})
-  makeArmourProfile({name: "Medic", chestplate: "g"})
-  makeArmourProfile({name: "Summoner", chestplate: "c"})
-  makeArmourProfile({name: "Vamp", leggings: "g", boots: "g", hp: 36})
-  makeArmourProfile({name: "Bomber", chestplate: "l", boots: "l"})
-  makeArmourProfile({name: "Ninja"})
+  makeWeaponProfile({ name: "Ninja", weapon: "iron sword" });
+  makeWeaponProfile({ name: "Warrior", weapon: "stone sword" });
+  makeWeaponProfile({ name: "Runner", weapon: "wooden sword" })
+  makeWeaponProfile({ name: "Tank", weapon: "stone pickaxe" })
+  makeWeaponProfile({ name: "Archer" })
+
+  makeArmourProfile({ name: "Tank", chestplate: "i", leggings: "i", boots: "i" })
+  makeArmourProfile({ name: "Jumper", leggings: "i", boots: "d", protection: 1 })
+  makeArmourProfile({ name: "Scout", leggings: "c", boots: "d", protection: 2 })
+  makeArmourProfile({ name: "Archer", chestplate: "d" })
+  makeArmourProfile({ name: "Builder", helmet: "l", chestplate: "i" })
+  makeArmourProfile({ name: "Miner", chestplate: "l", leggings: "c" })
+  makeArmourProfile({ name: "Runner", chestplate: "c", boots: "i" })
+  makeArmourProfile({ name: "Warrior", chestplate: "c", leggings: "l" })
+  makeArmourProfile({ name: "Assassin", boots: "d", protection: 3 })
+  makeArmourProfile({ name: "Medic", chestplate: "g" })
+  makeArmourProfile({ name: "Summoner", chestplate: "c" })
+  makeArmourProfile({ name: "Vamp", leggings: "g", boots: "g", hp: 36 })
+  makeArmourProfile({ name: "Bomber", chestplate: "l", boots: "l" })
+  makeArmourProfile({ name: "Ninja" })
 }
 
 
@@ -1639,7 +1662,7 @@ function defaultProfiles() {
 
 class WeaponProfile extends Weapon {
   static list = [];
-  constructor(){
+  constructor() {
     super();
     this.position;
     this.group;
