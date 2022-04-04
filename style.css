@@ -154,6 +154,7 @@ table {
   min-width: 180px;
 }
 .armourToughness{
+  background-image: url(Images/Empty_Armour.webp);
   height: 18px;
   width: 36px;
   display: block;
