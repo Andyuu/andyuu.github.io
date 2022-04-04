@@ -8,7 +8,7 @@ var toolMaterials = ["Images/Barrier.webp",
   "Images/Diamond.webp",
   "Images/Netherite_Ingot.webp"]
 
-var swords = [["Images/Barrier.webp", 1, 4],
+var swords = [
 ["Images/Sword/Wooden_Sword.webp", 4, 1.6],
 ["Images/Sword/Golden_Sword.webp", 4, 1.6],
 ["Images/Sword/Stone_Sword.webp", 5, 1.6],
@@ -16,7 +16,7 @@ var swords = [["Images/Barrier.webp", 1, 4],
 ["Images/Sword/Diamond_Sword.webp", 7, 1.6],
 ["Images/Sword/Netherite_Sword.webp", 8, 1.6]]
 
-var axes = [["Images/Barrier.webp", 1, 4],
+var axes = [
 ["Images/Axe/Wooden_Axe.webp", 7, 0.8],
 ["Images/Axe/Golden_Axe.webp", 7, 1],
 ["Images/Axe/Stone_Axe.webp", 9, 0.8],
@@ -24,7 +24,7 @@ var axes = [["Images/Barrier.webp", 1, 4],
 ["Images/Axe/Diamond_Axe.webp", 9, 1],
 ["Images/Axe/Netherite_Axe.webp", 10, 1]]
 
-var pickaxes = [["Images/Barrier.webp", 1, 4],
+var pickaxes = [
 ["Images/Pickaxe/Wooden_Pickaxe.webp", 2, 1.2],
 ["Images/Pickaxe/Golden_Pickaxe.webp", 2, 1.2],
 ["Images/Pickaxe/Stone_Pickaxe.webp", 3, 1.2],
@@ -32,7 +32,7 @@ var pickaxes = [["Images/Barrier.webp", 1, 4],
 ["Images/Pickaxe/Diamond_Pickaxe.webp", 5, 1.2],
 ["Images/Pickaxe/Netherite_Pickaxe.webp", 6, 1.2]]
 
-var shovels = [["Images/Barrier.webp", 1, 4],
+var shovels = [
 ["Images/Shovel/Wooden_Shovel.webp", 2.5, 1],
 ["Images/Shovel/Golden_Shovel.webp", 2.5, 1],
 ["Images/Shovel/Stone_Shovel.webp", 3.5, 1],
@@ -40,7 +40,7 @@ var shovels = [["Images/Barrier.webp", 1, 4],
 ["Images/Shovel/Diamond_Shovel.webp", 5.5, 1],
 ["Images/Shovel/Netherite_Shovel.webp", 6.5, 1]]
 
-var hoes = [["Images/Barrier.webp", 1, 4],
+var hoes = [
 ["Images/Hoe/Wooden_Hoe.webp", 1, 1],
 ["Images/Hoe/Golden_Hoe.webp", 1, 1],
 ["Images/Hoe/Stone_Hoe.webp", 1, 2],
@@ -81,38 +81,42 @@ var boots = [["Images/Boots/Empty_Boots.webp", 0, 0],
 ["Images/Boots/Diamond_Boots.webp", 3, 2],
 ["Images/Boots/Netherite_Boots.webp", 3, 3]]
 
-var enchantedHelmets = [["Images/Helmet/Empty_Helmet.webp", 0, 0],
-["Images/Helmet/Enchanted_Leather_Helmet.webp", 1, 0],
-["Images/Helmet/Enchanted_Golden_Helmet.webp", 2, 0],
-["Images/Helmet/Enchanted_Chainmail_Helmet.webp", 2, 0],
-["Images/Helmet/Enchanted_Iron_Helmet.webp", 2, 0],
-["Images/Helmet/Enchanted_Turtle_Helmet.webp", 2, 0],
-["Images/Helmet/Enchanted_Diamond_Helmet.webp", 3, 2],
-["Images/Helmet/Enchanted_Netherite_Helmet.webp", 3, 3]]
+var enchantedHelmets = ["Images/Helmet/Empty_Helmet.webp",
+"Images/Helmet/Enchanted_Leather_Helmet.webp",
+"Images/Helmet/Enchanted_Golden_Helmet.webp",
+"Images/Helmet/Enchanted_Chainmail_Helmet.webp",
+"Images/Helmet/Enchanted_Iron_Helmet.webp",
+"Images/Helmet/Enchanted_Turtle_Helmet.webp",
+"Images/Helmet/Enchanted_Diamond_Helmet.webp",
+"Images/Helmet/Enchanted_Netherite_Helmet.webp"]
 
-var enchantedChestplates = [["Images/Chestplate/Empty_Chestplate.webp", 0, 0],
-["Images/Chestplate/Enchanted_Leather_Chestplate.webp", 3, 0],
-["Images/Chestplate/Enchanted_Golden_Chestplate.webp", 5, 0],
-["Images/Chestplate/Enchanted_Chainmail_Chestplate.webp", 5, 0],
-["Images/Chestplate/Enchanted_Iron_Chestplate.webp", 6, 0],
-["Images/Chestplate/Enchanted_Diamond_Chestplate.webp", 8, 2],
-["Images/Chestplate/Enchanted_Netherite_Chestplate.webp", 8, 3]]
+var enchantedChestplates = ["Images/Chestplate/Empty_Chestplate.webp",
+"Images/Chestplate/Enchanted_Leather_Chestplate.webp",
+"Images/Chestplate/Enchanted_Golden_Chestplate.webp",
+"Images/Chestplate/Enchanted_Chainmail_Chestplate.webp",
+"Images/Chestplate/Enchanted_Iron_Chestplate.webp",
+"Images/Chestplate/Enchanted_Diamond_Chestplate.webp",
+"Images/Chestplate/Enchanted_Netherite_Chestplate.webp"]
 
-var enchantedLeggings = [["Images/Leggings/Empty_Leggings.webp", 0, 0],
-["Images/Leggings/Enchanted_Leather_Leggings.webp", 2, 0],
-["Images/Leggings/Enchanted_Golden_Leggings.webp", 3, 0],
-["Images/Leggings/Enchanted_Chainmail_Leggings.webp", 4, 0],
-["Images/Leggings/Enchanted_Iron_Leggings.webp", 5, 0],
-["Images/Leggings/Enchanted_Diamond_Leggings.webp", 6, 2],
-["Images/Leggings/Enchanted_Netherite_Leggings.webp", 6, 3]]
+var enchantedLeggings = ["Images/Leggings/Empty_Leggings.webp",
+"Images/Leggings/Enchanted_Leather_Leggings.webp",
+"Images/Leggings/Enchanted_Golden_Leggings.webp",
+"Images/Leggings/Enchanted_Chainmail_Leggings.webp",
+"Images/Leggings/Enchanted_Iron_Leggings.webp",
+"Images/Leggings/Enchanted_Diamond_Leggings.webp",
+"Images/Leggings/Enchanted_Netherite_Leggings.webp"]
 
-var enchantedBoots = [["Images/Boots/Empty_Boots.webp", 0, 0],
-["Images/Boots/Enchanted_Leather_Boots.webp", 1, 0],
-["Images/Boots/Enchanted_Golden_Boots.webp", 1, 0],
-["Images/Boots/Enchanted_Chainmail_Boots.webp", 1, 0],
-["Images/Boots/Enchanted_Iron_Boots.webp", 2, 0],
-["Images/Boots/Enchanted_Diamond_Boots.webp", 3, 2],
-["Images/Boots/Enchanted_Netherite_Boots.webp", 3, 3]]
+var enchantedBoots = ["Images/Boots/Empty_Boots.webp",
+"Images/Boots/Enchanted_Leather_Boots.webp",
+"Images/Boots/Enchanted_Golden_Boots.webp",
+"Images/Boots/Enchanted_Chainmail_Boots.webp",
+"Images/Boots/Enchanted_Iron_Boots.webp",
+"Images/Boots/Enchanted_Diamond_Boots.webp",
+"Images/Boots/Enchanted_Netherite_Boots.webp"]
+
+var trident = ["Images/Trident.webp", 9 , 1]
+var enchantedTrident = "Images/Enchanted_Trident"
+var empty = ["Images/Barrier.webp", 1, 4]
 
 
 var barrierImage = "Images/Barrier.webp";
@@ -148,12 +152,12 @@ var totalToughness = 0
 var protection = 0
 var protectionBonus = 0
 var hitpoints = 20
-var toolMaterialList = ["No", "Wooden", "Golden", "Stone", "Iron", "Diamond", "Netherite"]
+var toolMaterialList = ["Wooden", "Golden", "Stone", "Iron", "Diamond", "Netherite"]
 var toolMaterialName = "No"
-var toolList = ["Sword", "Axe", "Pickaxe", "Shovel", "Hoe"]
+var toolList = [ "Sword", "Axe", "Pickaxe", "Shovel", "Hoe", "Trident", "None"]
 var toolName = "Sword"
 var toolOptions = swords
-var tools = [swords, axes, pickaxes, shovels, hoes]
+var tools = [swords, axes, pickaxes, shovels, hoes, trident, empty]
 var toolMaterial = 0
 var tool = 0
 var baseDamage = 1
@@ -242,19 +246,36 @@ class Weapon {
     return toolMaterialList[this.material]
   }
   get name() {
+    if (this.tool >= 5) {
+      return this.toolName
+    } else {
     return this.materialName + " " + this.toolName
+    }
   }
   get materialImage() {
     return toolMaterials[this.material]
   }
   get toolImage() {
-    return tools[this.tool][this.material][0]
+    console.log(this.tool)
+    if (this.tool >= 5) {
+      return tools[this.tool][0]
+    } else {
+      return tools[this.tool][this.material][0]
+    }
   }
   get baseDamage() {
-    return tools[this.tool][this.material][1]
+    if (this.tool >= 5) {
+      return tools[this.tool][1]
+    } else {
+      return tools[this.tool][this.material][1]
+    }
   }
   get attackSpeed() {
-    return tools[this.tool][this.material][2]
+    if (this.tool >= 5) {
+      return tools[this.tool][2]
+    } else {
+      return tools[this.tool][this.material][2]
+    }
   }
   get attackCooldown() {
     var attackCooldown = 1 / this.attackSpeed - 0.025
@@ -341,7 +362,7 @@ class Armour {
     return helmets[this.helmet][0]
   }
   get enchantedHelmetImage() {
-    return enchantedHelmets[this.helmet][0]
+    return enchantedHelmets[this.helmet]
   }
   get helmetDefence() {
     return helmets[this.helmet][1]
@@ -353,7 +374,7 @@ class Armour {
     return chestplates[this.chestplate][0]
   }
   get enchantedChestplateImage() {
-    return enchantedChestplates[this.chestplate][0]
+    return enchantedChestplates[this.chestplate]
   }
   get chestplateDefence() {
     return chestplates[this.chestplate][1]
@@ -365,7 +386,7 @@ class Armour {
     return leggings[this.leggings][0]
   }
   get enchantedLeggingsImage() {
-    return enchantedLeggings[this.leggings][0]
+    return enchantedLeggings[this.leggings]
   }
   get leggingsDefence() {
     return leggings[this.leggings][1]
@@ -377,7 +398,7 @@ class Armour {
     return boots[this.boots][0]
   }
   get enchantedBootsImage() {
-    return enchantedBoots[this.boots][0]
+    return enchantedBoots[this.boots]
   }
   get bootsDefence() {
     return boots[this.boots][1]
@@ -489,7 +510,7 @@ $(document).ready(function () {
   });
 
   //Profiles
-  $(".box").contextmenu(function () {
+  $(".box, .arrow").contextmenu(function () {
     return false;
   }); //Hide context menu on right click
   $(".box").mousedown(function (event) {
@@ -574,20 +595,21 @@ $(document).ready(function () {
   });
 
   //Normal boxes
-  $("#toolMaterial").mousedown(function (event) {
-    //Update on left click, Reset on right click
-    if (event.which === 3) {
-      weapon.material = 0
+  $(".selectTool").mousedown(function (event) {
+    let temp = $(this).attr("id").replace (/[^\d.]/g, '' )-1;
+
+    if (weapon.tool == temp) {
+      weapon.tool = 6
     } else {
-      weapon.material = weapon.material + 1 >= toolMaterialList.length ? 0 : weapon.material + 1;
+      weapon.tool = temp
     }
     updateHTML()
   });
   $("#tool").mousedown(function (event) {
     if (event.which === 3) {
-      weapon.tool = 0
+      weapon.material = weapon.material - 1 < 0 ? toolMaterialList.length-1 : weapon.material - 1;
     } else {
-      weapon.tool = weapon.tool + 1 >= toolList.length ? 0 : weapon.tool + 1;
+      weapon.material = weapon.material + 1 >= toolMaterialList.length ? 0 : weapon.material + 1;
     }
     updateHTML()
   });
@@ -625,7 +647,7 @@ $(document).ready(function () {
   });
   $("#helmet").mousedown(function (event) {
     if (event.which === 3) {
-      armour.helmet = 0
+      armour.helmet = armour.helmet - 1 < 0 ? helmetMaterialList.length-1 : armour.helmet - 1;
     } else {
       armour.helmet = armour.helmet + 1 >= helmetMaterialList.length ? 0 : armour.helmet + 1;
     }
@@ -633,7 +655,7 @@ $(document).ready(function () {
   });
   $("#chestplate").mousedown(function (event) {
     if (event.which === 3) {
-      armour.chestplate = 0
+      armour.chestplate = armour.chestplate - 1 < 0 ? armourMaterialList.length-1 : armour.chestplate - 1;
     } else {
       armour.chestplate = armour.chestplate + 1 >= armourMaterialList.length ? 0 : armour.chestplate + 1;
     }
@@ -641,7 +663,7 @@ $(document).ready(function () {
   });
   $("#leggings").mousedown(function (event) {
     if (event.which === 3) {
-      armour.leggings = 0
+      armour.leggings = armour.leggings - 1 < 0 ? armourMaterialList.length-1 : armour.leggings - 1;
     } else {
       armour.leggings = armour.leggings + 1 >= armourMaterialList.length ? 0 : armour.leggings + 1;
     }
@@ -649,7 +671,7 @@ $(document).ready(function () {
   });
   $("#boots").mousedown(function (event) {
     if (event.which === 3) {
-      armour.boots = 0
+      armour.boots = armour.boots - 1 < 0 ? armourMaterialList.length-1 : armour.boots - 1;
     } else {
       armour.boots = armour.boots + 1 >= armourMaterialList.length ? 0 : armour.boots + 1;
     }
@@ -693,7 +715,10 @@ $(document).ready(function () {
       armour.chestplate = 0
       armour.leggings = 0
       armour.boots = 0
-      armour.protection = 0
+      armour.helmetProtection = 0
+      armour.chestplateProtection = 0
+      armour.leggingsProtection = 0
+      armour.bootsProtection = 0
       armour.resistance = 0
       armour.hitpoints = 20
     } else {
@@ -701,26 +726,46 @@ $(document).ready(function () {
       armour.chestplate = random(6)
       armour.leggings = random(6)
       armour.boots = random(6)
-      armour.protection = (random(2) * random(2)) ? random(21) : 0;
-      armour.resistance = (random(2) * random(2)) ? random(6) : 0;
+      armour.helmetProtection = random(2) ? random(6) : 0;
+      armour.chestplateProtection = random(2) ? random(6) : 0;
+      armour.leggingsProtection = random(2) ? random(6) : 0;
+      armour.bootsProtection = random(2) ? random(6) : 0;
+      armour.resistance = (random(2) * random(2)) ? random(5) : 0;
       armour.hitpoints = 1 + random(40);
     }
     updateHTML()
   });
   //Number boxes
-  $(".arrowUp").mousedown(function () {
-    var temp = $(this).next().val();
-    if (temp < 99) {
-      temp++
-      $(this).next().val(temp).trigger('change');
-    };
+  $(".arrowUp").mousedown(function (event) {
+    var temp = Number($(this).next().val());
+    if (event.which === 3) {
+      if (temp < 96) {
+        temp+=4
+        $(this).next().val(temp).trigger('change');
+      } else if (temp < 99) {
+        temp = 99
+        $(this).next().val(temp).trigger('change');
+      }
+    } else if (temp < 99) {
+        temp++
+        $(this).next().val(temp).trigger('change');
+      };
   });
-  $(".arrowDown").mousedown(function () {
-    var temp = $(this).prev().val();
-    if (temp > 0) {
+  $(".arrowDown").mousedown(function (event) {
+    var temp = Number($(this).prev().val());
+    if (event.which === 3) {
+      if (temp > 3) {
+        temp -= 4
+        $(this).prev().val(temp).trigger('change');
+      } else if (temp > 0) {
+        temp = 0
+        $(this).prev().val(temp).trigger('change');
+      }
+
+    } else if (temp > 0) {
       temp--
       $(this).prev().val(temp).trigger('change');
-    };
+    }
   });
   $("#sharpnessValue").change(function () {
     weapon.sharpness = $(this).val();
@@ -816,7 +861,23 @@ function toughnessPointImages(num) {
 
 
 function updateHTML() {
+  $("#dice1").attr("title", "Left click for random weapon \nRight click to reset all")
+  $("#dice2").attr("title", "Left click for random armour \nRight click to reset all")
   //Tool
+  // switch (weapon.tool) {
+  //   case "no": case "none":
+  //     toolMaterial = 0;
+  //     break;
+  // }
+  $("#selectTool1").css("background-image", "url(" +  swords[weapon.material][0] + ")")
+  $("#selectTool2").css("background-image", "url(" +  axes[weapon.material][0] + ")")
+  $("#selectTool3").css("background-image", "url(" +  pickaxes[weapon.material][0] + ")")
+  $("#selectTool4").css("background-image", "url(" +  shovels[weapon.material][0] + ")")
+  $("#selectTool5").css("background-image", "url(" +  hoes[weapon.material][0] + ")")
+  $("#selectTool6").css("background-image", "url(" +  trident[0] + ")")
+  $("#selectTool"+(weapon.tool+1)).css("background-image", "url(" + barrierImage + ")")
+
+
   $("#toolMaterial").css("background-image", "url(" + weapon.materialImage + ")");
   $("#tool").css("background-image", "url(" + weapon.toolImage + ")");
   $("#baseDamage").text(weapon.baseDamage)
@@ -889,7 +950,11 @@ function updateHTML() {
   //Protection
   $("#protectionLevel").text(armour.protection);
   $("#protectionBonus").text(armour.protectionBonus);
-  $("#protectionValue").attr("value", armour.protection);
+  $("#helmetProtection .protectionValue").val(armour.helmetProtection);
+  $("#chestplateProtection .protectionValue").val(armour.chestplateProtection);
+  $("#leggingsProtection .protectionValue").val(armour.leggingsProtection);
+  $("#bootsProtection .protectionValue").val( armour.bootsProtection);
+
   //Resistance
   $("#resistanceLevel").text(armour.resistance);
   $("#resistanceBonus").text(armour.resistanceBonus);

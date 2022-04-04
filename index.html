@@ -3,7 +3,8 @@
 
 <head>
   <meta charset='UTF-8' />
-  <title>Minecraft Damage Calculator</title>
+  <title>Minecraft Fight Simulator</title>
+  <link rel="shortcut icon" href="Images/Sword/Netherite_Sword.webp">
   <link rel='stylesheet' href='style.css'>
 </head>
 
@@ -19,29 +20,28 @@
       <div class="pip"></div>
     </div>
     <table id="weaponTable" border="0">
-      <tr>
-        <th>Material</th>
-        <th>Tool</th>
-        <th>Strength</th>
-        <th>Weakness</th>
-        <th>Crit</th>
-        <th>Sharpness</th>
-      </tr>
-      <tr>
-        <td>
-          <div class="box" id="toolMaterial"></div>
-        </td>
-        <td>
-          <div class="box" id="tool"></div>
-        </td>
-        <td>
-          <div class="box potion" id="strength"></div>
-        </td>
-        <td>
-          <div class="box potion" id="weakness"></div>
-        </td>
-        <td>
-          <div class="box" id="crit"></div>
+        <tr>
+          <td>
+            <div class="box" id="tool"></div>
+          </td>
+          <td>
+            <div class="box selectTool" id="selectTool1"></div>
+            <div class="box selectTool" id="selectTool2"></div>
+            <div class="box selectTool" id="selectTool3"></div>
+          </td>
+          <td>
+            <div class="box selectTool" id="selectTool4"></div>
+            <div class="box selectTool" id="selectTool5"></div>
+            <div class="box selectTool" id="selectTool6"></div>
+          </td>
+          <td>
+            <div class="box potion" id="strength"></div>
+          </td>
+          <td>
+            <div class="box potion" id="weakness"></div>
+          </td>
+          <td>
+            <div class="box" id="crit"></div>
         </td>
         <td>
           <div class="box number" id="sharpness">
@@ -145,7 +145,7 @@
     </div>
     <table id="armourTable" border="0">
       <tr>
-        <td colspan="2"></td>
+        <td></td>
         <td>
           <div class="number protection" id="helmetProtection">
             <button class="arrow arrowUp"></button>
@@ -162,9 +162,8 @@
       </tr>
       <tr>
         <td>
-          <div class="box potion" id="resistance"></div>
+          <div class="box potion" id="shield"></div>
         </td>
-        <td></td>
         <td>
           <div class="number protection" id="chestplateProtection">
             <button class="arrow arrowUp"></button>
@@ -179,8 +178,9 @@
             id="chestplateToughness"></span></td>
       </tr>
       <tr>
-        <td>Prot&nbsp;<span id="protectionLevel">0</span></td>
-        <td>Res &nbsp;<span id="resistanceLevel">0</span></td>
+        <td>
+          <div class="box potion" id="resistance"></div>
+        </td>
         <td>
           <div class="number protection" id="leggingsProtection">
             <button class="arrow arrowUp"></button>
@@ -193,42 +193,39 @@
         </td>
         <td><span class="armourDefence pixelated" id="leggingsDefence"></span><span class="armourToughness pixelated"
             id="leggingsToughness"></span></td>
-      </tr>
-      <tr>
-        <td><span class="finalValues" id="protectionBonus">0</span>% Dmg<br>Reduction</td>
-        <td><span class="finalValues" id="resistanceBonus">0</span>% Dmg<br>Redcution</td>
-        <td>
-          <div class="number protection" id="bootsProtection">
-            <button class="arrow arrowUp"></button>
-            <input type="text" class="inputValue protectionValue" value=0>
-            <button class="arrow arrowDown"></button>
-          </div>
-        </td>
-
-        <td>
-          <div class="box armour" id="boots"></div>
-        </td>
-        <td><span class="armourDefence pixelated" id="bootsDefence"></span><span class="armourToughness pixelated"
-            id="bootsToughness"></span></td>
-      </tr>
-      <tr>
-      </tr>
-      <tr>
-        <td>
-          <div class="number" id="hitpoints">Health
-            <button class="arrow arrowUp" id="hitpointsUp"></button>
-            <input type="text" class="inputValue finalValues" id="hitpointsValue" value=20>
-            <button class="arrow arrowDown" id="hitpointsDown"></button>
-          </div>
-        </td>
-        <td colspan="2">
-          <div id="totalHitpointsContainer"><span class="finalValues pixelated" id="totalHitpoints"></span></div>
-        </td>
-        <td colspan="2"><span class="finalValues pixelated" id="totalDefence"></span><span class="finalValues pixelated"
-            id="totalToughness"></span></td>
-
-
-      </tr>
+        </tr>
+        <tr>
+          <td>
+            <div class="number" id="hitpoints">Health
+              <button class="arrow arrowUp" id="hitpointsUp"></button>
+              <input type="text" class="inputValue finalValues" id="hitpointsValue" value=20>
+              <button class="arrow arrowDown" id="hitpointsDown"></button>
+            </div>
+          </td>
+          <td>
+            <div class="number protection" id="bootsProtection">
+              <button class="arrow arrowUp"></button>
+              <input type="text" class="inputValue protectionValue" value=0>
+              <button class="arrow arrowDown"></button>
+            </div>
+          </td>
+          <td>
+            <div class="box armour" id="boots"></div>
+          </td>
+          <td><span class="armourDefence pixelated" id="bootsDefence"></span><span class="armourToughness pixelated"
+              id="bootsToughness"></span></td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div id="totalHitpointsContainer"><span class="finalValues pixelated" id="totalHitpoints"></span></div>
+          </td>
+          <td colspan="2"><span class="finalValues pixelated" id="totalDefence"></span><span class="finalValues pixelated"
+              id="totalToughness"></span></td>
+        
+        
+        </tr>
 
     </table>
     <hr>
