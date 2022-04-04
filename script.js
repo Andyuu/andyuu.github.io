@@ -1,10 +1,10 @@
 var toolMaterials = ["Images/Barrier.webp",
-  "Images/Oak_planks.webp",
-  "Images/Gold_ingot.webp",
+  "Images/Oak_Planks.webp",
+  "Images/Gold_Ingot.webp",
   "Images/Cobblestone.webp",
-  "Images/Iron_ingot.webp",
+  "Images/Iron_Ingot.webp",
   "Images/Diamond.webp",
-  "Images/Netherite_ingot.webp"]
+  "Images/Netherite_Ingot.webp"]
 
 var swords = [["Images/Barrier.webp", 1, 4],
 ["Images/Sword/Wooden_Sword.webp", 4, 1.6],
@@ -819,7 +819,7 @@ function updateHTML() {
   //Hitpoints
   $("#totalHitpoints").empty().append(hitpointImages(armour.hitpoints)).attr("title", pluralise(armour.hitpoints / 2, "heart"));
   $("#hitpointsValue").attr("value", armour.hitpoints);
-  $(".hitpointBreak").css( "margin-top", Math.min(8,(armour.hitpoints-1)/20 << 0)*-2+"px");
+  $(".hitpointBreak").css( "margin-top", Math.min(8,(armour.hitpoints-1)/20 << 0)*-2+"px"); //Clump lines of hearts closer where there are more
   //Results 
   if (weapon.damage && armour.defence) {
     $("#armourReductionRow").show()
