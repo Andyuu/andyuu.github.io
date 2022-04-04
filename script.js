@@ -1,3 +1,5 @@
+//TODO: https://stackoverflow.com/questions/2455225/how-do-i-move-focus-to-next-input-with-jquery
+
 var toolMaterials = ["Images/Barrier.webp",
   "Images/Oak_Planks.webp",
   "Images/Gold_Ingot.webp",
@@ -78,6 +80,39 @@ var boots = [["Images/Boots/Empty_Boots.webp", 0, 0],
 ["Images/Boots/Iron_Boots.webp", 2, 0],
 ["Images/Boots/Diamond_Boots.webp", 3, 2],
 ["Images/Boots/Netherite_Boots.webp", 3, 3]]
+
+var enchantedHelmets = [["Images/Helmet/Empty_Helmet.webp", 0, 0],
+["Images/Helmet/Enchanted_Leather_Helmet.webp", 1, 0],
+["Images/Helmet/Enchanted_Golden_Helmet.webp", 2, 0],
+["Images/Helmet/Enchanted_Chainmail_Helmet.webp", 2, 0],
+["Images/Helmet/Enchanted_Iron_Helmet.webp", 2, 0],
+["Images/Helmet/Enchanted_Turtle_Helmet.webp", 2, 0],
+["Images/Helmet/Enchanted_Diamond_Helmet.webp", 3, 2],
+["Images/Helmet/Enchanted_Netherite_Helmet.webp", 3, 3]]
+
+var enchantedChestplates = [["Images/Chestplate/Empty_Chestplate.webp", 0, 0],
+["Images/Chestplate/Enchanted_Leather_Chestplate.webp", 3, 0],
+["Images/Chestplate/Enchanted_Golden_Chestplate.webp", 5, 0],
+["Images/Chestplate/Enchanted_Chainmail_Chestplate.webp", 5, 0],
+["Images/Chestplate/Enchanted_Iron_Chestplate.webp", 6, 0],
+["Images/Chestplate/Enchanted_Diamond_Chestplate.webp", 8, 2],
+["Images/Chestplate/Enchanted_Netherite_Chestplate.webp", 8, 3]]
+
+var enchantedLeggings = [["Images/Leggings/Empty_Leggings.webp", 0, 0],
+["Images/Leggings/Enchanted_Leather_Leggings.webp", 2, 0],
+["Images/Leggings/Enchanted_Golden_Leggings.webp", 3, 0],
+["Images/Leggings/Enchanted_Chainmail_Leggings.webp", 4, 0],
+["Images/Leggings/Enchanted_Iron_Leggings.webp", 5, 0],
+["Images/Leggings/Enchanted_Diamond_Leggings.webp", 6, 2],
+["Images/Leggings/Enchanted_Netherite_Leggings.webp", 6, 3]]
+
+var enchantedBoots = [["Images/Boots/Empty_Boots.webp", 0, 0],
+["Images/Boots/Enchanted_Leather_Boots.webp", 1, 0],
+["Images/Boots/Enchanted_Golden_Boots.webp", 1, 0],
+["Images/Boots/Enchanted_Chainmail_Boots.webp", 1, 0],
+["Images/Boots/Enchanted_Iron_Boots.webp", 2, 0],
+["Images/Boots/Enchanted_Diamond_Boots.webp", 3, 2],
+["Images/Boots/Enchanted_Netherite_Boots.webp", 3, 3]]
 
 
 var barrierImage = "Images/Barrier.webp";
@@ -283,7 +318,10 @@ class Armour {
     this.chestplate = 0
     this.leggings = 0
     this.boots = 0
-    this.protection = 0
+    this.helmetProtection = 0
+    this.chestplateProtection = 0
+    this.leggingsProtection = 0
+    this.bootsProtection = 0
     this.resistance = 0
     this.hitpoints = 20
   }
@@ -302,6 +340,9 @@ class Armour {
   get helmetImage() {
     return helmets[this.helmet][0]
   }
+  get enchantedHelmetImage() {
+    return enchantedHelmets[this.helmet][0]
+  }
   get helmetDefence() {
     return helmets[this.helmet][1]
   }
@@ -310,6 +351,9 @@ class Armour {
   }
   get chestplateImage() {
     return chestplates[this.chestplate][0]
+  }
+  get enchantedChestplateImage() {
+    return enchantedChestplates[this.chestplate][0]
   }
   get chestplateDefence() {
     return chestplates[this.chestplate][1]
@@ -320,6 +364,9 @@ class Armour {
   get leggingsImage() {
     return leggings[this.leggings][0]
   }
+  get enchantedLeggingsImage() {
+    return enchantedLeggings[this.leggings][0]
+  }
   get leggingsDefence() {
     return leggings[this.leggings][1]
   }
@@ -328,6 +375,9 @@ class Armour {
   }
   get bootsImage() {
     return boots[this.boots][0]
+  }
+  get enchantedBootsImage() {
+    return enchantedBoots[this.boots][0]
   }
   get bootsDefence() {
     return boots[this.boots][1]
@@ -340,6 +390,9 @@ class Armour {
   }
   get toughness() {
     return this.helmetToughness + this.chestplateToughness + this.leggingsToughness + this.bootsToughness
+  }
+  get protection() {
+    return this.helmetProtection + this.chestplateProtection + this.leggingsProtection + this.bootsProtection
   }
   get protectionBonus() {
     return this.protection * 4
@@ -434,7 +487,6 @@ $(document).ready(function () {
   $(".folder").on('click', function () {
     $("#folderModal").css("display", "block");
   });
-
 
   //Profiles
   $(".box").contextmenu(function () {
@@ -655,7 +707,6 @@ $(document).ready(function () {
     }
     updateHTML()
   });
-// rfgddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddrrrgsrgfgfg
   //Number boxes
   $(".arrowUp").mousedown(function () {
     var temp = $(this).next().val();
@@ -675,10 +726,22 @@ $(document).ready(function () {
     weapon.sharpness = $(this).val();
     updateHTML();
   });
-  $("#protectionValue").change(function () {
-    armour.protection = $(this).val();
-    if (armour.protection > 20) {
-      $(this).val(20).trigger('change');
+  $(".protectionValue").change(function () {
+    if ($(this).parent().is("#helmetProtection")) {
+      armour.helmetProtection = Number($(this).val());
+    }
+    else if ($(this).parent().is("#chestplateProtection")) {
+      armour.chestplateProtection = Number($(this).val());
+    }
+    else if ($(this).parent().is("#leggingsProtection")) {
+      armour.leggingsProtection = Number($(this).val());
+    }
+    else if ($(this).parent().is("#bootsProtection")) {
+      armour.bootsProtection = Number($(this).val());
+    }
+    
+    if ($(this).val() > 5) {
+      $(this).val(5).trigger('change');
     }
     updateHTML();
 
@@ -789,19 +852,35 @@ function updateHTML() {
   $("#damagePerSecond").text(round(weapon.DPS, 3));
 
   //Helmet
-  $("#helmet").css("background-image", "url(" + armour.helmetImage + ")");
+  if (armour.helmetProtection > 0) {
+    $("#helmet").css("background-image", "url(" + armour.enchantedHelmetImage + ")");
+  } else {
+    $("#helmet").css("background-image", "url(" + armour.helmetImage + ")");
+  }
   $("#helmetDefence").empty().append(armourPointImages(armour.helmetDefence)).attr("title", pluralise(armour.helmetDefence / 2, "armour point"));
   $("#helmetToughness").empty().append(toughnessPointImages(armour.helmetToughness)).attr("title", pluralise(armour.helmetToughness / 2, "toughness point"));
   //Chestplate
-  $("#chestplate").css("background-image", "url(" + armour.chestplateImage + ")");
+  if (armour.chestplateProtection > 0) {
+    $("#chestplate").css("background-image", "url(" + armour.enchantedChestplateImage + ")");
+  } else {
+    $("#chestplate").css("background-image", "url(" + armour.chestplateImage + ")");
+  }
   $("#chestplateDefence").empty().append(armourPointImages(armour.chestplateDefence)).attr("title", pluralise(armour.chestplateDefence / 2, "armour point"));
   $("#chestplateToughness").empty().append(toughnessPointImages(armour.chestplateToughness)).attr("title", pluralise(armour.chestplateToughness / 2, "toughness point"));
   //Leggings
-  $("#leggings").css("background-image", "url(" + armour.leggingsImage + ")");
+  if (armour.leggingsProtection > 0) {
+    $("#leggings").css("background-image", "url(" + armour.enchantedLeggingsImage + ")");
+  } else {
+    $("#leggings").css("background-image", "url(" + armour.leggingsImage + ")");
+  }
   $("#leggingsDefence").empty().append(armourPointImages(armour.leggingsDefence)).attr("title", pluralise(armour.leggingsDefence / 2, "armour point"));
   $("#leggingsToughness").empty().append(toughnessPointImages(armour.leggingsToughness)).attr("title", pluralise(armour.leggingsToughness / 2, "toughness point"));
   //Boots
-  $("#boots").css("background-image", "url(" + armour.bootsImage + ")");
+  if (armour.bootsProtection > 0) {
+    $("#boots").css("background-image", "url(" + armour.enchantedBootsImage + ")");
+  } else {
+    $("#boots").css("background-image", "url(" + armour.bootsImage + ")");
+  }
   $("#bootsDefence").empty().append(armourPointImages(armour.bootsDefence)).attr("title", pluralise(armour.bootsDefence / 2, "armour point"));
   $("#bootsToughness").empty().append(toughnessPointImages(armour.bootsToughness)).attr("title", pluralise(armour.bootsToughness / 2, "toughness point"));
   //Armour
@@ -820,6 +899,29 @@ function updateHTML() {
   $("#totalHitpoints").empty().append(hitpointImages(armour.hitpoints)).attr("title", pluralise(armour.hitpoints / 2, "heart"));
   $("#hitpointsValue").attr("value", armour.hitpoints);
   $(".hitpointBreak").css( "margin-top", Math.min(8,(armour.hitpoints-1)/20 << 0)*-2+"px"); //Clump lines of hearts closer where there are more
+
+  //Tooltips for protection setters
+  if (armour.helmet > 0) {
+    $("#helmetProtection .inputValue").attr("title", "Protection "+armour.helmetProtection+" "+armour.helmetName.toLowerCase()+" helmet \n"+ armour.helmetProtection*4+"% extra damage reduction")
+  } else {
+    $("#helmetProtection .inputValue").attr("title", "Protection "+armour.helmetProtection+" emptiness \n"+ armour.helmetProtection*4+"% damage reduction \n(in theory)")
+  }
+  if (armour.chestplate > 0) {
+    $("#chestplateProtection .inputValue").attr("title", "Protection "+armour.chestplateProtection+" "+armour.chestplateName.toLowerCase()+" chestplate \n"+ armour.chestplateProtection*4+"% extra damage reduction")
+  } else {
+    $("#chestplateProtection .inputValue").attr("title", "Protection "+armour.chestplateProtection+" emptiness \n"+ armour.chestplateProtection*4+"% damage reduction \n(in theory)")
+  }
+  if (armour.leggings > 0) {
+    $("#leggingsProtection .inputValue").attr("title", "Protection "+armour.leggingsProtection+" "+armour.leggingsName.toLowerCase()+" leggings \n"+ armour.leggingsProtection*4+"% extra damage reduction")
+  } else {
+    $("#leggingsProtection .inputValue").attr("title", "Protection "+armour.leggingsProtection+" emptiness \n"+ armour.leggingsProtection*4+"% damage reduction \n(in theory)")
+  }
+  if (armour.boots > 0) {
+    $("#bootsProtection .inputValue").attr("title", "Protection "+armour.bootsProtection+" "+armour.bootsName.toLowerCase()+" boots \n"+ armour.bootsProtection*4+"% extra damage reduction")
+  } else {
+    $("#bootsProtection .inputValue").attr("title", "Protection "+armour.bootsProtection+" emptiness \n"+ armour.bootsProtection*4+"% damage reduction \n(in theory)")
+  }
+  
   //Results 
   if (weapon.damage && armour.defence) {
     $("#armourReductionRow").show()
@@ -1402,7 +1504,7 @@ function setInputFilter(textbox, inputFilter) {
   });
 }
 function limitInputNum() {
-  var numberInputs = document.getElementsByClassName('inputValue');
+  var numberInputs = $('.inputValue').not(".protectionValue");
   for (i = 0; i < numberInputs.length; i++) {
     setInputFilter(numberInputs[i], function (value) {
       return /^(?=.{0,2}$)\d*$/.test(value);
@@ -1410,6 +1512,17 @@ function limitInputNum() {
   }
 }
 limitInputNum()
+
+function limitInputNumProtection() {
+  var numberInputs = $('.protectionValue');
+  for (i = 0; i < numberInputs.length; i++) {
+    setInputFilter(numberInputs[i], function (value) {
+      return /^(?=.{0,1}$)^[0-5]*$/.test(value);
+    });
+  }
+}
+limitInputNumProtection()
+
 function limitInputText() {
   var nameInputs = $('.profileName, .profileFolderName');
   for (i = 0; i < nameInputs.length; i++) {

@@ -102,6 +102,9 @@ table {
   margin-left: auto;
   margin-right: auto;
 }
+#armourTable td{
+  vertical-align: bottom;
+}
 
 .box {
   cursor: pointer;
@@ -115,6 +118,7 @@ table {
   background-position: center center;
   background-size: 100%;
   transition: 0.2s;
+  margin: 0;
 }
 #helmet.box {
   background-image: url(Images/Helmet/Empty_Helmet.webp);
@@ -131,10 +135,8 @@ table {
 .pixelated {
   image-rendering: pixelated;
 }
-.hitpointBreak {
+.armourDefence, #totalDefence, .armourToughness, #totalToughness, #totalHitpoints {
   display: block;
-  content: "";
-  margin-top: -2px;
 }
 .armourDefence, #totalDefence{
   background-image: url(Images/Empty_Armour.webp);
@@ -152,15 +154,35 @@ table {
 }
 #totalDefence {
   min-width: 180px;
+
 }
 .armourToughness{
-  background-image: url(Images/Empty_Armour.webp);
   height: 18px;
   width: 36px;
   display: block;
 }
 #totalToughness {
   width: 180px;
+  height: 18px;
+}
+#totalHitpoints {
+  background-size: 18px;
+  width: 180px;
+  height: auto;
+  line-height: 18px;
+}
+#totalHitpointsContainer {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-bottom: -4px;
+  
+  height: auto;
+}
+.hitpointBreak {
+  display: block;
+  content: "";
+  margin-top: 0px;
+
 }
 .profile .box, .profile p, .profile table{
   cursor: default;
@@ -177,14 +199,7 @@ button {
 }
 
 th, td {
-  padding-right: 10px;
-  padding-bottom: 10px;
   font-size: 14px;
-}
-.number {
-  background-image: none;
-  position: relative;
-  font-family: Arial;
 }
 .arrow {
   position: absolute;
@@ -200,7 +215,6 @@ th, td {
   font-weight: bold;
   margin: 0;
   z-index: 1;
-  text-align: center;
 }
 .arrowDown {
   top: 53px;
@@ -235,14 +249,20 @@ th, td {
   z-index: 2;
 }
 #hitpoints {
-  position: relative;
-  font-family: Bungee;
   color: #f00;
   font-size: 16px;
   padding-left: 1px;
+  top: -8px;
+  float: right;
+  margin-right: 5px;
+
+}
+.number {
+  position: relative;
+  font-family: Bungee;
   user-select: none;
 }
-#hitpoints .inputValue {
+.number .inputValue {
   font-size: 20px;
   height: 30px;
   width: 40px;
@@ -250,7 +270,7 @@ th, td {
   left: 15px;
   background-color: transparent;
 }
-#hitpoints .arrowUp, #hitpoints .arrowDown {
+.number .arrow {
   background-color: transparent;
   position: absolute;
   width: 16px;
@@ -265,29 +285,60 @@ th, td {
   font-family: Bungee;
   /* text-align: center; */
 }
-#hitpoints .arrowDown {
+.number .arrowDown {
   left: 55px;
 }
-#hitpoints .arrowUp:active, #hitpoints .arrowDown:active {
+.number .arrowUp:active, .number .arrowDown:active {
   top: 33px;
 }
-#hitpoints .arrowUp::after{
+.number .arrowUp::after{
   position: relative;
-  left: -4px;
+  left: -3.8px;
   top: -13px;
   display: inline-block;
   content: "\002b";
 }
-#hitpoints .arrowDown::after{
+.number .arrowDown::after{
   position: relative;
-  left: -1px;
+  left: -1.2px;
   top: -13px;
-  display: inline-block;
-  content: "\002b";
   display: inline-block;
   content: "\002d";
 }
-
+.protection {
+  background-image: url(Images/Protection.webp);
+  background-size: 150%;
+  background-position: -10px -12px;
+  width: 40px;
+  height: 50px;
+  background-color: transparent;
+  transition: 0.1s;
+  float: right;
+}
+.protection .inputValue {
+  height: 30px;
+  width: 40px;
+  top: 0px;
+  left: 0px;
+  color: rgb(179, 20, 165);
+}
+.protection .inputValue:focus {
+  border: 3px solid #999;
+  border-radius: 10px;
+  background-color: #222;
+}
+.protection .arrow{
+  top: 30px;
+  left: 0px;
+  background-color: rgb(4,27,76);
+  outline: 2px solid #999;
+}
+.protection .arrow:hover {
+  outline-color: #fff;
+}
+.protection .arrowDown{
+  left: 24px;
+}
 .totalStats {
   font-weight: bold;
 }
