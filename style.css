@@ -132,7 +132,11 @@ table {
   background-size: 32px;
   border-width: 2px;
   margin: 3px 0px;
+  opacity: 50%;
   image-rendering: pixelated;
+}
+.selectTool:hover {
+  opacity: 100%;
 }
 #helmet.box {
   background-image: url(Images/Helmet/Empty_Helmet.webp);
@@ -214,45 +218,23 @@ button {
 th, td {
   font-size: 14px;
 }
-.arrow {
-  position: absolute;
-  width: 64px;
-  height: 15px;
-  top: 2px;
-  left: 3px;
-  border: 0;
-  border-radius: 0;
-  background-color: #999;
-  color: green;
-  font-size: 15px;
-  font-weight: bold;
-  margin: 0;
-  z-index: 1;
-}
-.arrowDown {
-  top: 53px;
-  color: red;
-}
-.arrow:hover {
-  background-color: #666;
-}
-.arrow:active{
-  border: 1px solid #fff;
-
+.number {
+  position: relative;
+  font-family: Bungee;
+  user-select: none;
 }
 .inputValue {
   position: absolute;
-  background-color: #888;
   border: 0px solid;
-  top: 16px;
-  left: 3px;
-  margin: 0;
-  width: 64px;
-  height: 38px;
+  top: 14px;
+  left: calc( 50% - 25px);
   box-sizing: border-box;
   color: white;
+  font-size: 25px;
+  height: 40px;
+  width: 50px;
+  background-color: transparent;
   text-align: center;
-  font-size: 38px;
   border-radius: 0;
   font-family: Bungee;
 }
@@ -261,95 +243,99 @@ th, td {
   border: 2px solid white;
   z-index: 2;
 }
-#hitpoints {
-  color: #f00;
-  font-size: 16px;
-  padding-left: 1px;
-  top: -8px;
-
-}
-.number {
+.arrow {
   position: relative;
-  font-family: Bungee;
-  user-select: none;
-}
-.number .inputValue {
-  font-size: 20px;
-  height: 30px;
-  width: 40px;
-  top: 26px;
-  left: 15px;
-  background-color: transparent;
-}
-.number .arrow {
-  background-color: transparent;
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  top: 32px;
-  left: 0px;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  left: 0;
   border: 0;
-  border-radius: 16px;
+  border-radius: 24px;
+  font-weight: bold;
   background-color: #bbb;
-  font-size: 16px;
+  font-size: 24px;
+  color: green;
   z-index: 1;
   font-family: Bungee;
-  /* text-align: center; */
 }
-.number .arrowDown {
-  left: 55px;
+.arrowDown {
+  left: calc(100% - 48px - 4px);
+  color: red;
 }
-.number .arrowUp:active, .number .arrowDown:active {
-  top: 33px;
+.arrow p {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  line-height: 0.5;
 }
-.number .arrowUp::after{
-  position: relative;
-  left: -3.8px;
-  top: -13px;
-  display: inline-block;
-  content: "\002b";
+.number .arrowUp:active, .number .arrowDown:active{
+  top: 1px;
 }
-.number .arrowDown::after{
-  position: relative;
-  left: -1.2px;
-  top: -13px;
-  display: inline-block;
-  content: "\002d";
+#hitpoints {
+  padding: 0;
+  width: 90px;
+  height: 50px;
+  color: #f00;
+  font-size: 16px;
 }
-.protection {
+#hitpoints > p {
+  display: flex;
+  justify-content: center;
+  line-height: 1;
+  margin: 0 auto;
+}
+.enchantment {
+  /* vertical-align: center; */
+  float: right;
+  width: 60px;
+  height: 75px;
   background-image: url(Images/Protection.webp);
   background-size: 150%;
-  background-position: -10px -12px;
-  width: 40px;
-  height: 50px;
+  background-position: center 100%;
   background-color: transparent;
   transition: 0.1s;
-  float: right;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
 }
-.protection .inputValue {
-  height: 30px;
-  width: 40px;
-  top: 0px;
+.enchantment .inputValue {
+  height: 50%;
+  width: 100%;
+  top: 10%;
   left: 0px;
-  color: rgb(179, 20, 165);
+  color: #cecece;
+  text-shadow:
+  -2px -2px 0 #000,
+  2px -2px 0 #000,
+  -2px 2px 0 #000,
+  2px 2px 0 #000;
 }
-.protection .inputValue:focus {
+.levelled {
+  color: rgb(179, 20, 165) !important;
+}
+.enchantment .inputValue:focus {
   border: 3px solid #999;
   border-radius: 10px;
   background-color: #222;
 }
-.protection .arrow{
-  top: 30px;
+.enchantment .arrow{
+  top: 60%;
   left: 0px;
   background-color: rgb(4,27,76);
   outline: 2px solid #999;
 }
-.protection .arrow:hover {
+.enchantment .arrowDown{
+  left: calc(100% - 48px - 2px);
+}
+.enchantment .arrow:hover {
   outline-color: #fff;
 }
-.protection .arrowDown{
-  left: 24px;
+.enchantment .arrow:active {
+  top: calc(60% + 1px);
 }
+#sharpness {
+  background-image: url(Images/Sharpness.webp);
+}
+
 .totalStats {
   font-weight: bold;
 }

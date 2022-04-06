@@ -1,4 +1,5 @@
 //TODO: https://stackoverflow.com/questions/2455225/how-do-i-move-focus-to-next-input-with-jquery
+//TODO: Sharpness 0 is + 0.5 dmg
 
 var toolMaterials = ["Images/Barrier.webp",
   "Images/Oak_Planks.webp",
@@ -47,6 +48,46 @@ var hoes = [
 ["Images/Hoe/Iron_Hoe.webp", 1, 3],
 ["Images/Hoe/Diamond_Hoe.webp", 1, 4],
 ["Images/Hoe/Netherite_Hoe.webp", 1, 4]]
+
+var enchantedSwords = [
+  "Images/Sword/Enchanted_Wooden_Sword.webp",
+  "Images/Sword/Enchanted_Golden_Sword.webp",
+  "Images/Sword/Enchanted_Stone_Sword.webp",
+  "Images/Sword/Enchanted_Iron_Sword.webp",
+  "Images/Sword/Enchanted_Diamond_Sword.webp",
+  "Images/Sword/Enchanted_Netherite_Sword.webp"]
+  
+var enchantedAxes = [
+"Images/Axe/Enchanted_Wooden_Axe.webp",
+"Images/Axe/Enchanted_Golden_Axe.webp",
+"Images/Axe/Enchanted_Stone_Axe.webp",
+"Images/Axe/Enchanted_Iron_Axe.webp",
+"Images/Axe/Enchanted_Diamond_Axe.webp",
+"Images/Axe/Enchanted_Netherite_Axe.webp"]
+
+var enchantedPickaxes = [
+"Images/Pickaxe/Enchanted_Wooden_Pickaxe.webp",
+"Images/Pickaxe/Enchanted_Golden_Pickaxe.webp",
+"Images/Pickaxe/Enchanted_Stone_Pickaxe.webp",
+"Images/Pickaxe/Enchanted_Iron_Pickaxe.webp",
+"Images/Pickaxe/Enchanted_Diamond_Pickaxe.webp",
+"Images/Pickaxe/Enchanted_Netherite_Pickaxe.webp"]
+
+var enchantedShovels = [
+"Images/Shovel/Enchanted_Wooden_Shovel.webp",
+"Images/Shovel/Enchanted_Golden_Shovel.webp",
+"Images/Shovel/Enchanted_Stone_Shovel.webp",
+"Images/Shovel/Enchanted_Iron_Shovel.webp",
+"Images/Shovel/Enchanted_Diamond_Shovel.webp",
+"Images/Shovel/Enchanted_Netherite_Shovel.webp"]
+
+var enchantedHoes = [
+"Images/Hoe/Enchanted_Wooden_Hoe.webp",
+"Images/Hoe/Enchanted_Golden_Hoe.webp",
+"Images/Hoe/Enchanted_Stone_Hoe.webp",
+"Images/Hoe/Enchanted_Iron_Hoe.webp",
+"Images/Hoe/Enchanted_Diamond_Hoe.webp",
+"Images/Hoe/Enchanted_Netherite_Hoe.webp"]
 
 var helmets = [["Images/Helmet/Empty_Helmet.webp", 0, 0],
 ["Images/Helmet/Leather_Helmet.webp", 1, 0],
@@ -115,8 +156,9 @@ var enchantedBoots = ["Images/Boots/Empty_Boots.webp",
 "Images/Boots/Enchanted_Netherite_Boots.webp"]
 
 var trident = ["Images/Trident.webp", 9 , 1]
-var enchantedTrident = "Images/Enchanted_Trident"
+var enchantedTrident = "Images/Enchanted_Trident.webp"
 var empty = ["Images/Barrier.webp", 1, 4]
+var enchantedEmpty = "Images/Barrier.webp" //Meme
 
 
 var barrierImage = "Images/Barrier.webp";
@@ -158,6 +200,7 @@ var toolList = [ "Sword", "Axe", "Pickaxe", "Shovel", "Hoe", "Trident", "None"]
 var toolName = "Sword"
 var toolOptions = swords
 var tools = [swords, axes, pickaxes, shovels, hoes, trident, empty]
+var enchantedTools = [enchantedSwords, enchantedAxes, enchantedPickaxes, enchantedShovels, enchantedHoes, enchantedTrident, enchantedEmpty]
 var toolMaterial = 0
 var tool = 0
 var baseDamage = 1
@@ -256,11 +299,17 @@ class Weapon {
     return toolMaterials[this.material]
   }
   get toolImage() {
-    console.log(this.tool)
     if (this.tool >= 5) {
       return tools[this.tool][0]
     } else {
       return tools[this.tool][this.material][0]
+    }
+  }
+  get enchantedToolImage() {
+    if (this.tool >= 5) {
+      return enchantedTools[this.tool]
+    } else {
+      return enchantedTools[this.tool][this.material]
     }
   }
   get baseDamage() {
@@ -845,6 +894,7 @@ function hitpointImages(num) {
   }
   return span;
 };
+
 function toughnessPointImages(num) {
   let span = $('<span />');
   let full = (num / 2) << 0;
@@ -879,7 +929,6 @@ function updateHTML() {
 
 
   $("#toolMaterial").css("background-image", "url(" + weapon.materialImage + ")");
-  $("#tool").css("background-image", "url(" + weapon.toolImage + ")");
   $("#baseDamage").text(weapon.baseDamage)
   $("#attackSpeed").text(weapon.attackSpeed.toFixed(1))
   $("#attackCooldown").text(weapon.attackCooldown.toFixed(2));
@@ -898,10 +947,26 @@ function updateHTML() {
   $("#crit").css("background-image", "url(" + weapon.critImage + ")");
   (weapon.crit) ? $("#critBool").text("Crit") : $("#critBool").text("No Crit");
   $("#critBonus").text(weapon.critBonus);
+
   //Sharpness
+  if (weapon.sharpness > 0) {
+    $("#tool").css("background-image", "url(" + weapon.enchantedToolImage + ")");
+    $("#sharpness .inputValue").addClass("levelled");
+  } else {
+    $("#tool").css("background-image", "url(" + weapon.toolImage + ")");
+    $("#sharpness .inputValue").removeClass("levelled");
+  }
   $("#sharpnessLevel").text(weapon.sharpness);
   $("#sharpnessBonus").text(weapon.sharpnessBonus);
   $("#sharpnessValue").attr("value", weapon.sharpness);
+
+  //Tooltip for sharpness setter
+  if (weapon.tool != 6) {
+    $("#sharpness .inputValue").attr("title", "Sharpness "+weapon.sharpness +" "+weapon.name.toLowerCase()+"\n"+ weapon.sharpnessBonus+" extra damage")
+  } else {
+    $("#sharpness .inputValue").attr("title", "Sharpness "+weapon.sharpness +" emptiness \n"+ weapon.sharpnessBonus+" extra damage \n(in theory)")
+  }
+
   //Damage
   $("#attackDamage").text(weapon.damage)
   if (weapon.attackSpeed > 2) {
@@ -912,35 +977,45 @@ function updateHTML() {
   // (weapon.attackSpeed > 2) ? $("#immunityInfo").text("Damage immunity limits DPS") : $("#immunityInfo").text("");
   $("#damagePerSecond").text(round(weapon.DPS, 3));
 
+
+
   //Helmet
   if (armour.helmetProtection > 0) {
     $("#helmet").css("background-image", "url(" + armour.enchantedHelmetImage + ")");
+    $("#helmetProtection .inputValue").addClass("levelled");
   } else {
     $("#helmet").css("background-image", "url(" + armour.helmetImage + ")");
+    $("#helmetProtection .inputValue").removeClass("levelled");
   }
   $("#helmetDefence").empty().append(armourPointImages(armour.helmetDefence)).attr("title", pluralise(armour.helmetDefence / 2, "armour point"));
   $("#helmetToughness").empty().append(toughnessPointImages(armour.helmetToughness)).attr("title", pluralise(armour.helmetToughness / 2, "toughness point"));
   //Chestplate
   if (armour.chestplateProtection > 0) {
     $("#chestplate").css("background-image", "url(" + armour.enchantedChestplateImage + ")");
+    $("#chestplateProtection .inputValue").addClass("levelled");
   } else {
     $("#chestplate").css("background-image", "url(" + armour.chestplateImage + ")");
+    $("#chestplateProtection .inputValue").removeClass("levelled");
   }
   $("#chestplateDefence").empty().append(armourPointImages(armour.chestplateDefence)).attr("title", pluralise(armour.chestplateDefence / 2, "armour point"));
   $("#chestplateToughness").empty().append(toughnessPointImages(armour.chestplateToughness)).attr("title", pluralise(armour.chestplateToughness / 2, "toughness point"));
   //Leggings
   if (armour.leggingsProtection > 0) {
     $("#leggings").css("background-image", "url(" + armour.enchantedLeggingsImage + ")");
+    $("#leggingsProtection .inputValue").addClass("levelled");
   } else {
     $("#leggings").css("background-image", "url(" + armour.leggingsImage + ")");
+    $("#leggingsProtection .inputValue").removeClass("levelled");
   }
   $("#leggingsDefence").empty().append(armourPointImages(armour.leggingsDefence)).attr("title", pluralise(armour.leggingsDefence / 2, "armour point"));
   $("#leggingsToughness").empty().append(toughnessPointImages(armour.leggingsToughness)).attr("title", pluralise(armour.leggingsToughness / 2, "toughness point"));
   //Boots
   if (armour.bootsProtection > 0) {
     $("#boots").css("background-image", "url(" + armour.enchantedBootsImage + ")");
+    $("#bootsProtection .inputValue").addClass("levelled");
   } else {
     $("#boots").css("background-image", "url(" + armour.bootsImage + ")");
+    $("#bootsProtection .inputValue").removeClass("levelled");
   }
   $("#bootsDefence").empty().append(armourPointImages(armour.bootsDefence)).attr("title", pluralise(armour.bootsDefence / 2, "armour point"));
   $("#bootsToughness").empty().append(toughnessPointImages(armour.bootsToughness)).attr("title", pluralise(armour.bootsToughness / 2, "toughness point"));
