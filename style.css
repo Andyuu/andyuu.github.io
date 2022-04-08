@@ -52,7 +52,7 @@ h1 {
 	border-radius: 10%;
   position: absolute;
   right: 0px;
-  top: 300px;
+  top: 00px;
 }
 #leftHalf .dice {
   right: auto;
@@ -127,11 +127,12 @@ table {
   border-width: 6px;
 }
 .selectTool {
+  display: inline-block;
   width: 32px;
   height: 32px;
   background-size: 32px;
   border-width: 2px;
-  margin: 3px 0px;
+  /* margin: 3px 0px; */
   opacity: 50%;
   image-rendering: pixelated;
 }
@@ -155,6 +156,7 @@ table {
 }
 .armourDefence, #totalDefence, .armourToughness, #totalToughness, #totalHitpoints {
   display: block;
+
 }
 .armourDefence, #totalDefence{
   background-image: url(Images/Empty_Armour.webp);
@@ -183,13 +185,13 @@ table {
   width: 180px;
   height: 18px;
 }
-#totalHitpoints {
+#totalHitpoints{
   background-size: 18px;
   width: 180px;
   height: auto;
   line-height: 18px;
 }
-#totalHitpointsContainer {
+#totalHitpointsContainer{
   display: inline-block;
   vertical-align: bottom;
   margin-bottom: -4px;
@@ -226,7 +228,7 @@ th, td {
 .inputValue {
   position: absolute;
   border: 0px solid;
-  top: 14px;
+  top: calc(1em - 14px);
   left: calc( 50% - 25px);
   box-sizing: border-box;
   color: white;
@@ -257,6 +259,7 @@ th, td {
   color: green;
   z-index: 1;
   font-family: Bungee;
+  overflow: hidden;
 }
 .arrowDown {
   left: calc(100% - 48px - 4px);
@@ -276,12 +279,12 @@ th, td {
   width: 90px;
   height: 50px;
   color: #f00;
-  font-size: 16px;
+  font-size: 20px;
 }
 #hitpoints > p {
   display: flex;
   justify-content: center;
-  line-height: 1;
+  line-height: 0.3;
   margin: 0 auto;
 }
 .enchantment {
@@ -289,11 +292,11 @@ th, td {
   float: right;
   width: 60px;
   height: 75px;
+  transition: 0.1s;
   background-image: url(Images/Protection.webp);
   background-size: 150%;
   background-position: center 100%;
   background-color: transparent;
-  transition: 0.1s;
   background-repeat: no-repeat;
   image-rendering: pixelated;
 }
@@ -332,6 +335,188 @@ th, td {
 .enchantment .arrow:active {
   top: calc(60% + 1px);
 }
+#crit {
+  background-image: url(Images/Crit.webp);
+  background-size: 54px;
+  background-position: 6px 6px;
+  width: 60px;
+  height: 60px;
+  float: left;
+}
+#crit:hover , #effects:hover{
+  background-color: #333;
+}
+#effects {
+  float: right;
+  width: 60px;
+  height: 60px;
+  background-image: url(Images/Effects.webp);
+  background-size: 100%;
+}
+#effectTable {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: start;
+  width: 620px;
+  background-color: #111;
+  padding: 5px;
+}
+.effect {
+  position: static;
+  background-position: center;
+  background-size: 36px;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  float: right;
+  border: 5px solid #555;
+}
+.effect .inputValue {
+  top: calc(100% - 40px);
+  display: none;
+  width: 60%;
+  left: 40%;
+}
+.effect .inputValue:focus {
+  border-color: inherit;
+}
+.effect .arrow{
+  display: none;
+  background-color: #bbb;
+  border: none;
+  outline: none;
+  top: 30px;
+  left: 0;
+}
+.effect:hover .arrow {
+  display: block;
+}
+.effect .arrowDown {
+  top: 6px;
+  left: calc(100% - 24px);  
+}
+.effect .arrowDown:active {
+  top: 7px;
+}
+.effect.positive {
+  border-color: forestgreen;
+}
+.effect.negative {
+  border-color: darkred;
+}
+#strength {
+  background-image: url(Images/Effect/Strength.webp);
+  background-color:  #932423;
+}
+#haste {
+  background-image: url(Images/Effect/Haste.webp);
+  background-color:  #D9C043;
+}
+#regeneration {
+  background-image: url(Images/Effect/Regeneration.webp);
+  background-color: #CD5CAB;
+}
+#resistance {
+  background-image: url(Images/Effect/Resistance.webp);
+  background-color: #99453A;
+}
+#weakness {
+  background-image: url(Images/Effect/Weakness.webp);
+  background-color:  #484D48;
+}
+#fatigue {
+  background-image: url(Images/Effect/Mining_Fatigue.webp);
+  background-color:  #4A4217;
+}
+#fireResistance {
+  background-image: url(Images/Effect/Fire_Resistance.webp);
+  background-color: #E49A3A;
+}
+#speed {
+  background-image: url(Images/Effect/Speed.webp);
+  background-color: #7CAFC6;
+}
+#slowness {
+  background-image: url(images/Effect/Slowness.webp);
+  background-color: #5A6C81;
+}
+#waterBreathing {
+  background-image: url(Images/Effect/Water_Breathing.webp);
+  background-color: #2E5299;
+}
+#invisibility {
+  background-image: url(Images/Effect/Invisibility.webp);
+  background-color: #7F8392;
+}
+#glowing {
+  background-image: url(Images/Effect/Glowing.webp);
+  background-color: #94A061;
+}
+#healthBoost {
+  background-image: url(Images/Effect/Health_Boost.webp);
+  background-color: #F87D23;
+}
+#absorption {
+  background-image: url(Images/Effect/Absorption.webp);
+  background-color: #2552A5;
+}
+#jumpBoost {
+  background-image: url(Images/Effect/Jump_Boost.webp);
+  background-color: #22FF4C;
+}
+#slowFalling {
+  background-image: url(Images/Effect/Slow_Falling.webp);
+  background-color: #F7F8E0;
+}
+#levitation {
+  background-image: url(Images/Effect/Levitation.webp);
+  background-color: #CEFFFF;
+}
+#saturation {
+  background-image: url(Images/Effect/Saturation.webp);
+  background-color: #F82421;
+}
+#hunger {
+  background-image: url(Images/Effect/Hunger.webp);
+  background-color: #587653;
+}
+#nausea {
+  background-image: url(Images/Effect/Nausea.webp);
+  background-color: #551D4A;
+}
+#nightVision {
+  background-image: url(Images/Effect/Night_Vision.webp);
+  background-color: #1F1FA1;
+}
+#blindness {
+  background-image: url(Images/Effect/Blindness.webp);
+  background-color: #1F1F23;
+}
+#darkness {
+  background-image: url(Images/Effect/Darkness.webp);
+  background-color: #292721;
+}
+#poison {
+  background-image: url(Images/Effect/Poison.webp);
+  background-color: #4E9331;
+}
+#wither {
+  background-image: url(images/Effect/Wither.webp);
+  background-color: #352A27;
+}
+#instantHealth {
+  background-image: url(Images/Effect/Instant_Health.webp);
+  background-color: #F82423;
+}
+#instantDamage {
+  background-image: url(Images/Effect/Instant_Damage.webp);
+  background-color: #430A09;
+}
+
+
+
+
 #sharpness {
   background-image: url(Images/Sharpness.webp);
 }

@@ -1,5 +1,11 @@
 //TODO: https://stackoverflow.com/questions/2455225/how-do-i-move-focus-to-next-input-with-jquery
-//TODO: Sharpness 0 is + 0.5 dmg
+// attackSpeed = 1.6 
+// T = 20/attackSpeed
+// time = 0.5
+// t = time * 20
+// d = 0.2 + ((t + 0.5) / T) ** 2 * 0.8
+// d2 = (t+0.5) / T
+// print d2
 
 var toolMaterials = ["Images/Barrier.webp",
   "Images/Oak_Planks.webp",
@@ -155,7 +161,7 @@ var enchantedBoots = ["Images/Boots/Empty_Boots.webp",
 "Images/Boots/Enchanted_Diamond_Boots.webp",
 "Images/Boots/Enchanted_Netherite_Boots.webp"]
 
-var trident = ["Images/Trident.webp", 9 , 1]
+var trident = ["Images/Trident.webp", 9 , 1.1]
 var enchantedTrident = "Images/Enchanted_Trident.webp"
 var empty = ["Images/Barrier.webp", 1, 4]
 var enchantedEmpty = "Images/Barrier.webp" //Meme
@@ -177,6 +183,17 @@ var halfArmourImage = "Images/Half_Armour.webp";
 var emptyArmourImage = "Images/Empty_Armour.webp";
 var toughnessImage = "Images/Toughness.webp";
 var halfToughnessImage = "Images/Half_Toughness.webp";
+var damageImage = "Images/Damage.webp";
+var threeQuarterDamageImage = "Images/Three_Quarter_Damage.webp";
+var halfDamageImage = "Images/Half_Damage.webp";
+var quarterDamageImage = "Images/Quarter_Damage.webp";
+var emptyDamageImage = "Images/Empty_Damage.webp";
+var cooldownImage = "Images/Hourglass2.webp";
+var halfCooldownImage = "Images/Half_Hourglass2.webp"
+var redCooldownImage = "Images/Red_Hourglass2.webp"
+var halfRedCooldownImage = "Images/Half_Red_Hourglass2.webp"
+var emptyCooldownImage = "Images/Empty_Hourglass.webp"
+
 
 var maxProfiles = 16
 var weaponProfileNum = 0
@@ -281,6 +298,7 @@ class Weapon {
     this.weakness = 0
     this.crit = false
     this.sharpness = 0
+    this.attackDelay = 0
   }
   get toolName() {
     return toolList[this.tool]
@@ -344,7 +362,7 @@ class Weapon {
     return (this.crit) ? 1.5 : 1;
   }
   get sharpnessBonus() {
-    return (this.sharpness) ? this.sharpness * 0.5 + 0.5 : 0;
+    return (this.sharpness>0) ? this.sharpness * 0.5 + 0.5 : 0;
   }
   get damage() {
     var damage = (this.baseDamage + this.strengthBonus - this.weaknessBonus) * this.critBonus + this.sharpnessBonus
@@ -662,14 +680,6 @@ $(document).ready(function () {
     }
     updateHTML()
   });
-  $("#strength").mousedown(function (event) {
-    if (event.which === 3) {
-      weapon.strength = 0
-    } else {
-      weapon.strength = weapon.strength + 1 > effectsMax ? 0 : weapon.strength + 1;
-    }
-    updateHTML()
-  });
   $("#weakness").mousedown(function (event) {
     if (event.which === 3) {
       weapon.weakness = 0
@@ -816,6 +826,10 @@ $(document).ready(function () {
       $(this).prev().val(temp).trigger('change');
     }
   });
+  $("#strength").mousedown(function (event) {
+    weapon.sharpness = $(this).val();
+    updateHTML();
+  });
   $("#sharpnessValue").change(function () {
     weapon.sharpness = $(this).val();
     updateHTML();
@@ -873,7 +887,7 @@ function armourPointImages(num) {
   return span;
 };
 function hitpointImages(num) {
-  let span = $('<span />');
+  let span = $('<span>');
   let fullLines = (num / 20) << 0;
   let extra = num % 20;
   let full = (extra / 2) << 0;
@@ -894,9 +908,8 @@ function hitpointImages(num) {
   }
   return span;
 };
-
 function toughnessPointImages(num) {
-  let span = $('<span />');
+  let span = $("<span>");
   let full = (num / 2) << 0;
   let half = num % 2;
   for (let i = 0; i < full; i++) {
@@ -908,17 +921,64 @@ function toughnessPointImages(num) {
   }
   return span;
 };
+function damagePointImages(num) {
+  let span = $("<span>");
 
+  if (num > 0) {
+    let fullLines = (num / 20) << 0;
+    for (let i = 0; i < fullLines; i++) {
+      for (let i = 0; i < 10; i++) {
+        span.append("<img src=" + damageImage + " height='18px' width='18px' >");
+      }
+      span.append("<br>");
+    }
+    let extra = num%20;
+    let full = (extra / 2) << 0;
+    let fraction = extra % 2;
+    let quarter = fraction < 1 && fraction >= 0.5;
+    let half = fraction < 1.5 && fraction >= 1;
+    let threeQuarter = fraction < 2 && fraction >= 1.5;
+
+    for (let i = 0; i < full; i++) {
+      span.append("<img src=" + damageImage + " height='18px' width='18px' >");
+    }
+    if (quarter) {
+      span.append("<img src=" + quarterDamageImage + " height='18px' width='18px' >");
+    }
+    if (half) {
+      span.append("<img src=" + halfDamageImage + " height='18px' width='18px' >");
+    }
+    if (threeQuarter) {
+      span.append("<img src=" + threeQuarterDamageImage + " height='18px' width='18px' >");
+    }
+  } else {
+    span.append("<img src=" + emptyDamageImage + " height='18px' width='18px' >");
+  }
+  return span;
+};
+function cooldownPointImages(num) {
+  num = num*20
+  let span = $('<span />');
+  let full = (num / 2) << 0;
+  let half = num % 2;
+  if (num > 0) {
+    for (let i = 0; i < full; i++) {
+      span.append("<img src=" + cooldownImage + " height='32px' width='26px' >");
+    }
+    for (let i = 0; i < half; i++) {
+      span.append("<img src=" + halfCooldownImage + " height='32px' width='26px' >");
+
+    }
+  } else {
+    span.append("<img src=" + emptyCooldownImage + " height='32x' width='26px' >");
+
+  }
+  return span;
+};
 
 function updateHTML() {
   $("#dice1").attr("title", "Left click for random weapon \nRight click to reset all")
   $("#dice2").attr("title", "Left click for random armour \nRight click to reset all")
-  //Tool
-  // switch (weapon.tool) {
-  //   case "no": case "none":
-  //     toolMaterial = 0;
-  //     break;
-  // }
   $("#selectTool1").css("background-image", "url(" +  swords[weapon.material][0] + ")")
   $("#selectTool2").css("background-image", "url(" +  axes[weapon.material][0] + ")")
   $("#selectTool3").css("background-image", "url(" +  pickaxes[weapon.material][0] + ")")
@@ -929,23 +989,33 @@ function updateHTML() {
 
 
   $("#toolMaterial").css("background-image", "url(" + weapon.materialImage + ")");
+  //Damage
+  $("#weaponDamage").empty().append(damagePointImages(weapon.damage)).attr("title", weapon.damage+" damage");
   $("#baseDamage").text(weapon.baseDamage)
   $("#attackSpeed").text(weapon.attackSpeed.toFixed(1))
-  $("#attackCooldown").text(weapon.attackCooldown.toFixed(2));
+  $("#attackCooldown").empty().append(cooldownPointImages(weapon.attackCooldown)).attr("title", weapon.attackCooldown+"s attack cooldown");
   $("#toolDescription").text(weapon.name);
   //Strength
   $("#strengthLevel").text(weapon.strength);
   $("#strengthBonus").text(weapon.strengthBonus);
-  $("#strength").css("background-image", "url(" + weapon.strengthImage + ")");
-  $("#strength").css("background-color", weapon.effectColor(weapon.strength));
+  // $("#strength").css("background-image", "url(" + weapon.strengthImage + ")");
+  // $("#strength").css("background-color", weapon.effectColor(weapon.strength));
   //Weakness
   $("#weaknessLevel").text(weapon.weakness);
   $("#weaknessBonus").text(weapon.weaknessBonus);
-  $("#weakness").css("background-image", "url(" + weapon.weaknessImage + ")");
-  $("#weakness").css("background-color", weapon.effectColor(weapon.weakness));
+  // $("#weakness").css("background-image", "url(" + weapon.weaknessImage + ")");
+  // $("#weakness").css("background-color", weapon.effectColor(weapon.weakness));
   //Crit
-  $("#crit").css("background-image", "url(" + weapon.critImage + ")");
-  (weapon.crit) ? $("#critBool").text("Crit") : $("#critBool").text("No Crit");
+  // $("#crit").css("background-image", "url(" + weapon.critImage + ")");
+  if (weapon.crit == true){
+    $("#critBool").text("Crit");
+    $("#crit").css("opacity",1);
+    $("#crit").attr("title", "Critical hit\n x1.5 base damage");
+  } else {
+    $("#critBool").text("No Crit");
+    $("#crit").css("opacity",0.3);
+    $("#crit").attr("title", "No crit");
+  }
   $("#critBonus").text(weapon.critBonus);
 
   //Sharpness
@@ -1033,10 +1103,10 @@ function updateHTML() {
   //Resistance
   $("#resistanceLevel").text(armour.resistance);
   $("#resistanceBonus").text(armour.resistanceBonus);
-  $("#resistance").css("background-image", "url(" + armour.resistanceImage + ")");
-  $("#resistance").css("background-color", armour.effectColor(armour.resistance));
+  // $("#resistance").css("background-image", "url(" + armour.resistanceImage + ")");
+  // $("#resistance").css("background-color", armour.effectColor(armour.resistance));
   //Hitpoints
-  $("#totalHitpoints").empty().append(hitpointImages(armour.hitpoints)).attr("title", pluralise(armour.hitpoints / 2, "heart"));
+  $("#totalHitpoints").empty().append(hitpointImages(armour.hitpoints)).attr("title", pluralise(armour.hitpoints, "hitpoint"));
   $("#hitpointsValue").attr("value", armour.hitpoints);
   $(".hitpointBreak").css( "margin-top", Math.min(8,(armour.hitpoints-1)/20 << 0)*-2+"px"); //Clump lines of hearts closer where there are more
 
