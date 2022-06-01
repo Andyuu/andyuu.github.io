@@ -223,7 +223,7 @@ var tool = 0
 var baseDamage = 1
 var attackSpeed = 4
 //Effects order: Strength, Weakness, Resistance
-var effect = [0, 0, 0]
+// var effect = [0, 0, 0]
 var effectsMax = 5
 var maxHitpoints = 99 //Doesnt work
 var effectBonus = [0, 0, 0]
@@ -243,12 +243,24 @@ var damageDealtPerSecond = 2
 var hitsToKill = 20
 var timeToKill = 10
 
+const varToString = varObj => Object.keys(varObj)[0];
+const varToTitle = varObj => {
+  let word =  Object.keys(varObj)[0].replace(/([A-Z])/g, " $1")
+  return  word.charAt(0).toUpperCase() + word.slice(1)
+};
+const varToWords = varObj => {
+  return Object.keys(varObj)[0].replace(/([A-Z])/g, " $1").toLowerCase()
+};
 const random = (max = 100) => {
   return Math.floor(Math.random() * max)
 };
 const pluralise = (count, noun, suffix = 's') =>
   `${count} ${noun}${count !== 1 ? suffix : ''}`;
 //Unused
+function round(value, precision) {
+  var multiplier = Math.pow(10, precision || 0);
+  return Math.round(value * multiplier) / multiplier;
+};
 function reset() {
   armourMaterialList = ["None", "Leather", "Golden", "Chainmail", "Iron", "Diamond", "Netherite"]
   armourNames = ["None", "None", "None", "None"]
@@ -289,6 +301,292 @@ function reset() {
   hitsToKill = 20
   timeToKill = 10
 };
+class Effect{
+  constructor() {
+    this.strength = 0
+    this.haste = 0
+    this.regeneration = 0
+    this.resistance = 0
+    this.weakness = 0
+    this.fatigue = 0
+    this.fireResistance = 0
+    this.fatigue = 0
+    this.speed = 0
+    this.slowness = 0
+    this.waterBreathing = 0
+    this.invisibility = 0
+    this.glowing = 0
+    this.healthBoost = 0
+    this.absorption = 0
+    this.jumpBoost = 0
+    this.slowFalling = 0
+    this.levitation = 0
+    this.saturation = 0
+    this.hunger = 0
+    this.nausea = 0
+    this.nightVision = 0
+    this.blindness = 0
+    this.darkness = 0
+    this.poison = 0
+    this.wither = 0
+    // this.instantHealth = 0
+    // this.instantDamage = 0
+  }
+  bonus(effect, secondary=false, sign=false, roundPrecision){
+    effect = effect.toLowerCase().replace(/\s+/g, ''); //Remove whitespace
+    let bonus = 0
+    let multiplicitive = false
+    switch(effect){
+      case "strength":
+        bonus =  this.strength * 3
+        break;
+      case "weakness":
+        bonus =  this.weakness * -4
+        break;
+      case "haste":
+        if (secondary){
+          bonus = 1 + this.haste * 0.2
+          multiplicitive = true
+        } else {
+          bonus = 1 + this.haste * 0.1
+          multiplicitive = true
+        }
+        break;
+      case "miningfatigue": case "fatigue":
+        if (secondary){
+          bonus = 0.3 ** this.fatigue
+          multiplicitive = true
+        } else {
+          bonus = this.fatigue < 10 ? 1 - this.fatigue * 0.1 : 0
+          multiplicitive = true
+        }
+        break;
+      case "regeneration": case "regen":
+        if (this.regeneration > 0 ) {
+          bonus = this.regeneration < 6 ? 20/(Math.floor(100 / (2 ** this.regeneration) )) : 20
+        } else {
+          bonus = 0
+        }
+        break;
+      case "resistance": case "res":
+        bonus = this.resistance < 5 ? 1 - this.resistance * 0.2 : 0
+        multiplicitive = true
+        break;
+      case "fireresistance": case "fire": case "fireres":
+        if (this.fireResistance) {
+          bonus = 0
+        } else {
+          bonus = 1
+        }
+        multiplicitive = true
+        break;
+      case "speed":
+        bonus = 1 + this.speed * 0.2
+        multiplicitive = true
+        break;
+      case "slowness":
+        bonus = 1 - this.slowness * 0.2
+        multiplicitive = true
+        break;
+      case "waterbreathing": case "breathing":
+        if (this.waterBreathing > 0){
+          bonus = "indefinite"
+        } else {
+          bonus = "normal"
+        }
+        break;
+      case "invisibility":
+        if (this.invisibility > 0 ){
+          // Add mob detection range
+          bonus = "hidden"
+        } else {
+          bonus = "visible"
+        }
+        break;
+      case "glowing":
+        if (this.glowing > 0 ){
+          bonus = ""
+        } else {
+          bonus = "no "
+        }
+        break;
+      case "healthboost":
+        bonus = 4 * this.healthBoost
+        break;
+      case "absorption":
+        bonus = 4 * this.absorption
+        break;
+      case "jumpboost":
+        if (secondary) {
+          bonus = -this.jumpBoost
+        } else {
+          bonus = 1.25 + this.jumpBoost * 0.625;
+        }
+        break;
+      case "slowfalling":
+        if (this.slowFalling){
+          bonus = "slow"
+        } else {
+          bonus = "normal"
+        }
+        break;
+      case "levitation":
+        bonus = 0.9 * this.levitation
+        break;
+      case "saturation":
+        if (secondary) {
+          bonus = 2 * this.saturation
+        } else {
+          bonus = this.saturation
+        }
+        break;
+      case "hunger":
+        bonus = -0.025 * this.hunger 
+        break;
+      case "nausea":
+        if (this.nausea) {
+          bonus = ""
+        } else {
+          bonus = "no "
+        }
+        break;
+      case "nightvision":
+        if (this.nightVision) {
+          bonus = ""
+        } else {
+          bonus = "no "
+        }
+        break;
+      case "blindness":
+        if (this.blindness) {
+          bonus = ""
+        } else {
+          bonus = "no "
+        }
+        break;
+      case "darkness":
+        if (this.darkness) {
+          bonus = ""
+        } else {
+          bonus = "no "
+        }
+        break;
+      case "poison":
+        switch(this.poison) {
+          case "0": case 0:
+            bonus = 0
+            break;
+          case "1":
+            bonus = -20/25
+            break;
+          case "2": case "3": case "4":
+            bonus = -20/12
+            break;
+          case "5":
+            bonus = -20/10
+            break;
+          default:
+            bonus = -20/10
+            break;
+        }
+        break;
+      case "wither":
+        switch(this.wither) {
+          case "0": case 0:
+            bonus = 0
+            break;
+          case "1":
+            bonus = -20/40
+            break;
+          case "2":
+            bonus = -20/20
+            break;
+          case "3": case "4": case "5":
+            bonus = -20/10
+            break;
+          default:
+            bonus = -20/10
+            break;
+        }
+        break;
+    }
+    if (roundPrecision) {
+      if (typeof bonus == "number") {
+        bonus = round(bonus,roundPrecision)
+      }
+    }
+    if (sign){
+      if (multiplicitive) {
+        bonus = bonus + "x"
+      }
+      else {
+        bonus = ( bonus < 0 ? "" : "+" ) + bonus
+      }
+    }
+    return bonus
+  }
+  description(effectName, secondary=false) {
+    effectName = effectName.toLowerCase().replace(/\s+/g, '');
+    let bonus = this.bonus(effectName, false, true, 8)
+    let bonusNoSign = this.bonus(effectName, false, false, 8)
+    let bonus2 = this.bonus(effectName, true, true, 8)
+    switch(effectName){
+      case "strength": case "weakness":
+        return bonus + " damage"
+      case "haste": case "miningfatigue": case "fatigue":
+        if (secondary) {
+          return bonus2 + " mining speed"
+        } else {
+        return bonus + " attack speed"
+        }
+      case "regeneration": case "regen": case "poison": case "wither":
+        return bonus + " health/second"
+      case "resistance": case "res":
+        return bonus + " damage received"
+      case "fireresistance": case "fire": case "fireres":
+        return bonus + " fire damage received"
+      case "speed": case "slowness":
+        return bonus + " walking speed"
+      case "waterbreathing": case "breathing":
+        return bonusNoSign + " underwater breathing"
+      case "invisibility":
+        return bonusNoSign + " player"
+      case "glowing":
+        return bonusNoSign + "glowing effect"
+      case "healthboost":
+        return bonus + " extra health"
+      case "absorption":
+        return bonus + " extra temporary health"
+      case "jumpboost":
+        if (secondary) {
+          return bonus2 + " fall damage"
+        } else {
+          return bonusNoSign + " blocks jump height"
+        }
+      case "slowfalling":
+        return bonusNoSign + " falling speed"
+      case "levitation":
+        return bonus + " blocks/second height"
+      case "saturation":
+        if (secondary) {
+          return pluralise(bonus2,"hunger point")+"/tick"
+        } else {
+          return pluralise(bonus,"saturation point")+"/tick"
+        }
+      case "hunger":
+        return bonus + " hunger/second"
+      case "nausea":
+        return bonusNoSign + "nausea effect"
+      case "nightvision":
+        return bonusNoSign + "night vision effect"
+      case "blindness":
+        return bonusNoSign + "blindness effect"
+      case "darkness":
+        return bonus + "darkness effect"
+    }
+
+  }
+}
 
 class Weapon {
   constructor() {
@@ -541,6 +839,7 @@ class Results {
 }
 const weapon = new Weapon();
 const armour = new Armour();
+const effect = new Effect();
 const results = new Results(weapon, armour);
 
 $(document).ready(function () {
@@ -680,22 +979,6 @@ $(document).ready(function () {
     }
     updateHTML()
   });
-  $("#weakness").mousedown(function (event) {
-    if (event.which === 3) {
-      weapon.weakness = 0
-    } else {
-      weapon.weakness = weapon.weakness + 1 > effectsMax ? 0 : weapon.weakness + 1;
-    }
-    updateHTML()
-  });
-  $("#resistance").mousedown(function (event) {
-    if (event.which === 3) {
-      armour.resistance = 0
-    } else {
-      armour.resistance = armour.resistance + 1 > effectsMax ? 0 : armour.resistance + 1;
-    }
-    updateHTML();
-  });
   $("#crit").mousedown(function (event) {
     if (event.which === 3) {
       weapon.crit = false
@@ -826,8 +1109,86 @@ $(document).ready(function () {
       $(this).prev().val(temp).trigger('change');
     }
   });
-  $("#strength").mousedown(function (event) {
-    weapon.sharpness = $(this).val();
+  $(".effect .inputValue").change(function () {
+    let value = $(this).val();
+    let effectName = $(this).parent().attr('class').split(' ')[0];
+    switch(effectName){
+      case "strength":
+        effect.strength = value
+        break;
+      case "weakness":
+        effect.weakness = value
+        break;
+      case "haste":
+        effect.haste = value
+        break;
+      case "fatigue":
+        effect.fatigue = value
+        break;
+      case "regeneration":
+        effect.regeneration = value
+        break;
+      case "resistance":
+        effect.resistance = value
+        break;
+      case "fireresistance":
+        effect.fireResistance = value
+        break;
+      case "speed":
+        effect.speed = value
+        break;
+      case "slowness":
+        effect.slowness = value
+        break;
+      case "waterbreathing":
+        effect.waterBreathing = value
+        break;
+      case "invisibility":
+        effect.invisibility = value
+        break;
+      case "glowing":
+        effect.glowing = value
+        break;
+      case "healthboost":
+        effect.healthBoost = value
+        break;
+      case "absorption":
+        effect.absorption = value
+        break;
+      case "jumpboost":
+        effect.jumpBoost = value
+        break;
+      case "slowfalling":
+        effect.slowFalling = value
+        break;
+      case "levitation":
+        effect.levitation = value
+        break;
+      case "saturation":
+        effect.saturation = value
+        break;
+      case "hunger":
+        effect.hunger = value
+        break;
+      case "nausea":
+        effect.nausea = value
+        break;
+      case "nightvision":
+        effect.nightVision = value
+        break;
+      case "blindness":
+        effect.blindness = value
+        break;
+      case "darkness":
+        effect.darkness = value
+        break;
+      case "poison":
+        effect.poison = value
+        break;
+      case "wither":
+        effect.wither = value
+        break;
+      }
     updateHTML();
   });
   $("#sharpnessValue").change(function () {
@@ -977,6 +1338,29 @@ function cooldownPointImages(num) {
 };
 
 function updateHTML() {
+  $(".effect").each(function() {
+    let effectName = $(this).attr('class').split(' ')[0];
+    let description = effect.description(effectName)
+    let description2 = effect.description(effectName, true)
+    if (description == description2) {
+      $(this).attr("title",description)
+    } else {
+      $(this).attr("title",description +"\n"+description2)
+    }
+    if ($(this).find(".inputValue").val() == 0) {
+      $(this).addClass("off")
+    } else {
+      $(this).removeClass("off")
+      if ($(this).parent().attr("id") == "effectTable") {
+        $(this).clone(true, true).appendTo("#weapon");
+      }
+
+    }
+    if ($(this).parent().attr("id") == "weapon") {
+      $(this).remove()
+    }
+  });
+
   $("#dice1").attr("title", "Left click for random weapon \nRight click to reset all")
   $("#dice2").attr("title", "Left click for random armour \nRight click to reset all")
   $("#selectTool1").css("background-image", "url(" +  swords[weapon.material][0] + ")")
@@ -998,15 +1382,10 @@ function updateHTML() {
   //Strength
   $("#strengthLevel").text(weapon.strength);
   $("#strengthBonus").text(weapon.strengthBonus);
-  // $("#strength").css("background-image", "url(" + weapon.strengthImage + ")");
-  // $("#strength").css("background-color", weapon.effectColor(weapon.strength));
   //Weakness
   $("#weaknessLevel").text(weapon.weakness);
   $("#weaknessBonus").text(weapon.weaknessBonus);
-  // $("#weakness").css("background-image", "url(" + weapon.weaknessImage + ")");
-  // $("#weakness").css("background-color", weapon.effectColor(weapon.weakness));
   //Crit
-  // $("#crit").css("background-image", "url(" + weapon.critImage + ")");
   if (weapon.crit == true){
     $("#critBool").text("Crit");
     $("#crit").css("opacity",1);
@@ -1419,14 +1798,36 @@ function loadModalHandlers() {
   });
 };
 
-function round(value, precision) {
-  var multiplier = Math.pow(10, precision || 0);
-  return Math.round(value * multiplier) / multiplier;
-};
 
 var enableButton = function (ele) {
   $(ele).removeAttr("disabled");
 }
+function makeEffectList() {
+  let effects = ["strength","haste","regeneration","resistance","weakness","fatigue","fireResistance","speed",
+  "slowness","waterBreathing","invisibility","glowing","healthBoost","absorption","jumpBoost","slowFalling",
+  "levitation","saturation","hunger","nausea","nightVision","blindness","darkness","poison","wither"]
+  
+  for (i = 0; i < effects.length; i++) {
+    var effectDiv = $("<div>").addClass(effects[i] + " number effect")
+    if (i <= 3) {
+      effectDiv.addClass("positive")
+    }
+    else if ( i > 3 && i <= 5 ){
+      effectDiv.addClass("negative")
+    }
+
+    var arrowUpButton = $("<button>").addClass("arrow arrowUp")
+    arrowUpButton.append($("<p>").text("+"))
+    arrowUpButton.appendTo(effectDiv)
+    var effectInput = $("<input>").addClass("inputValue").prop("type","text").attr("value", 0);
+    effectInput.appendTo(effectDiv)
+    var arrowDownButton = $("<button>").addClass("arrow arrowDown")
+    arrowDownButton.append($("<p>").text("-"))
+    arrowDownButton.appendTo(effectDiv)
+    effectDiv.appendTo("#effectTable")
+  }
+}
+makeEffectList()
 
 function setWeaponProfile(name = "Profile-" + weaponProfileNum, create = false, weaponProfile) {
 

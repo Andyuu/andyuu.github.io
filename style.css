@@ -1,9 +1,42 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
-body {
+
+header {
   background-color: #222;
+  font-family: Bungee;
+  text-align: center;
+  color: hsl(177, 71%, 38%)
+}
+h1 { 
+  margin: 0;
+  text-align: center;
+  font-size: 35px;
+  font-family: Bungee;
+}
+header h1 {
+  margin: 0;
+  color: white;
+}
+header h1::before {
+  content: "Andy's";
+  font-size: 25px;
+  vertical-align: middle;
+  color: hsl(138, 71%, 38%);
+  padding-right: 5px;
+}
+/* header h1::after {
+  content: "(Java)";
+  font-size: 25px;
+  vertical-align: middle;
+  color: hsl(41, 77%, 42%);
+  padding-left: 5px;
+} */
+body {
+  background-color: #111;
   font-family: Montserrat;
   color: White;
+  width: 100%;
+  margin: auto;
 }
 
 .container {
@@ -13,10 +46,6 @@ body {
   margin: 0;
   box-sizing: border-box;
   position: relative;
-}
-h1 {
-  text-align: center;
-  font-size: 35px;
 }
 #middleHalf {
   width: 20%;
@@ -353,7 +382,7 @@ th, td {
   background-image: url(Images/Effects.webp);
   background-size: 100%;
 }
-#effectTable {
+#effectTable{
   display: none;
   position: absolute;
   left: 100%;
@@ -372,7 +401,7 @@ th, td {
   display: flex;
 }
 .effect {
-  position: static;
+  position: relative;
   background-position: center;
   background-size: 36px;
   height: 50px;
@@ -380,15 +409,31 @@ th, td {
   border-radius: 10px;
   float: right;
   border: 5px solid #555;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+.effect.off {
+  opacity: 0.3;
+}
+.effect.off:hover {
+  opacity: 0.8;
 }
 .effect .inputValue {
-  top: calc(100% - 40px);
+  top: 0;
   display: none;
-  width: 60%;
-  left: 40%;
+  width: 100%;
+  color: white;
 }
 .effect .inputValue:focus {
-  border-color: inherit;
+  border: none;
+}
+.effect:hover {
+  background-color: #333 !important;
+  /* background-image: none !important; */
+  background-blend-mode: multiply;
+}
+.effect:hover .inputValue{
+  display: block;
 }
 .effect .arrow{
   display: none;
@@ -405,6 +450,9 @@ th, td {
   top: 6px;
   left: calc(100% - 24px);  
 }
+.effect .arrow:active {
+  top: calc(60% + 1px);
+}
 .effect .arrowDown:active {
   top: 7px;
 }
@@ -414,111 +462,111 @@ th, td {
 .effect.negative {
   border-color: darkred;
 }
-#strength {
+.strength {
   background-image: url(Images/Effect/Strength.webp);
-  background-color:  #932423;
+  background-color:  #952523;
 }
-#haste {
+.haste {
   background-image: url(Images/Effect/Haste.webp);
   background-color:  #D9C043;
 }
-#regeneration {
+.regeneration {
   background-image: url(Images/Effect/Regeneration.webp);
   background-color: #CD5CAB;
 }
-#resistance {
+.resistance {
   background-image: url(Images/Effect/Resistance.webp);
   background-color: #99453A;
 }
-#weakness {
+.weakness {
   background-image: url(Images/Effect/Weakness.webp);
   background-color:  #484D48;
 }
-#fatigue {
+.fatigue {
   background-image: url(Images/Effect/Mining_Fatigue.webp);
   background-color:  #4A4217;
 }
-#fireResistance {
+.fireResistance {
   background-image: url(Images/Effect/Fire_Resistance.webp);
   background-color: #E49A3A;
 }
-#speed {
+.speed {
   background-image: url(Images/Effect/Speed.webp);
   background-color: #7CAFC6;
 }
-#slowness {
+.slowness {
   background-image: url(Images/Effect/Slowness.webp);
   background-color: #5A6C81;
 }
-#waterBreathing {
+.waterBreathing {
   background-image: url(Images/Effect/Water_Breathing.webp);
   background-color: #2E5299;
 }
-#invisibility {
+.invisibility {
   background-image: url(Images/Effect/Invisibility.webp);
   background-color: #7F8392;
 }
-#glowing {
+.glowing {
   background-image: url(Images/Effect/Glowing.webp);
   background-color: #94A061;
 }
-#healthBoost {
+.healthBoost {
   background-image: url(Images/Effect/Health_Boost.webp);
   background-color: #F87D23;
 }
-#absorption {
+.absorption {
   background-image: url(Images/Effect/Absorption.webp);
   background-color: #2552A5;
 }
-#jumpBoost {
+.jumpBoost {
   background-image: url(Images/Effect/Jump_Boost.webp);
   background-color: #22FF4C;
 }
-#slowFalling {
+.slowFalling {
   background-image: url(Images/Effect/Slow_Falling.webp);
   background-color: #F7F8E0;
 }
-#levitation {
+.levitation {
   background-image: url(Images/Effect/Levitation.webp);
   background-color: #CEFFFF;
 }
-#saturation {
+.saturation {
   background-image: url(Images/Effect/Saturation.webp);
   background-color: #F82421;
 }
-#hunger {
+.hunger {
   background-image: url(Images/Effect/Hunger.webp);
   background-color: #587653;
 }
-#nausea {
+.nausea {
   background-image: url(Images/Effect/Nausea.webp);
   background-color: #551D4A;
 }
-#nightVision {
+.nightVision {
   background-image: url(Images/Effect/Night_Vision.webp);
   background-color: #1F1FA1;
 }
-#blindness {
+.blindness {
   background-image: url(Images/Effect/Blindness.webp);
   background-color: #1F1F23;
 }
-#darkness {
+.darkness {
   background-image: url(Images/Effect/Darkness.webp);
   background-color: #292721;
 }
-#poison {
+.poison {
   background-image: url(Images/Effect/Poison.webp);
   background-color: #4E9331;
 }
-#wither {
+.wither {
   background-image: url(Images/Effect/Wither.webp);
   background-color: #352A27;
 }
-#instantHealth {
+.instantHealth {
   background-image: url(Images/Effect/Instant_Health.webp);
   background-color: #F82423;
 }
-#instantDamage {
+.instantDamage {
   background-image: url(Images/Effect/Instant_Damage.webp);
   background-color: #430A09;
 }

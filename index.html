@@ -7,11 +7,15 @@
   <link rel="shortcut icon" href="Images/Sword/Netherite_Sword.webp">
   <link rel='stylesheet' href='style.css'>
 </head>
+<header>
+  <h1>Minecraft Fight Simulator</h1>
+  Left and Right click boxes to change gear! Save setups with "Profiles" to keep them for later.
+
+</header>
+
 
 <body>
 
-  Left and Right click boxes to change gear! Save setups with "Profiles" to keep them for later.
-  <h1>Minecraft Java</h1>
   <!-- WEAPONS THING -->
   <div class="container" id="leftHalf">
     <h1 id="weapon">Weapon</h1>
@@ -25,8 +29,8 @@
         <td style="position: relative;">
           <div class="number enchantment" id="crit"></div>
           <div id="effects"></div>
-          <div id="effectTable">
-            <div class="number enchantment effect positive" id="strength">
+          <!-- <div id="effectTable">
+            <div class="number effect positive" id="strength">
               <button class="arrow arrowUp" id="strengthUp">
                 <p>+</p>
               </button>
@@ -35,7 +39,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect positive" id="haste">
+            <div class="number effect positive" id="haste">
               <button class="arrow arrowUp" id="hasteUp">
                 <p>+</p>
               </button>
@@ -44,7 +48,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect positive" id="regeneration">
+            <div class="number effect positive" id="regeneration">
               <button class="arrow arrowUp" id="regenerationUp">
                 <p>+</p>
               </button>
@@ -53,7 +57,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect positive" id="resistance">
+            <div class="number effect positive" id="resistance">
               <button class="arrow arrowUp" id="resistanceUp">
                 <p>+</p>
               </button>
@@ -62,7 +66,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect negative" id="weakness">
+            <div class="number effect negative" id="weakness">
               <button class="arrow arrowUp" id="weaknessUp">
                 <p>+</p>
               </button>
@@ -71,7 +75,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect negative" id="fatigue">
+            <div class="number effect negative" id="fatigue">
               <button class="arrow arrowUp" id="fatigueUp">
                 <p>+</p>
               </button>
@@ -80,7 +84,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="fireResistance">
+            <div class="number effect unaffecting" id="fireResistance">
               <button class="arrow arrowUp" id="fireResistanceUp">
                 <p>+</p>
               </button>
@@ -89,7 +93,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="speed">
+            <div class="number effect unaffecting" id="speed">
               <button class="arrow arrowUp" id="speedUp">
                 <p>+</p>
               </button>
@@ -98,7 +102,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="slowness">
+            <div class="number effect unaffecting" id="slowness">
               <button class="arrow arrowUp" id="slownessUp">
                 <p>+</p>
               </button>
@@ -107,7 +111,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="waterBreathing">
+            <div class="number effect unaffecting" id="waterBreathing">
               <button class="arrow arrowUp" id="waterBreathingUp">
                 <p>+</p>
               </button>
@@ -116,7 +120,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="invisibility">
+            <div class="number effect unaffecting" id="invisibility">
               <button class="arrow arrowUp" id="invisibilityUp">
                 <p>+</p>
               </button>
@@ -125,7 +129,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="glowing">
+            <div class="number effect unaffecting" id="glowing">
               <button class="arrow arrowUp" id="glowingUp">
                 <p>+</p>
               </button>
@@ -134,7 +138,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="healthBoost">
+            <div class="number effect unaffecting" id="healthBoost">
               <button class="arrow arrowUp" id="healthBoostUp">
                 <p>+</p>
               </button>
@@ -143,7 +147,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="absorption">
+            <div class="number effect unaffecting" id="absorption">
               <button class="arrow arrowUp" id="absorptionUp">
                 <p>+</p>
               </button>
@@ -152,7 +156,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="jumpBoost">
+            <div class="number effect unaffecting" id="jumpBoost">
               <button class="arrow arrowUp" id="jumpBoostUp">
                 <p>+</p>
               </button>
@@ -161,7 +165,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="slowFalling">
+            <div class="number effect unaffecting" id="slowFalling">
               <button class="arrow arrowUp" id="slowFallingUp">
                 <p>+</p>
               </button>
@@ -170,7 +174,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="levitation">
+            <div class="number effect unaffecting" id="levitation">
               <button class="arrow arrowUp" id="levitationUp">
                 <p>+</p>
               </button>
@@ -179,7 +183,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="saturation">
+            <div class="number effect unaffecting" id="saturation">
               <button class="arrow arrowUp" id="saturationUp">
                 <p>+</p>
               </button>
@@ -188,7 +192,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="hunger">
+            <div class="number effect unaffecting" id="hunger">
               <button class="arrow arrowUp" id="hungerUp">
                 <p>+</p>
               </button>
@@ -197,7 +201,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="nausea">
+            <div class="number effect unaffecting" id="nausea">
               <button class="arrow arrowUp" id="nauseaUp">
                 <p>+</p>
               </button>
@@ -206,7 +210,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="nightVision">
+            <div class="number effect unaffecting" id="nightVision">
               <button class="arrow arrowUp" id="nightVisionUp">
                 <p>+</p>
               </button>
@@ -215,7 +219,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="blindness">
+            <div class="number effect unaffecting" id="blindness">
               <button class="arrow arrowUp" id="blindnessUp">
                 <p>+</p>
               </button>
@@ -224,7 +228,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="darkness">
+            <div class="number effect unaffecting" id="darkness">
               <button class="arrow arrowUp" id="darknessUp">
                 <p>+</p>
               </button>
@@ -233,7 +237,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="poison">
+            <div class="number effect unaffecting" id="poison">
               <button class="arrow arrowUp" id="poisonUp">
                 <p>+</p>
               </button>
@@ -242,7 +246,7 @@
                 <p>-</p>
               </button>
             </div>
-            <div class="number enchantment effect unaffecting" id="wither">
+            <div class="number effect unaffecting" id="wither">
               <button class="arrow arrowUp" id="witherUp">
                 <p>+</p>
               </button>
@@ -251,7 +255,8 @@
                 <p>-</p>
               </button>
             </div>
-          </div>
+          </div> -->
+          <div id="effectTable"></div>
         </td>
       </tr>
       <tr>
