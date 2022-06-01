@@ -1112,7 +1112,7 @@ $(document).ready(function () {
   $(".effect .inputValue").change(function () {
     let value = $(this).val();
     let effectName = $(this).parent().attr('class').split(' ')[0];
-    switch(effectName){
+    switch(effectName.toLowerCase()){
       case "strength":
         effect.strength = value
         break;
@@ -1188,7 +1188,10 @@ $(document).ready(function () {
       case "wither":
         effect.wither = value
         break;
-      }
+    }
+    if ($(this).parent().parent().attr("id") != "effectTable") {
+      $("#effectTable ."+effectName+ " .inputValue").val(value)
+    }
     updateHTML();
   });
   $("#sharpnessValue").change(function () {
@@ -1352,7 +1355,7 @@ function updateHTML() {
     } else {
       $(this).removeClass("off")
       if ($(this).parent().attr("id") == "effectTable") {
-        $(this).clone(true, true).appendTo("#weapon");
+        $(this).clone(true).appendTo("#weapon");
       }
 
     }
