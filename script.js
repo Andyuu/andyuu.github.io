@@ -7,6 +7,7 @@
 // d2 = (t+0.5) / T
 // print d2
 
+//Input validation on clones
 var toolMaterials = ["Images/Barrier.webp",
   "Images/Oak_Planks.webp",
   "Images/Gold_Ingot.webp",
@@ -243,17 +244,21 @@ var damageDealtPerSecond = 2
 var hitsToKill = 20
 var timeToKill = 10
 
-const varToString = varObj => Object.keys(varObj)[0];
-const varToTitle = varObj => {
-  let word =  Object.keys(varObj)[0].replace(/([A-Z])/g, " $1")
-  return  word.charAt(0).toUpperCase() + word.slice(1)
-};
-const varToWords = varObj => {
-  return Object.keys(varObj)[0].replace(/([A-Z])/g, " $1").toLowerCase()
-};
-const random = (max = 100) => {
+// const varToString = varObj => Object.keys(varObj)[0];
+// const varToTitle = varObj => {
+//   let word =  Object.keys(varObj)[0].replace(/([A-Z])/g, " $1")
+//   return  word.charAt(0).toUpperCase() + word.slice(1)
+// };
+// const varToWords = varObj => {
+//   return Object.keys(varObj)[0].replace(/([A-Z])/g, " $1").toLowerCase()
+// };
+function camelToTitle(text) {
+  text = text.replace(/([A-Z])/g, " $1");
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+function random(max = 100) {
   return Math.floor(Math.random() * max)
-};
+}
 const pluralise = (count, noun, suffix = 's') =>
   `${count} ${noun}${count !== 1 ? suffix : ''}`;
 //Unused
@@ -261,6 +266,18 @@ function round(value, precision) {
   var multiplier = Math.pow(10, precision || 0);
   return Math.round(value * multiplier) / multiplier;
 };
+94
+
+function romanNumeral(num) {
+  var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},roman = '',i;
+  for ( i in lookup ) {
+    while ( num >= lookup[i] ) {
+      roman += i;
+      num -= lookup[i];
+    }
+  }
+  return roman;
+}
 function reset() {
   armourMaterialList = ["None", "Leather", "Golden", "Chainmail", "Iron", "Diamond", "Netherite"]
   armourNames = ["None", "None", "None", "None"]
@@ -308,9 +325,8 @@ class Effect{
     this.regeneration = 0
     this.resistance = 0
     this.weakness = 0
-    this.fatigue = 0
+    this.miningFatigue = 0
     this.fireResistance = 0
-    this.fatigue = 0
     this.speed = 0
     this.slowness = 0
     this.waterBreathing = 0
@@ -352,12 +368,12 @@ class Effect{
           multiplicitive = true
         }
         break;
-      case "miningfatigue": case "fatigue":
+      case "miningfatigue":
         if (secondary){
-          bonus = 0.3 ** this.fatigue
+          bonus = 0.3 ** this.miningFatigue
           multiplicitive = true
         } else {
-          bonus = this.fatigue < 10 ? 1 - this.fatigue * 0.1 : 0
+          bonus = this.miningFatigue < 10 ? 1 - this.miningFatigue * 0.1 : 0
           multiplicitive = true
         }
         break;
@@ -533,7 +549,7 @@ class Effect{
     switch(effectName){
       case "strength": case "weakness":
         return bonus + " damage"
-      case "haste": case "miningfatigue": case "fatigue":
+      case "haste": case "miningfatigue":
         if (secondary) {
           return bonus2 + " mining speed"
         } else {
@@ -1112,6 +1128,7 @@ $(document).ready(function () {
   $(".effect .inputValue").change(function () {
     let value = $(this).val();
     let effectName = $(this).parent().attr('class').split(' ')[0];
+    let numeral = romanNumeral(value).length <= 6 ? romanNumeral(value) : value
     switch(effectName.toLowerCase()){
       case "strength":
         effect.strength = value
@@ -1122,8 +1139,8 @@ $(document).ready(function () {
       case "haste":
         effect.haste = value
         break;
-      case "fatigue":
-        effect.fatigue = value
+      case "miningfatigue":
+        effect.miningFatigue = value
         break;
       case "regeneration":
         effect.regeneration = value
@@ -1189,8 +1206,10 @@ $(document).ready(function () {
         effect.wither = value
         break;
     }
+    $(this).parent().attr("data-before", numeral);
     if ($(this).parent().parent().attr("id") != "effectTable") {
       $("#effectTable ."+effectName+ " .inputValue").val(value)
+      $("#effectTable ."+effectName).attr("data-before", numeral);
     }
     updateHTML();
   });
@@ -1346,20 +1365,20 @@ function updateHTML() {
     let description = effect.description(effectName)
     let description2 = effect.description(effectName, true)
     if (description == description2) {
-      $(this).attr("title",description)
+      $(this).attr("title", camelToTitle(effectName) +"\n"+ description)
     } else {
-      $(this).attr("title",description +"\n"+description2)
+      $(this).attr("title", camelToTitle(effectName) +"\n"+description +"\n"+ description2)
     }
     if ($(this).find(".inputValue").val() == 0) {
       $(this).addClass("off")
     } else {
       $(this).removeClass("off")
       if ($(this).parent().attr("id") == "effectTable") {
-        $(this).clone(true).appendTo("#weapon");
+        $(this).clone(true).appendTo("#effectLine");
       }
 
     }
-    if ($(this).parent().attr("id") == "weapon") {
+    if ($(this).parent().attr("id") == "effectLine") {
       $(this).remove()
     }
   });
@@ -1806,7 +1825,7 @@ var enableButton = function (ele) {
   $(ele).removeAttr("disabled");
 }
 function makeEffectList() {
-  let effects = ["strength","haste","regeneration","resistance","weakness","fatigue","fireResistance","speed",
+  let effects = ["strength","haste","regeneration","resistance","weakness","miningFatigue","fireResistance","speed",
   "slowness","waterBreathing","invisibility","glowing","healthBoost","absorption","jumpBoost","slowFalling",
   "levitation","saturation","hunger","nausea","nightVision","blindness","darkness","poison","wither"]
   

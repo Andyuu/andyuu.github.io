@@ -24,238 +24,12 @@
       <div class="pip"></div>
     </div>
 
-    <table id="weaponTable" border="0">
+    <table id="weaponTable">
       <tr>
         <td style="position: relative;">
           <div class="number enchantment" id="crit"></div>
           <div id="effects"></div>
-          <!-- <div id="effectTable">
-            <div class="number effect positive" id="strength">
-              <button class="arrow arrowUp" id="strengthUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="strengthValue" value=0>
-              <button class="arrow arrowDown" id="strengthDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect positive" id="haste">
-              <button class="arrow arrowUp" id="hasteUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="hasteValue" value=0>
-              <button class="arrow arrowDown" id="hasteDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect positive" id="regeneration">
-              <button class="arrow arrowUp" id="regenerationUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="regenerationValue" value=0>
-              <button class="arrow arrowDown" id="regenerationDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect positive" id="resistance">
-              <button class="arrow arrowUp" id="resistanceUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="resistanceValue" value=0>
-              <button class="arrow arrowDown" id="resistanceDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect negative" id="weakness">
-              <button class="arrow arrowUp" id="weaknessUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="weaknessValue" value=0>
-              <button class="arrow arrowDown" id="weaknessDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect negative" id="fatigue">
-              <button class="arrow arrowUp" id="fatigueUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="fatigueValue" value=0>
-              <button class="arrow arrowDown" id="fatigueDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="fireResistance">
-              <button class="arrow arrowUp" id="fireResistanceUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="fireResistanceValue" value=0>
-              <button class="arrow arrowDown" id="fireResistanceDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="speed">
-              <button class="arrow arrowUp" id="speedUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="speedValue" value=0>
-              <button class="arrow arrowDown" id="speedDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="slowness">
-              <button class="arrow arrowUp" id="slownessUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="slownessValue" value=0>
-              <button class="arrow arrowDown" id="slownessDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="waterBreathing">
-              <button class="arrow arrowUp" id="waterBreathingUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="waterBreathingValue" value=0>
-              <button class="arrow arrowDown" id="waterBreathingDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="invisibility">
-              <button class="arrow arrowUp" id="invisibilityUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="invisibilityValue" value=0>
-              <button class="arrow arrowDown" id="invisibilityDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="glowing">
-              <button class="arrow arrowUp" id="glowingUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="glowingValue" value=0>
-              <button class="arrow arrowDown" id="glowingDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="healthBoost">
-              <button class="arrow arrowUp" id="healthBoostUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="healthBoostValue" value=0>
-              <button class="arrow arrowDown" id="healthBoostDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="absorption">
-              <button class="arrow arrowUp" id="absorptionUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="absorptionValue" value=0>
-              <button class="arrow arrowDown" id="absorptionDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="jumpBoost">
-              <button class="arrow arrowUp" id="jumpBoostUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="jumpBoostValue" value=0>
-              <button class="arrow arrowDown" id="jumpBoostDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="slowFalling">
-              <button class="arrow arrowUp" id="slowFallingUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="slowFallingValue" value=0>
-              <button class="arrow arrowDown" id="slowFallingDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="levitation">
-              <button class="arrow arrowUp" id="levitationUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="levitationValue" value=0>
-              <button class="arrow arrowDown" id="levitationDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="saturation">
-              <button class="arrow arrowUp" id="saturationUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="saturationValue" value=0>
-              <button class="arrow arrowDown" id="saturationDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="hunger">
-              <button class="arrow arrowUp" id="hungerUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="hungerValue" value=0>
-              <button class="arrow arrowDown" id="hungerDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="nausea">
-              <button class="arrow arrowUp" id="nauseaUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="nauseaValue" value=0>
-              <button class="arrow arrowDown" id="nauseaDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="nightVision">
-              <button class="arrow arrowUp" id="nightVisionUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="nightVisionValue" value=0>
-              <button class="arrow arrowDown" id="nightVisionDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="blindness">
-              <button class="arrow arrowUp" id="blindnessUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="blindnessValue" value=0>
-              <button class="arrow arrowDown" id="blindnessDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="darkness">
-              <button class="arrow arrowUp" id="darknessUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="darknessValue" value=0>
-              <button class="arrow arrowDown" id="darknessDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="poison">
-              <button class="arrow arrowUp" id="poisonUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="poisonValue" value=0>
-              <button class="arrow arrowDown" id="poisonDown">
-                <p>-</p>
-              </button>
-            </div>
-            <div class="number effect unaffecting" id="wither">
-              <button class="arrow arrowUp" id="witherUp">
-                <p>+</p>
-              </button>
-              <input type="text" class="inputValue" id="witherValue" value=0>
-              <button class="arrow arrowDown" id="witherDown">
-                <p>-</p>
-              </button>
-            </div>
-          </div> -->
+          <div id="effectLine"></div>
           <div id="effectTable"></div>
         </td>
       </tr>
@@ -287,25 +61,14 @@
       </tr>
       <tr>
         <td colspan="2"><span id="toolDescription">No Sword</span></td>
-        <td>Str &nbsp;<span id="strengthLevel">0</span></td>
-        <td>Weak &nbsp;<span id="weaknessLevel">0</span></td>
-        <td><span id="critBool">No Crit</span></td>
-        <td>Sharp &nbsp;<span id="sharpnessLevel">0</span></td>
       </tr>
       <tr>
         <td colspan="2">
           <div id="weaponDamageContainer"><span class="pixelated" id="weaponDamage"></span></div>
         </td>
-        <!-- <td colspan="2">Base damage: &nbsp;(<span class="damageBonus" id="baseDamage">1</span></td> -->
-        <td>+<span class="damageBonus" id="strengthBonus">0</span></td>
-        <td>-<span class="damageBonus" id="weaknessBonus">0</span>)</td>
-        <td>×<span class="damageBonus" id="critBonus">1</span></td>
-        <td>+<span class="damageBonus" id="sharpnessBonus">0</span></td>
       </tr>
       <tr>
         <td colspan="2">Attack speed: &nbsp;<span class="damageBonus" id="attackSpeed">4.0</span></td>
-
-        <td id="immunityInfo" colspan="3">Damage immunity limits DPS</td>
       </tr>
       <tr>
         <td colspan="4">
@@ -313,9 +76,8 @@
             <span class="pixelated" id="attackCooldown"></span>
           </div>
         </td>
-        <td colspan="2">DPS: &nbsp;<span id="damagePerSecond">2</span></td>
-        <td colspan="2">Attack Damage: &nbsp;<span class="finalValues" id="attackDamage">1</span></td>
       </tr>
+      <tr><td id="immunityInfo" colspan="3">Damage immunity limits DPS</td></tr>
     </table>
     <hr>
     <!-- WEAPON PROFILES -->
@@ -384,7 +146,7 @@
       <div class="pip"></div>
       <div class="pip"></div>
     </div>
-    <table id="armourTable" border="0">
+    <table id="armourTable">
       <tr>
         <td></td>
         <td>

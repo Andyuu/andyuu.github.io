@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 
+
 header {
   background-color: #222;
   font-family: Bungee;
@@ -382,11 +383,52 @@ th, td {
   background-image: url(Images/Effects.webp);
   background-size: 100%;
 }
+#effectLine{
+  display: flex;
+  position: absolute;
+  left: 100%;
+  top: -5px;
+  flex-wrap: nowrap;
+  gap: 10px;
+  /* justify-content: start; */
+  max-width: 340px;
+  overflow-y: show;
+  overflow-x: auto;
+  background-color: #111;
+  padding: 5px 10px;
+  flex-direction: row;
+  z-index: 5;
+}
+#effectLine .effect {
+  float: left;
+  min-width: 50px;
+  min-height: 50px;
+  z-index: 5;
+}
+.effect.off::before {
+  content: "";
+}
+#effectLine::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+#effectLine::-webkit-scrollbar-track {
+  background: #080808;
+  border-radius: 10px;
+  margin: 0px 5px;
+}
+#effectLine::-webkit-scrollbar-thumb {
+  background: rgb(90, 18 ,152);
+  border-radius: 10px;
+}
+#effectLine::-webkit-scrollbar-thumb:hover {
+  background: rgb(174, 85, 219);
+}
 #effectTable{
   display: none;
   position: absolute;
   left: 100%;
-  top: -5px;
+  top: -10px;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: start;
@@ -411,6 +453,22 @@ th, td {
   border: 5px solid #555;
   background-repeat: no-repeat;
   image-rendering: pixelated;
+}
+.effect::before {
+  position: absolute;
+  top: -20px;
+  left: -5px;
+  width: 60px;
+  font-size: 14px;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  text-shadow:
+  -1px -1px 0 black,
+  1px -1px 0 black,
+  -1px 1px 0 black,
+  1px 1px 0 black;
+  content: attr(data-before);
 }
 .effect.off {
   opacity: 0.3;
@@ -482,7 +540,7 @@ th, td {
   background-image: url(Images/Effect/Weakness.webp);
   background-color:  #484D48;
 }
-.fatigue {
+.miningFatigue {
   background-image: url(Images/Effect/Mining_Fatigue.webp);
   background-color:  #4A4217;
 }
@@ -805,6 +863,9 @@ th, td {
   max-height: calc(100vh - 50px);
   overflow: auto;
   color: white;
+}
+.modalContent::-webkit-scrollbar {
+  width: 13px;
 }
 .modalContent::-webkit-scrollbar-thumb {
   background: darkorange;
