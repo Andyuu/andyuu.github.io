@@ -221,6 +221,9 @@ table {
   height: auto;
   line-height: 18px;
 }
+#attackCooldownContainer {
+  width: 260px;
+}
 #totalHitpointsContainer{
   display: inline-block;
   vertical-align: bottom;
