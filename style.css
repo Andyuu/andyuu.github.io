@@ -34,12 +34,11 @@ header h1::before {
 } */
 body {
   background-color: #111;
-  font-family: Montserrat;
+  font-family:'Segoe UI';
   color: White;
   width: 100%;
   margin: auto;
 }
-
 .container {
   width: 40%;
   float: left;
@@ -129,10 +128,16 @@ body {
 	grid-area: g;
 }
 table {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
+  display: inline-block;
 }
-#armourTable td{
+.gearTable {
+  margin-left: 50px;
+}
+.verticalTop {
+  vertical-align: top;
+}
+.verticalBottom{
   vertical-align: bottom;
 }
 
@@ -310,9 +315,10 @@ th, td {
 #hitpoints {
   padding: 0;
   width: 90px;
-  height: 50px;
+  height: 40px;
   color: #f00;
   font-size: 20px;
+  margin: 0 auto;
 }
 #hitpoints > p {
   display: flex;
@@ -371,13 +377,18 @@ th, td {
 #crit {
   background-image: url(Images/Crit.webp);
   background-size: 54px;
-  background-position: 6px 6px;
+  background-position: 5px 5px;
   width: 60px;
   height: 60px;
   float: left;
 }
 #crit:hover , #effects:hover{
   background-color: #333;
+}
+#sharpness {
+  background-image: url(Images/Sharpness.webp);
+  float: left;
+  margin: 0px 3px;
 }
 #effects {
   float: right;
@@ -632,13 +643,6 @@ th, td {
   background-color: #430A09;
 }
 
-
-
-
-#sharpness {
-  background-image: url(Images/Sharpness.webp);
-}
-
 .totalStats {
   font-weight: bold;
 }
@@ -729,6 +733,7 @@ th, td {
   padding-bottom: 1px;
   margin-top: 6px;
   user-select: none;
+  font-family: montserrat;
 }
 .profile p {
 /*   font-weight: bold; */
@@ -739,7 +744,6 @@ th, td {
   background-color: #444;
   font-size: 24px;
   padding-bottom: 1px;
-  font-family: Arial;
 }
 
 .profileName{
@@ -784,8 +788,9 @@ th, td {
   padding: 5px 0;
   position: absolute;
   z-index: 2;
-  bottom: 0%;
+  bottom: 4px;
   left: 125%;
+  font-family: montserrat;
 }
 .tooltip::after {
   content: "";

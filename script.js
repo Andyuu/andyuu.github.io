@@ -2370,8 +2370,6 @@ function defaultProfiles() {
 }
 
 
-
-
 class WeaponProfile extends Weapon {
   static list = [];
   constructor() {
