@@ -1,12 +1,63 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 
+body {
+  background-color: #111;
+  font-family:'Segoe UI';
+  color: White;
+  width: 100%;
+  margin: auto;
+  margin-top: 160px;
+  background: linear-gradient(45deg, #111 25%, transparent 25%),
+  linear-gradient(135deg, #111 25%, transparent 25%) 0px 0,
+  linear-gradient(-45deg, #111 25%, transparent 25%) 0 25px,
+  linear-gradient(-135deg, #111 25%, transparent 25%) 0px 25px;
+  background-size: 50px 50px;
+  background-color: #141414;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
 
 header {
   background-color: #222;
   font-family: Bungee;
   text-align: center;
-  color: hsl(177, 71%, 38%)
+  color: hsl(177, 71%, 38%);
+  height: 125px;
+  width: 100%;
+  top: 0;
+  border-bottom: 10px solid #181818;
+  position: fixed;
+  z-index: 2;
+  transition: 0.1s;
+  scroll-margin-top: 40px;
+}
+header.shrink {
+  height: 75px;
+  font-size: 0;
+}
+.diagonalLine {
+  position: absolute;
+  top: 50px;
+  left: -50px;
+  width: 200px;
+  height: 20px;
+  background-color: hsl(5, 100%, 50%);
+  transform: rotate(-45deg);
+  transition: inherit;
+}
+.diagonalLine2 {
+  position: absolute;
+  top: 50px;
+  right: -50px;
+  width: 200px;
+  height: 20px;
+  background-color: hsl(224, 100%, 50%);
+  transform: rotate(45deg);
+  transition: inherit;
+}
+.shrink .diagonalLine, .shrink .diagonalLine2 {
+  top: 10px;
 }
 h1 { 
   margin: 0;
@@ -32,20 +83,21 @@ header h1::before {
   color: hsl(41, 77%, 42%);
   padding-left: 5px;
 } */
-body {
-  background-color: #111;
-  font-family:'Segoe UI';
-  color: White;
-  width: 100%;
-  margin: auto;
+.relative {
+  position: relative;
 }
 .container {
   width: 40%;
   float: left;
-/*   border: 1px solid red; */
   margin: 0;
   box-sizing: border-box;
   position: relative;
+}
+.gearContainer {
+  width: 100%;
+  margin: auto;
+  /* border: 1px solid red; */
+  display: flex;
 }
 #middleHalf {
   width: 20%;
@@ -64,6 +116,110 @@ body {
   color: forestgreen;
 }
 /* DICE */
+.quickControls {
+  /* position: absolute; */
+  display: flex;
+  margin-left: auto;
+  margin-right: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: #2a2a2a;
+  gap: 6px;
+  padding: 8px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+#rightHalf .quickControls {
+  margin-left: 0;
+  margin-right: auto;
+
+}
+.quickControls div {
+  cursor: pointer;
+}
+.quickControls div:nth-of-type(9) {
+  margin-top: auto;
+}
+.quickControls hr {
+  width: 50%;
+}
+.quickControls hr:nth-of-type(3) {
+  display: none;
+}
+.tallContainer .quickControls div:nth-of-type(5) {
+  margin-top: auto;
+}
+.tallContainer .quickControls div:nth-of-type(9) {
+  margin-top: unset;
+}
+.tallContainer .quickControls hr:nth-of-type(2) {
+  display: none;
+}
+.tallContainer .quickControls hr:nth-of-type(3) {
+  display: block;
+}
+
+
+
+.tooltip {
+  visibility: hidden;
+  /* display: flex; */
+  height: 22px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 5px 5px 8px;
+  position: absolute;
+  z-index: 2;
+  top: calc(50% - 16px);
+  left: 125%;
+  font-size: 16px !important;
+  font-weight: normal;
+  white-space: nowrap;
+  font-family: montserrat;
+  line-height: normal;
+}
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  margin-left: -12px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+.tooltip.leftTooltip {
+  padding: 5px 8px 5px 8px;
+  left: unset;
+  right: 125%;
+}
+.tooltip.leftTooltip::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: unset;
+  right: 0px;
+  margin-right: -12px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
+}
+.hasTooltip {
+  position: relative;
+}
+.hasTooltip:hover .tooltip {
+  visibility: visible;
+}
+.animate .tooltip {
+  animation: hide 0.4s;
+}
+@keyframes hide {
+  0% {opacity: 0;}
+  100% {opacity: 0;}
+}
 .dice {
 	display: grid;
 	grid-template-areas:
@@ -72,20 +228,83 @@ body {
 		"d . b";
 
 	flex: 0 0 auto;
-	margin: 4px;
 	padding: 4px;
 	width: 26px;
 	height: 26px;
-
-	background-color: #e7e7e7;
+	background-color: #000;
 	border-radius: 10%;
-  position: absolute;
-  right: 0px;
-  top: 00px;
+  margin: 0 auto;
 }
-#leftHalf .dice {
-  right: auto;
-  left: 0px;
+.dice:hover, .gearReset:hover{
+  outline: 2px solid white;
+}
+.gearReset {
+	padding: 4px;
+	width: 24px;
+	height: 24px;
+  font-size: 24px;
+  line-height: 20px;
+  border-radius: 10%;
+	background-color: black;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  margin: 0 auto;
+}
+.weaponDice {
+  background-color: hsl(5, 100%, 50%)
+}
+.weaponReset {
+  background-color: hsl(5, 100%, 40%)
+}
+.effectDice {
+  background-color: hsl(275, 100%, 50%)
+}
+.effectReset {
+  background-color: hsl(275, 100%, 40%)
+}
+.armourDice {
+  background-color: hsl(224, 100%, 50%)
+}
+.armourReset {
+  background-color: hsl(224, 100%, 40%)
+}
+.armourUp {
+  background-color: hsl(224, 100%, 30%)
+}
+.armourDown {
+  background-color: hsl(224, 100%, 20%)
+}
+.gearFiles {
+	padding: 4px;
+	width: 26px;
+	height: 26px;
+  font-size: 30px;
+  /* text-indent: -1px; */
+  line-height: 26px;
+  border-radius: 10%;
+	background-color: hsl(120, 100%, 34%);
+  color: #000;
+  text-align: center;
+  font-weight: 600;
+  margin: 0 auto;
+}
+.saveGear:hover{
+  outline: 3px solid black;
+}
+.folder {
+  background-color: hsl(43, 100%, 50%);
+  font-size: 30px;
+  color: hsl(25, 76%, 31%);
+  color: #000;
+  text-indent: -2.5px;
+  /* color: black; */
+  /* border: 2px solid #A77802; */
+  border-radius: 5px;
+}
+.gearFiles:hover {
+  /* background-color: #FDED2A; */
+  outline: 3px solid white;
 }
 .dice.animate{
   animation: wiggle 0.4s;
@@ -96,7 +315,6 @@ body {
   70% {transform: rotate(5deg);}
   100% {}
 }
-
 .pip {
 	display: block;
 	align-self: center;
@@ -104,35 +322,78 @@ body {
 	width: 6px;
 	height: 6px;
 	border-radius: 50%;
-	background-color: #333;
-	box-shadow: inset 0 3px #111, inset 0 -2px #555;
+	background-color: #CCC;
+	box-shadow: inset 0 3px #EEE, inset 0 -2px #BBB;
 }
 
-.pip:nth-child(2) {
+.pip:nth-of-type(2) {
 	grid-area: b;
 }
-.pip:nth-child(3) {
+.pip:nth-of-type(3) {
 	grid-area: c;
 }
-.pip:nth-child(4) {
+.pip:nth-of-type(4) {
 	grid-area: d;
 }
-.pip:nth-child(5) {
+.pip:nth-of-type(5) {
 	grid-area: e;
 }
-.pip:nth-child(6) {
+.pip:nth-of-type(6) {
 	grid-area: f;
 }
 /* This selects the last pip of odd-valued dice (1, 3, 5) and positions the pip in the center */
-.pip:nth-child(odd):last-child {
+.pip:nth-of-type(odd):last-of-type {
 	grid-area: g;
 }
+.spin.animate {
+  animation: spin 0.4s ease-out;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); border-radius: 100px; }
+  100% { transform: rotate(-360deg); }
+}
+.textMoveUp.animate {
+  animation: textMoveUp 0.4s ease;
+}
+@keyframes textMoveUp {
+  0% { line-height: 12px; outline-color: green;}
+  80% { outline-color: green;}
+}
+.textMoveDown.animate {
+  animation: textMoveDown 0.4s ease;
+}
+@keyframes textMoveDown {
+  0% { line-height: 28px; outline-color: red;}
+  80% { outline-color: red}
+}
+
+
 table {
   margin-left: 0;
   display: inline-block;
 }
 .gearTable {
-  margin-left: 50px;
+  box-sizing: border-box;
+  background-color: #111;
+  min-width: calc( 611px - 50px);
+  margin-right: auto;
+  padding: 3px;
+  padding-right: 22px;
+  border: 8px solid #222;
+  border-radius: 0px;
+  border-left-width: 0px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+#rightHalf .gearTable{
+  margin-right: 0;
+  margin-left: auto;
+  border: 8px solid #222;
+  border-radius: 0px;
+  border-right-width: 0px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 .verticalTop {
   vertical-align: top;
@@ -161,19 +422,22 @@ table {
   background-size: 160px;
   border-width: 6px;
 }
+.selectTools {
+  min-width: 90px;
+}
 .selectTool {
   display: inline-block;
   width: 32px;
   height: 32px;
   background-size: 32px;
   border-width: 2px;
-  /* margin: 3px 0px; */
   opacity: 50%;
   image-rendering: pixelated;
 }
 .selectTool:hover {
   opacity: 100%;
 }
+
 #helmet.box {
   background-image: url(Images/Helmet/Empty_Helmet.webp);
 }
@@ -261,6 +525,7 @@ th, td {
 .number {
   position: relative;
   font-family: Bungee;
+  -webkit-user-select: none;
   user-select: none;
 }
 .inputValue {
@@ -374,18 +639,28 @@ th, td {
 .enchantment .arrow:active {
   top: calc(60% + 1px);
 }
-#crit {
+.crit {
   background-image: url(Images/Crit.webp);
   background-size: 54px;
   background-position: 5px 5px;
   width: 60px;
   height: 60px;
   float: left;
+  opacity: 0.3;
 }
-#crit:hover , #effects:hover{
+.crit:hover , #effects:hover{
   background-color: #333;
 }
-#sharpness {
+.crit.on {
+  opacity: 1;
+}
+.crit.on::after {
+  content: "CRIT!";
+  position: absolute;
+  left: 7px;
+  bottom: -20px;
+}
+.sharpness {
   background-image: url(Images/Sharpness.webp);
   float: left;
   margin: 0px 3px;
@@ -404,20 +679,23 @@ th, td {
   top: -5px;
   flex-wrap: nowrap;
   gap: 10px;
-  /* justify-content: start; */
   max-width: 340px;
   overflow-y: show;
   overflow-x: auto;
-  background-color: #111;
-  padding: 5px 10px;
+  background-color: none;
+  padding: 5px 10px 5px 10px;
   flex-direction: row;
-  z-index: 5;
+  scroll-snap-type: x mandatory;
+}
+#effectLine:empty {
+  padding: 0;
+  border: 0;
 }
 #effectLine .effect {
   float: left;
   min-width: 50px;
   min-height: 50px;
-  z-index: 5;
+  scroll-snap-align: center;
 }
 .effect.off::before {
   content: "";
@@ -448,10 +726,13 @@ th, td {
   justify-content: start;
   width: 340px;
   background-color: #111;
-  border: 5px solid black;
-  border-radius: 10px;
-  padding: 5px;
-  z-index: 999;
+  border: 5px solid #222;
+  border-top: 0;
+  border-right: 0;
+  padding: 10px 10px 5px 5px;
+  z-index: 5;
+  border-radius: 0px;
+  border-bottom-left-radius: 10px;
 }
 #effects:hover~#effectTable, #effectTable:hover{
   display: flex;
@@ -674,17 +955,6 @@ th, td {
   position: relative;
   top: 1px;
 }
-.folder {
-  background-color: #FCBA12;
-  color: #8B4513;
-  border: 2px solid #A77802;
-  border-radius: 5px;
-  float: right;
-  margin-right: 5px;
-}
-.folder:hover {
-  background-color: #FDED2A;
-}
 .profileTableContainer {
   position: absolute;
   /* Each box is 82px wide   */
@@ -732,6 +1002,7 @@ th, td {
   margin: 0;
   padding-bottom: 1px;
   margin-top: 6px;
+  -webkit-user-select: none;
   user-select: none;
   font-family: montserrat;
 }
@@ -776,31 +1047,6 @@ th, td {
   background-image: url(Images/Fire_Charge2.webp); 
   background-size: 40px;
   top: 83px;  
-}
-.tooltip {
-  visibility: hidden;
-  width: 130px;
-  height: 22px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 2;
-  bottom: 4px;
-  left: 125%;
-  font-family: montserrat;
-}
-.tooltip::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 0px;
-  margin-left: -12px;
-  border-width: 6px;
-  border-style: solid;
-  border-color: transparent black transparent transparent;
 }
 
 
@@ -897,6 +1143,7 @@ th, td {
   border-radius: 10px;
   text-align: center;
   line-height: 1;
+  -webkit-user-select: none;
   user-select: none;
 }
 .closeModal:hover, .closeModal:focus {
@@ -1051,16 +1298,16 @@ th, td {
 }
 
 #previewBack {
-  transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
 /*   left: 240px; */
 }
 #previewBack:active {
   left: -2px;
 }
 #previewForward {
-  transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 /*   right: 15px; */
 }
 #previewForward:active {
@@ -1088,6 +1335,7 @@ th, td {
   border-radius: 10px;
   text-align: center;
   line-height: 1;
+  -webkit-user-select: none;
   user-select: none;
   cursor: pointer;
   margin-left: 6px;

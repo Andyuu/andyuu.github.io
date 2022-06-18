@@ -816,6 +816,20 @@ const armour = new Armour(effect);
 const results = new Results(weapon, effect, armour, effect);
 
 $(document).ready(function () {
+  let oldScroll = 0
+  $(document).scroll(function() {
+    let scroll = $(document).scrollTop();
+    // console.log(scroll)
+    if (scroll >= 50) {
+      $("header").addClass("shrink")
+    } else {
+      $("header").removeClass("shrink")
+    }
+    if (oldScroll == 0) {
+      // $(document).scrollTop(50);
+    }
+    oldScroll = scroll
+  });
   // Sortable 
   $("#weaponProfiles, #armourProfiles").sortable({
     axis: "y",
@@ -952,7 +966,7 @@ $(document).ready(function () {
     }
     updateHTML()
   });
-  $("#crit").mousedown(function (event) {
+  $(".crit").mousedown(function (event) {
     if (event.which === 3) {
       weapon.crit = false
     } else {
@@ -1000,54 +1014,132 @@ $(document).ready(function () {
     $(this).width(); // trigger a DOM reflow
     $(this).addClass("animate");
     $(this).children('.pip').remove();
-    if (event.which !== 3) {
-      for (i = 0; i <= random(6); i++) {
-        $(this).append($("<div>").addClass("pip"));
-      }
+    for (i = 0; i <= random(6); i++) {
+      $(this).append($("<div>").addClass("pip"));
     }
   });
-  $("#dice1").mousedown(function (event) {
-    if (event.which === 3) {
-      weapon.material = 0
-      weapon.tool = 0
-      weapon.strength = 0
-      weapon.weakness = 0
-      weapon.crit = false
-      weapon.sharpness = 0
-    } else {
-      weapon.material = random(7);
-      weapon.tool = random(5);
-      weapon.strength = (random(4)) ? random(6) : 0;
-      weapon.weakness = (random(2) * random(2)) ? random(6) : 0;
-      weapon.crit = random(2);
-      weapon.sharpness = random(6);
-    }
+  $(".animation").mousedown(function (event) {
+    $(this).removeClass("animate");
+    $(this).width(); // trigger a DOM reflow
+    $(this).addClass("animate");
+  });
+  $(".weaponDice").mousedown(function (event) {
+    weapon.material = random(7);
+    weapon.tool = random(5);
+    weapon.crit = random(2);
+    weapon.sharpness = random(2) ? 1 + random(5) : 0;
     updateHTML()
   });
-  $("#dice2").mousedown(function (event) {
+  $(".weaponReset").mousedown(function (event) {
+    weapon.material = 0
+    weapon.tool = 0
+    weapon.crit = false
+    weapon.sharpness = 0
+    updateHTML()
+  });
+  $(".armourDice").mousedown(function (event) {
+    armour.helmet = random(7)
+    armour.chestplate = random(6)
+    armour.leggings = random(6)
+    armour.boots = random(6)
+    armour.helmetProtection = random(2) && armour.helmet ? random(6) : 0;
+    armour.chestplateProtection = random(2) && armour.chestplate ? random(6) : 0;
+    armour.leggingsProtection = random(2) && armour.leggings ? random(6) : 0;
+    armour.bootsProtection = random(2) && armour.boots ? random(6) : 0;
+    armour.hitpoints = 1 + random(40);
+    updateHTML()
+  });
+  $(".armourReset").mousedown(function (event) {
+    armour.helmet = 0
+    armour.chestplate = 0
+    armour.leggings = 0
+    armour.boots = 0
+    armour.helmetProtection = 0
+    armour.chestplateProtection = 0
+    armour.leggingsProtection = 0
+    armour.bootsProtection = 0
+    armour.hitpoints = 20
+    updateHTML()
+  });
+  $(".effectDice").mousedown(function (event) {
     if (event.which === 3) {
-      armour.helmet = 0
-      armour.chestplate = 0
-      armour.leggings = 0
-      armour.boots = 0
-      armour.helmetProtection = 0
-      armour.chestplateProtection = 0
-      armour.leggingsProtection = 0
-      armour.bootsProtection = 0
-      armour.resistance = 0
-      armour.hitpoints = 20
-    } else {
-      armour.helmet = random(7)
-      armour.chestplate = random(6)
-      armour.leggings = random(6)
-      armour.boots = random(6)
-      armour.helmetProtection = random(2) ? random(6) : 0;
-      armour.chestplateProtection = random(2) ? random(6) : 0;
-      armour.leggingsProtection = random(2) ? random(6) : 0;
-      armour.bootsProtection = random(2) ? random(6) : 0;
-      armour.resistance = (random(2) * random(2)) ? random(5) : 0;
-      armour.hitpoints = 1 + random(40);
+      effect.fireResistance = random(10) == 0 ? 1 : 0; 
+      effect.speed = random(10) == 0 ? random(6) : 0;
+      effect.slowness = random(10) == 0 ? random(6) : 0;
+      effect.waterBreathing = random(10) == 0 ? 1 : 0;
+      effect.invisibility = random(10) == 0 ? 1 : 0;
+      effect.glowing = random(10) == 0 ? 1 : 0;
+      effect.healthBoost = random(10) == 0 ? 1 : 0;
+      effect.absorption = random(10) == 0 ? 1 : 0;
+      effect.jumpBoost = random(10) == 0 ? random(6) : 0;
+      effect.slowFalling = random(10) == 0 ? 1 : 0;
+      effect.levitation = random(10) == 0 ? 1 : 0;
+      effect.saturation = random(10) == 0 ? 1 : 0;
+      effect.hunger = random(10) == 0 ? 1 : 0;
+      effect.nausea = random(10) == 0 ? 1 : 0;
+      effect.nightVision = random(10) == 0 ? 1 : 0;
+      effect.blindness = random(10) == 0 ? 1 : 0;
+      effect.darkness = random(10) == 0 ? 1 : 0;
+      effect.poison = random(10) == 0 ? 1 : 0;
+      effect.wither = random(10) == 0 ? 1 : 0;
+  }
+  do {
+    effect.strength = random(2) == 0 ? random(6) : 0;
+    effect.weakness = random(10) == 0 ? random(6) : 0;
+    effect.haste = random(2) == 0 ? random(6) : 0;
+    effect.miningFatigue = random(2) == 0 ? random(6) : 0;
+    effect.regeneration = random(2) == 0 ? random(6) : 0;
+    effect.resistance = random(2) == 0 ? random(5) : 0;
+  } while (!effect.strength && !effect.weakness && !effect.haste && !effect.miningFatigue && !effect.regeneration && !effect.resistance);
+
+    updateHTML()
+  });
+  $(".effectReset").mousedown(function (event) {
+    effect.strength = 0
+    effect.weakness = 0
+    effect.haste = 0
+    effect.miningFatigue = 0
+    effect.regeneration = 0
+    effect.resistance = 0
+    effect.fireResistance = 0
+    effect.speed = 0
+    effect.slowness = 0
+    effect.waterBreathing = 0
+    effect.invisibility = 0
+    effect.glowing = 0
+    effect.healthBoost = 0
+    effect.absorption = 0
+    effect.jumpBoost = 0
+    effect.slowFalling = 0
+    effect.levitation = 0
+    effect.saturation = 0
+    effect.hunger = 0
+    effect.nausea = 0
+    effect.nightVision = 0
+    effect.blindness = 0
+    effect.darkness = 0
+    effect.poison = 0
+    effect.wither = 0
+    updateHTML()
+  });
+  $(".armourUp").mousedown(function (event) {
+    armour.helmet = armour.helmet < 7 ? armour.helmet+1 : 0;
+    if (armour.helmet == 5) {
+      armour.helmet = 6
     }
+    armour.chestplate = armour.chestplate < 6 ? armour.chestplate+1 : 0;
+    armour.leggings = armour.leggings < 6 ? armour.leggings+1 : 0;
+    armour.boots = armour.boots < 6 ? armour.boots+1 : 0;
+    updateHTML()
+  });
+  $(".armourDown").mousedown(function (event) {
+    armour.helmet = armour.helmet > 0 ? armour.helmet-1 : 7;
+    if (armour.helmet == 5) {
+      armour.helmet = 4
+    }
+    armour.chestplate = armour.chestplate > 0 ? armour.chestplate-1 : 6;
+    armour.leggings = armour.leggings > 0 ? armour.leggings-1 : 6;
+    armour.boots = armour.boots > 0 ? armour.boots-1 : 6;
     updateHTML()
   });
   //Number boxes
@@ -1085,92 +1177,10 @@ $(document).ready(function () {
   $(".effect .inputValue").change(function () {
     let value = $(this).val();
     let effectName = $(this).parent().attr('class').split(' ')[0];
-    let numeral = romanNumeral(value).length <= 6 ? romanNumeral(value) : value
-    switch(effectName.toLowerCase()){
-      case "strength":
-        effect.strength = value
-        break;
-      case "weakness":
-        effect.weakness = value
-        break;
-      case "haste":
-        effect.haste = value
-        break;
-      case "miningfatigue":
-        effect.miningFatigue = value
-        break;
-      case "regeneration":
-        effect.regeneration = value
-        break;
-      case "resistance":
-        effect.resistance = value
-        break;
-      case "fireresistance":
-        effect.fireResistance = value
-        break;
-      case "speed":
-        effect.speed = value
-        break;
-      case "slowness":
-        effect.slowness = value
-        break;
-      case "waterbreathing":
-        effect.waterBreathing = value
-        break;
-      case "invisibility":
-        effect.invisibility = value
-        break;
-      case "glowing":
-        effect.glowing = value
-        break;
-      case "healthboost":
-        effect.healthBoost = value
-        break;
-      case "absorption":
-        effect.absorption = value
-        break;
-      case "jumpboost":
-        effect.jumpBoost = value
-        break;
-      case "slowfalling":
-        effect.slowFalling = value
-        break;
-      case "levitation":
-        effect.levitation = value
-        break;
-      case "saturation":
-        effect.saturation = value
-        break;
-      case "hunger":
-        effect.hunger = value
-        break;
-      case "nausea":
-        effect.nausea = value
-        break;
-      case "nightvision":
-        effect.nightVision = value
-        break;
-      case "blindness":
-        effect.blindness = value
-        break;
-      case "darkness":
-        effect.darkness = value
-        break;
-      case "poison":
-        effect.poison = value
-        break;
-      case "wither":
-        effect.wither = value
-        break;
-    }
-    $(this).parent().attr("data-before", numeral);
-    if ($(this).parent().parent().attr("id") != "effectTable") {
-      $("#effectTable ."+effectName+ " .inputValue").val(value)
-      $("#effectTable ."+effectName).attr("data-before", numeral);
-    }
+    effect[effectName] = value
     updateHTML();
   });
-  $("#sharpnessValue").change(function () {
+  $(".sharpnessValue").change(function () {
     weapon.sharpness = $(this).val();
     updateHTML();
   });
@@ -1210,8 +1220,12 @@ $(document).ready(function () {
 });
 
 function updateHTML() {
+
   $(".effect").each(function() {
     let effectName = $(this).attr('class').split(' ')[0];
+    let value = effect[effectName]
+    $(this).find("input").val(value);
+
     let description = effect.description(effectName)
     let description2 = effect.description(effectName, true)
     if (description == description2) {
@@ -1219,6 +1233,13 @@ function updateHTML() {
     } else {
       $(this).attr("title", camelToTitle(effectName) +"\n"+description +"\n"+ description2)
     }
+    let numeral = romanNumeral(value).length <= 6 ? romanNumeral(value) : value
+    $(this).parent().attr("data-before", numeral);
+    if ($(this).parent().parent().attr("id") != "effectTable") {
+      $("#effectTable ."+effectName+ " .inputValue").val(value)
+      $("#effectTable ."+effectName).attr("data-before", numeral);
+    }
+
     if ($(this).find(".inputValue").val() == 0) {
       $(this).addClass("off")
     } else {
@@ -1233,8 +1254,8 @@ function updateHTML() {
     }
   });
 
-  $("#dice1").attr("title", "Left click for random weapon \nRight click to reset all")
-  $("#dice2").attr("title", "Left click for random armour \nRight click to reset all")
+  // $("#dice1").attr("title", "Left click for random weapon \nRight click to reset all")
+  // $("#dice2").attr("title", "Left click for random armour \nRight click to reset all")
   $("#selectTool1").css("background-image", "url(" +  swords[weapon.material][0] + ")")
   $("#selectTool2").css("background-image", "url(" +  axes[weapon.material][0] + ")")
   $("#selectTool3").css("background-image", "url(" +  pickaxes[weapon.material][0] + ")")
@@ -1246,8 +1267,27 @@ function updateHTML() {
 
   $("#toolMaterial").css("background-image", "url(" + weapon.materialImage + ")");
   //Damage
-  $("#weaponDamage").empty().append(damagePointImages(weapon.damage)).attr("title", weapon.damage+" damage");
-  $("#baseDamage").text(weapon.baseDamage)
+  let weaponDamageTitle = ""
+  if (effect.strength > 0 || effect.weakness > 0 || weapon.crit == true || weapon.sharpness > 0) {
+    weaponDamageTitle += weapon.baseDamage + " base damage"
+
+    if (effect.strength > 0) {
+      weaponDamageTitle += "\nStrength: " + effect.bonus("strength", false, true)
+    }
+    if (effect.weakness > 0) {
+      weaponDamageTitle += "\nWeakness: " + effect.bonus("weakness", false, true)
+    }
+    if (weapon.crit == true) {
+      weaponDamageTitle += "\n1.5x crit bonus" 
+    }
+    if (weapon.sharpness > 0) {
+      weaponDamageTitle += "\nSharpness: +"+weapon.sharpnessBonus
+    }
+    weaponDamageTitle += "\nTotal: "+weapon.damage+" damage"
+  } else {
+    weaponDamageTitle += weapon.damage+" damage"
+  }
+  $("#weaponDamage").empty().append(damagePointImages(weapon.damage)).attr("title", weaponDamageTitle);
   $("#attackSpeed").text(round(weapon.attackSpeed,3))
   let attackCooldownTitle = ""
   if (isFinite(weapon.attackCooldown)) {
@@ -1264,34 +1304,31 @@ function updateHTML() {
   $("#attackCooldown").empty().append(cooldownPointImages(weapon.attackCooldown)).attr("title", attackCooldownTitle)
 
   $("#toolDescription").text(weapon.name);
+  $("#toolDamage").text(weapon.damage);
   //Crit
   if (weapon.crit == true){
-    $("#critBool").text("Crit");
-    $("#crit").css("opacity",1);
-    $("#crit").attr("title", "Critical hit\n x1.5 base damage");
+    $(".crit").addClass("on")
+    $(".crit").attr("title", "Critical hit\n x1.5 base damage");
   } else {
-    $("#critBool").text("No Crit");
-    $("#crit").css("opacity",0.3);
-    $("#crit").attr("title", "No crit");
+    $(".crit").removeClass("on")
+    $(".crit").attr("title", "No crit");
   }
 
   //Sharpness
   if (weapon.sharpness > 0) {
     $("#tool").css("background-image", "url(" + weapon.enchantedToolImage + ")");
-    $("#sharpness .inputValue").addClass("levelled");
+    $(".sharpness .inputValue").addClass("levelled");
   } else {
     $("#tool").css("background-image", "url(" + weapon.toolImage + ")");
-    $("#sharpness .inputValue").removeClass("levelled");
+    $(".sharpness .inputValue").removeClass("levelled");
   }
-  $("#sharpnessLevel").text(weapon.sharpness);
-  $("#sharpnessBonus").text(weapon.sharpnessBonus);
-  $("#sharpnessValue").attr("value", weapon.sharpness);
+  $(".sharpness .inputValue").attr("value", weapon.sharpness);
 
   //Tooltip for sharpness setter
-  if (weapon.tool != 6) {
-    $("#sharpness .inputValue").attr("title", "Sharpness "+weapon.sharpness +" "+weapon.name.toLowerCase()+"\n"+ weapon.sharpnessBonus+" extra damage")
+  if (weapon.tool != 6 || weapon.sharpness == 0) {
+    $(".sharpness .inputValue, .sharpness").attr("title", "Sharpness\n+"+ weapon.sharpnessBonus+" damage")
   } else {
-    $("#sharpness .inputValue").attr("title", "Sharpness "+weapon.sharpness +" emptiness \n"+ weapon.sharpnessBonus+" extra damage \n(in theory)")
+    $(".sharpness .inputValue, .sharpness").attr("title", "Sharpness "+weapon.sharpness +" emptiness \n+"+ weapon.sharpnessBonus+" damage \n(in theory)")
   }
 
   //Damage
@@ -1418,6 +1455,14 @@ function updateHTML() {
   $("#damageDealtPerSecond").text(round(results.DPS, 3));
   $("#hitsToKill").text(results.hitsToKill);
   $("#timeToKill").text(round(results.timeToKill, 2));
+
+  $(".gearContainer").each(function() {
+    if ($(this).height() > 553) {
+      $(this).addClass("tallContainer")
+    } else {
+      $(this).removeClass("tallContainer")
+    }
+  });
 };
 
 function armourPointImages(num) {
