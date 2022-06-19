@@ -226,10 +226,9 @@ var effectBonus = [0, 0, 0]
 const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 if (currentTheme) {
     document.documentElement.setAttribute('data-theme', currentTheme);
-
-    if (currentTheme === "dark" || currentTheme == null) {
-      $(".themeSwitch input").prop("checked",true)
-    }
+}
+if (currentTheme == "dark" || currentTheme == null) {
+  $(".themeSwitch input").prop("checked",true)
 }
 
 
