@@ -164,44 +164,37 @@ var enchantedBoots = ["Images/Boots/Empty_Boots.webp",
 
 var trident = ["Images/Trident.webp", 9 , 1.1]
 var enchantedTrident = "Images/Enchanted_Trident.webp"
-var empty = ["Images/Barrier.webp", 1, 4]
-var enchantedEmpty = "Images/Barrier.webp" //Meme
-
-
 var barrierImage = "Images/Barrier.webp";
-var strengthImage = "Images/Strength.webp";
-var weaknessImage = "Images/Weakness.webp";
-var resistanceImage = "Images/Resistance.webp";
-var enchantmentImage = "Images/Enchanted_Book.webp";
 var critImage = "Images/Crit.webp";
 var editImage = "Images/Book_And_Quill.webp";
 var deleteImage = "Images/Fire_Charge.webp";
-var heartImage = "Images/Heart.webp";
-var halfHeartImage = "Images/Half_Heart.webp";
-var emptyHeartImage = "Images/Empty_Heart.webp";
-var armourImage = "Images/Armour.webp";
-var halfArmourImage = "Images/Half_Armour.webp";
-var emptyArmourImage = "Images/Empty_Armour.webp";
-var toughnessImage = "Images/Toughness.webp";
-var halfToughnessImage = "Images/Half_Toughness.webp";
-var damageImage = "Images/Damage.webp";
-var threeQuarterDamageImage = "Images/Three_Quarter_Damage.webp";
-var halfDamageImage = "Images/Half_Damage.webp";
-var quarterDamageImage = "Images/Quarter_Damage.webp";
-var emptyDamageImage = "Images/Empty_Damage.webp";
-var cooldownImage = "Images/Hourglass2.webp";
-var halfCooldownImage = "Images/Half_Hourglass2.webp"
-var redCooldownImage = "Images/Red_Hourglass2.webp"
-var halfRedCooldownImage = "Images/Half_Red_Hourglass2.webp"
-var emptyCooldownImage = "Images/Empty_Hourglass.webp"
-var infiniteCooldownImage = "Images/Infinite2.webp"
+
+
+var heartImage = "Images/Icon/Heart.webp";
+var halfHeartImage = "Images/Icon/Half_Heart.webp";
+var emptyHeartImage = "Images/Icon/Empty_Heart.webp";
+var armourImage = "Images/Icon/Armour.webp";
+var halfArmourImage = "Images/Icon/Half_Armour.webp";
+var emptyArmourImage = "Images/Icon/Empty_Armour.webp";
+var toughnessImage = "Images/Icon/Toughness.webp";
+var halfToughnessImage = "Images/Icon/Half_Toughness.webp";
+var damageImage = "Images/Icon/Damage.webp";
+var threeQuarterDamageImage = "Images/Icon/Three_Quarter_Damage.webp";
+var halfDamageImage = "Images/Icon/Half_Damage.webp";
+var quarterDamageImage = "Images/Icon/Quarter_Damage.webp";
+var emptyDamageImage = "Images/Icon/Empty_Damage.webp";
+var cooldownImage = "Images/Icon/Hourglass.webp";
+var halfCooldownImage = "Images/Icon/Half_Hourglass.webp"
+var redCooldownImage = "Images/Icon/Red_Hourglass.webp"
+var halfRedCooldownImage = "Images/Icon/Half_Red_Hourglass.webp"
+var emptyCooldownImage = "Images/Icon/Empty_Hourglass.webp"
+var infiniteCooldownImage = "Images/Icon/Infinite.webp"
 
 
 var maxProfiles = 16
 var weaponProfileNum = 0
 var armourProfileNum = 0
 
-//These values can be reset
 var armourMaterialList = ["None", "Leather", "Golden", "Chainmail", "Iron", "Diamond", "Netherite"]
 var helmetMaterialList = ["None", "Leather", "Golden", "Chainmail", "Iron", "Turtle", "Diamond", "Netherite"]
 var armourNames = ["None", "None", "None", "None"]
@@ -218,8 +211,8 @@ var toolMaterialName = "No"
 var toolList = [ "Sword", "Axe", "Pickaxe", "Shovel", "Hoe", "Trident", "None"]
 var toolName = "Sword"
 var toolOptions = swords
-var tools = [swords, axes, pickaxes, shovels, hoes, trident, empty]
-var enchantedTools = [enchantedSwords, enchantedAxes, enchantedPickaxes, enchantedShovels, enchantedHoes, enchantedTrident, enchantedEmpty]
+var tools = [swords, axes, pickaxes, shovels, hoes, trident, [barrierImage, 1, 4]]
+var enchantedTools = [enchantedSwords, enchantedAxes, enchantedPickaxes, enchantedShovels, enchantedHoes, enchantedTrident, barrierImage]
 var toolMaterial = 0
 var tool = 0
 var baseDamage = 1
@@ -229,30 +222,17 @@ var attackSpeed = 4
 var effectsMax = 5
 var maxHitpoints = 99 //Doesnt work
 var effectBonus = [0, 0, 0]
-var effectLevelDivs = ["strengthLevel", "weaknessLevel", "resistanceLevel"]
-var effectBonusDivs = ["strengthBonus", "weaknessBonus", "resistanceBonus"]
-var crit = false
-var critBonus = 1
-var sharpness = 0
-var sharpnessBonus = 0
-var attackDamage = 1
-var damagePerSecond = 2
-var attackCooldown = 0.5
-var damageDealt = 1
-var beforeProtDamage = 1
-var percentDamageDealt = 100
-var damageDealtPerSecond = 2
-var hitsToKill = 20
-var timeToKill = 10
 
-// const varToString = varObj => Object.keys(varObj)[0];
-// const varToTitle = varObj => {
-//   let word =  Object.keys(varObj)[0].replace(/([A-Z])/g, " $1")
-//   return  word.charAt(0).toUpperCase() + word.slice(1)
-// };
-// const varToWords = varObj => {
-//   return Object.keys(varObj)[0].replace(/([A-Z])/g, " $1").toLowerCase()
-// };
+const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    if (currentTheme === "dark") {
+      $(".themeSwitch input").prop("checked",true)
+    }
+}
+
+
 function camelToTitle(text) {
   text = text.replace(/([A-Z])/g, " $1");
   return text.charAt(0).toUpperCase() + text.slice(1);
@@ -279,46 +259,6 @@ function romanNumeral(num) {
   }
   return roman;
 }
-function reset() {
-  armourMaterialList = ["None", "Leather", "Golden", "Chainmail", "Iron", "Diamond", "Netherite"]
-  armourNames = ["None", "None", "None", "None"]
-  armourMaterials = [0, 0, 0, 0]
-  armourDefence = [0, 0, 0, 0]
-  armourToughness = [0, 0, 0, 0]
-  totalArmour = 0
-  totalToughness = 0
-  protection = 0
-  protectionBonus = 0
-  hitpoints = 20
-  toolMaterialList = ["No", "Wooden", "Golden", "Stone", "Iron", "Diamond", "Netherite"]
-  toolMaterialName = "No"
-  toolList = ["Sword", "Axe", "Pickaxe", "Shovel", "Hoe"]
-  toolName = "Sword"
-  toolOptions = swords
-  toolMaterial = 0
-  tool = 0
-  baseDamage = 1
-  attackSpeed = 4
-  //Effects order: Strength, Weakness, Resistance
-  effect = [0, 0, 0]
-  effectsMax = 5
-  effectBonus = [0, 0, 0]
-  effectLevelDivs = ["strengthLevel", "weaknessLevel", "resistanceLevel"]
-  effectBonusDivs = ["strengthBonus", "weaknessBonus", "resistanceBonus"]
-  crit = false
-  critBonus = 1
-  sharpness = 0
-  sharpnessBonus = 0
-  attackDamage = 1
-  damagePerSecond = 2
-  attackCooldown = 0.5
-  damageDealt = 1
-  beforeProtDamage = 1
-  percentDamageDealt = 100
-  damageDealtPerSecond = 2
-  hitsToKill = 20
-  timeToKill = 10
-};
 class Effect{
   constructor() {
     this.strength = 0
@@ -604,7 +544,6 @@ class Effect{
 
   }
 }
-
 class Weapon {
   constructor(effect) {
     this.material = 0
@@ -816,7 +755,15 @@ const armour = new Armour(effect);
 const results = new Results(weapon, effect, armour, effect);
 
 $(document).ready(function () {
-  let oldScroll = 0
+  $(".themeSwitch input").change(function (event) {
+    if($(this).prop("checked") == true) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  });
   $(document).scroll(function() {
     let scroll = $(document).scrollTop();
     // console.log(scroll)
@@ -825,10 +772,6 @@ $(document).ready(function () {
     } else {
       $("header").removeClass("shrink")
     }
-    if (oldScroll == 0) {
-      // $(document).scrollTop(50);
-    }
-    oldScroll = scroll
   });
   // Sortable 
   $("#weaponProfiles, #armourProfiles").sortable({
@@ -1220,7 +1163,6 @@ $(document).ready(function () {
 });
 
 function updateHTML() {
-
   $(".effect").each(function() {
     let effectName = $(this).attr('class').split(' ')[0];
     let value = effect[effectName]
@@ -1253,7 +1195,6 @@ function updateHTML() {
       $(this).remove()
     }
   });
-
   // $("#dice1").attr("title", "Left click for random weapon \nRight click to reset all")
   // $("#dice2").attr("title", "Left click for random armour \nRight click to reset all")
   $("#selectTool1").css("background-image", "url(" +  swords[weapon.material][0] + ")")
@@ -1322,7 +1263,7 @@ function updateHTML() {
     $("#tool").css("background-image", "url(" + weapon.toolImage + ")");
     $(".sharpness .inputValue").removeClass("levelled");
   }
-  $(".sharpness .inputValue").attr("value", weapon.sharpness);
+  $(".sharpness .inputValue").val(weapon.sharpness);
 
   //Tooltip for sharpness setter
   if (weapon.tool != 6 || weapon.sharpness == 0) {
@@ -1399,7 +1340,7 @@ function updateHTML() {
   $("#resistanceBonus").text(armour.resistanceBonus);
   //Hitpoints
   $("#totalHitpoints").empty().append(hitpointImages(armour.hitpoints)).attr("title", pluralise(armour.hitpoints, "hitpoint"));
-  $("#hitpointsValue").attr("value", armour.hitpoints);
+  $("#hitpointsValue").val(armour.hitpoints);
   $(".hitpointBreak").css( "margin-top", Math.min(8,(armour.hitpoints-1)/20 << 0)*-2+"px"); //Clump lines of hearts closer where there are more
 
   //Tooltips for protection setters
