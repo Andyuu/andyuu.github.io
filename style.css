@@ -20,7 +20,9 @@
   --blue-tone-1: hsl(224, 100%, 40%);
   --purple: hsl(275, 100%, 50%);
   --purple-tone-1: hsl(275, 100%, 40%);
+  --orange: hsl(30, 100%, 50%);
   --light-grey: #BBB;
+  --table-shadow: black;
 }
 [data-theme="light"] {
   --text: black;
@@ -35,6 +37,7 @@
   --medium-grey: #777;
   --medium-grey-2: #999;
   --light-grey: #fff;
+  --table-shadow: #333;
 
 }
 body {
@@ -63,7 +66,7 @@ header {
   top: 0;
   border-bottom: 10px solid var(--background-border);
   position: fixed;
-  z-index: 2;
+  z-index: 10;
   transition: height 0.3s, top 0.3s, font-size 0.2s;
   scroll-margin-top: 40px;
 }
@@ -213,7 +216,7 @@ input:checked + .themeSlider:before {
 }
 #vs {
   font-size: 60px;
-  color: darkorange; 
+  color: var(--orange) 
 }
 #armour {
   color: var(--blue);
@@ -375,6 +378,9 @@ input:checked + .themeSlider:before {
 .armourReset, .armourUp, .armourDown {
   background-color: var(--blue-tone-1);
 }
+.cooldownReset {
+  background-color: var(--orange);
+}
 .gearFiles {
 	padding: 4px;
 	width: 26px;
@@ -486,6 +492,9 @@ table {
   border-bottom-right-radius: 20px;
   overflow: hidden;
 }
+.quickControls, .gearTable {
+  box-shadow: 10px 10px 8px var(--table-shadow);
+}
 #rightHalf .gearTable{
   margin-right: 0;
   margin-left: auto;
@@ -516,14 +525,16 @@ table {
   transition: background-image 0.2s;
   margin: 0;
 }
-#tool {
+.tool {
   width: 160px;
   height: 160px;
   background-size: 160px;
   border-width: 6px;
 }
 .selectTools {
-  min-width: 90px;
+  width: 90px;
+  margin-left: -7px;
+  user-select: none;
 }
 .selectTool {
   display: inline-block;
@@ -553,11 +564,11 @@ table {
 .pixelated {
   image-rendering: pixelated;
 }
-.armourDefence, #totalDefence, .armourToughness, #totalToughness, #totalHitpoints {
+.armourDefence, .totalDefence, .armourToughness, .totalToughness, .totalHitpoints {
   display: block;
 
 }
-.armourDefence, #totalDefence{
+.armourDefence, .totalDefence{
   background-image: url(Images/Icon/Empty_Armour.webp);
   background-size: 18px;
   width: 72px;
@@ -571,7 +582,7 @@ table {
 #leggingsDefence {
   width: 54px;
 }
-#totalDefence {
+.totalDefence {
   min-width: 180px;
 
 }
@@ -580,26 +591,38 @@ table {
   width: 36px;
   display: block;
 }
-#totalToughness {
+.totalToughness {
   width: 180px;
   height: 18px;
 }
-#totalHitpoints{
+.totalHitpoints{
   background-size: 18px;
   width: 180px;
   height: auto;
   line-height: 18px;
 }
-
 #weaponDamageContainer {
-  /* border: 1px solid red; */
+  width: 180px;
 }
 #attackCooldownContainer {
   width: 260px;
-  /* border: 1px solid red; */
-  margin-left: -2px;
+  margin: 1px 0 0px -4px;
+  line-height: 20px;
+  border: 2px solid var(--background);
+  cursor: pointer;
 }
-
+.editable#attackCooldownContainer {
+  border-color: var(--orange);
+  cursor: crosshair;
+}
+.immunityInfo {
+  opacity: 0;
+  margin-top: -1px;
+  margin-bottom: 5px;
+}
+.immunityInfo.show {
+  opacity: 1;
+}
 [data-theme="light"] #attackCooldown img {
   filter: drop-shadow(1px 0 0 #777) 
   drop-shadow(-1px 0 0 #777)
@@ -613,7 +636,7 @@ table {
   clip-path: inset(2px 2px 2px 2px);
 }
 
-#totalHitpointsContainer{
+.totalHitpointsContainer{
   display: inline-block;
   vertical-align: bottom;
   margin-bottom: -4px;
@@ -697,15 +720,15 @@ th, td {
 .number .arrowUp:active, .number .arrowDown:active{
   top: 1px;
 }
-#hitpoints {
+.hitpoints {
   padding: 0;
   width: 90px;
   height: 40px;
-  color: var(--red);
+  color: red;
   font-size: 20px;
   margin: 0 auto;
 }
-#hitpoints > p {
+.hitpoints > p {
   display: flex;
   justify-content: center;
   line-height: 0.3;
@@ -777,10 +800,10 @@ th, td {
   opacity: 0.6;
   filter: invert();
 }
-.crit:hover , #effects:hover{
+.crit:hover , .effects:hover{
   background-color: #333;
 }
-[data-theme="light"] .crit:hover {
+[data-theme="light"] .crit:hover, [data-theme="light"] .effects:hover{
   background-color: #888;
 }
 .crit.on {
@@ -795,6 +818,7 @@ drop-shadow(0 -2px 0 #555);
 .crit.on::after {
   content: "CRIT!";
   position: absolute;
+  font-size: 14px;
   left: 8px;
   bottom: -20px;
 }
@@ -803,14 +827,14 @@ drop-shadow(0 -2px 0 #555);
   float: left;
   margin: 0px 3px;
 }
-#effects {
+.effects {
   float: right;
   width: 60px;
   height: 60px;
   background-image: url(Images/Effects.webp);
   background-size: 100%;
 }
-#effectLine{
+.effectLine{
   display: flex;
   position: absolute;
   left: 100%;
@@ -825,11 +849,11 @@ drop-shadow(0 -2px 0 #555);
   flex-direction: row;
   scroll-snap-type: x mandatory;
 }
-#effectLine:empty {
+.effectLine:empty {
   padding: 0;
   border: 0;
 }
-#effectLine .effect {
+.effectLine .effect {
   float: left;
   min-width: 50px;
   min-height: 50px;
@@ -838,23 +862,23 @@ drop-shadow(0 -2px 0 #555);
 .effect.off::before {
   content: "";
 }
-#effectLine::-webkit-scrollbar {
+.effectLine::-webkit-scrollbar {
   width: 12px;
   height: 12px;
 }
-#effectLine::-webkit-scrollbar-track {
+.effectLine::-webkit-scrollbar-track {
   background: #080808;
   border-radius: 10px;
   margin: 0px 5px;
 }
-#effectLine::-webkit-scrollbar-thumb {
+.effectLine::-webkit-scrollbar-thumb {
   background: rgb(90, 18 ,152);
   border-radius: 10px;
 }
-#effectLine::-webkit-scrollbar-thumb:hover {
+.effectLine::-webkit-scrollbar-thumb:hover {
   background: rgb(174, 85, 219);
 }
-#effectTable{
+.effectTable{
   display: none;
   position: absolute;
   left: 100%;
@@ -868,11 +892,11 @@ drop-shadow(0 -2px 0 #555);
   border-top: 0;
   border-right: 0;
   padding: 10px 10px 5px 5px;
-  z-index: 5;
+  z-index: 2;
   border-radius: 0px;
   border-bottom-left-radius: 10px;
 }
-#effects:hover~#effectTable, #effectTable:hover, #effectTable:focus-within{
+.effects:hover~.effectTable, .effectTable:hover, .effectTable:focus-within{
   display: flex;
 }
 .effect {
@@ -1231,7 +1255,7 @@ drop-shadow(0 -2px 0 #555);
 .profile.collapse .profileDamageTaken{
   right: 210px;
 }
-#hitpointsBox {
+.hitpointsBox {
   background-size: 80px;
 }
 
@@ -1266,7 +1290,7 @@ drop-shadow(0 -2px 0 #555);
   width: 13px;
 }
 .modalContent::-webkit-scrollbar-thumb {
-  background: darkorange;
+  background: var(--orange);
 }
 .modalContent p{
   text-align: center;
@@ -1301,7 +1325,7 @@ drop-shadow(0 -2px 0 #555);
   margin: 2px;
   padding: 5px;
   background-color: #444;
-  color: darkorange;
+  color: var(--orange);
   font-weight: bold;
   position: relative;
   font-size: 18px;
@@ -1334,7 +1358,7 @@ drop-shadow(0 -2px 0 #555);
 }
 .profileFolderName:focus {
   outline: none;
-  box-shadow: 0px 1px darkorange;
+  box-shadow: 0px 1px var(--orange);
 }
 .profileFolder.collapse {
   -webkit-clip-path: polygon(0 0, 0 100%, calc(100% - 10px) 100%, 100% calc(100% - 10px), 100% 0);
@@ -1369,7 +1393,7 @@ drop-shadow(0 -2px 0 #555);
   line-height: 1;
   border: 1px solid #333;
   background-color: #333;
-  color: darkorange;
+  color: var(--orange);
   font-weight: bold;
   position: relative;
   -webkit-clip-path: polygon(0 0, 10px 50%, 0 100%, calc(100% - 10px) 100%, 100% 50%, calc(100% - 10px) 0%);

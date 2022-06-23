@@ -55,6 +55,8 @@
         <div class="gearReset textMoveUp animation armourUp hasTooltip">&#x21e7;<span class="tooltip">Increment Armour</span></div>
         <div class="gearReset textMoveDown animation armourDown hasTooltip">&#x21e9;<span class="tooltip">Decrement Armour</span></div>
         <hr>
+        <div class="gearReset spin animation cooldownReset hasTooltip">&#8634;<span class="tooltip">Reset Cooldown</span></div>
+        <hr>
         <div class="gearFiles folder hasTooltip">&#128448;<span class="tooltip">Kit Folder</span></div>
         <div class="gearFiles saveGear hasTooltip">&#128427;<span class="tooltip">Save Kit</span></div>
       </div>
@@ -73,28 +75,28 @@
                 <p>-</p>
               </button>
             </div>
-            <div id="effects"></div>
-            <div id="effectLine"></div>
-            <div id="effectTable"></div>
+            <div class="effects"></div>
+            <div class="effectLine"></div>
+            <div class="effectTable"></div>
           </td>
         </tr>
 
 
         <tr>
           <td rowspan="2">
-            <div class="box" id="tool"></div><span id="toolDescription">No Sword</span>
-            <br>Damage: &nbsp;<span id="toolDamage">4</span>
+            <div class="box tool"></div><span class="toolDescription">No Sword</span>
+            <br>Damage: &nbsp;<span class="toolDamage">4</span>
           </td>
           <td rowspan="2">
           <div class="selectTools">
-            <div class="box selectTool" id="selectTool1"></div>
-            <div class="box selectTool" id="selectTool4"></div>
+            <div class="selectTool0 box selectTool"></div>
+            <div class="selectTool3 box selectTool"></div>
             <br>
-            <div class="box selectTool" id="selectTool2"></div>
-            <div class="box selectTool" id="selectTool5"></div>
+            <div class="selectTool1 box selectTool"></div>
+            <div class="selectTool4 box selectTool"></div>
             <br>
-            <div class="box selectTool" id="selectTool3"></div>
-            <div class="box selectTool" id="selectTool6"></div>
+            <div class="selectTool2 box selectTool"></div>
+            <div class="selectTool5 box selectTool"></div>
           </div>
           </td>
           <td rowspan="4" colspan="2" class="verticalBottom">
@@ -199,7 +201,7 @@
             <div id="attackCooldownContainer">
               <span class="pixelated" id="attackCooldown"></span>
             </div>
-            <div id="immunityInfo" colspan="3">Damage immunity limits DPS</div>
+            <div class="immunityInfo" colspan="3">Damage immunity limits attack rate</div>
           </td>
         </tr>
 
@@ -213,23 +215,23 @@
           <td colspan="5">
             <table>
               <td>
-                <div class="number" id="hitpoints">
+                <div class="number hitpoints">
                   <p>Health</p>
-                  <button class="arrow arrowUp" id="hitpointsUp">
+                  <button class="arrow arrowUp">
                     <p>+</p>
                   </button>
-                  <input title="20 hitpoints" type="text" class="inputValue" id="hitpointsValue" value=20>
-                  <button class="arrow arrowDown" id="hitpointsDown">
+                  <input title="20 hitpoints" type="text" class="inputValue hitpointsValue" value=20>
+                  <button class="arrow arrowDown">
                     <p>-</p>
                   </button>
                 </div>
               </td>
               <td colspan="2" class="verticalBottom">
-                <div id="totalHitpointsContainer"><span class="pixelated" id="totalHitpoints"></span></div>
+                <div class="totalHitpointsContainer"><span class="pixelated totalHitpoints"></span></div>
               </td>
               <td colspan="2" class="verticalBottom">
-                <span class="finalValues pixelated" id="totalDefence"></span>
-                <span class="finalValues pixelated" id="totalToughness"></span>
+                <span class="finalValues pixelated totalDefence"></span>
+                <span class="finalValues pixelated totalToughness"></span>
               </td>
             </table>
           </td>

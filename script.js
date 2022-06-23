@@ -187,6 +187,8 @@ var cooldownImage = "Images/Icon/Hourglass.webp";
 var halfCooldownImage = "Images/Icon/Half_Hourglass.webp"
 var redCooldownImage = "Images/Icon/Red_Hourglass.webp"
 var halfRedCooldownImage = "Images/Icon/Half_Red_Hourglass.webp"
+var topRedCooldownImage = "Images/Icon/Top_Red_Hourglass.webp"
+var bottomRedCooldownImage = "Images/Icon/Bottom_Red_Hourglass.webp"
 var emptyCooldownImage = "Images/Icon/Empty_Hourglass.webp"
 var infiniteCooldownImage = "Images/Icon/Infinite.webp"
 
@@ -246,7 +248,6 @@ function round(value, precision) {
   var multiplier = Math.pow(10, precision || 0);
   return Math.round(value * multiplier) / multiplier;
 };
-94
 
 function romanNumeral(num) {
   var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},roman = '',i;
@@ -260,12 +261,12 @@ function romanNumeral(num) {
 }
 class Effect{
   constructor() {
+    this._haste = 0
+    this._miningFatigue = 0
     this.strength = 0
-    this.haste = 0
     this.regeneration = 0
     this.resistance = 0
     this.weakness = 0
-    this.miningFatigue = 0
     this.fireResistance = 0
     this.speed = 0
     this.slowness = 0
@@ -287,6 +288,20 @@ class Effect{
     this.wither = 0
     // this.instantHealth = 0
     // this.instantDamage = 0
+  }
+  set haste(value) {
+    weapon.useInterval = false
+    this._haste = value
+  }
+  get haste() {
+    return this._haste
+  }
+  set miningFatigue(value) {
+    weapon.useInterval = false
+    this._miningFatigue = value
+  }
+  get miningFatigue() {
+    return this._miningFatigue
   }
   bonus(effect, secondary=false, sign=false, roundPrecision){
     effect = effect.toLowerCase().replace(/\s+/g, ''); //Remove whitespace
@@ -545,11 +560,27 @@ class Effect{
 }
 class Weapon {
   constructor(effect) {
-    this.material = 0
-    this.tool = 0
+    this._material = 0
+    this._tool = 0
     this.crit = false
     this.sharpness = 0
     this.effect = effect
+    this.useInterval = false
+    this.attackInterval = 0.6
+  }
+  set material(value) {
+      this.useInterval = false
+      this._material = value
+  }
+  get material() {
+    return this._material
+  }
+  set tool(value) {
+    this.useInterval = false
+    this._tool = value
+  }
+  get tool() {
+    return this._tool
   }
   get toolName() {
     return toolList[this.tool]
@@ -612,15 +643,55 @@ class Weapon {
   get sharpnessBonus() {
     return (this.sharpness>0) ? this.sharpness * 0.5 + 0.5 : 0;
   }
-  get damage() {
-    var damage = (this.baseDamage + this.effect.bonus("strength") + this.effect.bonus("weakness")) * this.critBonus + this.sharpnessBonus
-    if (damage < 0) {
-      damage = 0
-    }
+  get maxDamage() {
+    var damage = Math.max(0,this.baseDamage + this.effect.bonus("strength") + this.effect.bonus("weakness")) * this.critBonus + this.sharpnessBonus
     return damage
   }
+  get intervalMultiplier() {
+    let attackCooldownTicks = 20 / this.attackSpeed
+    let attackIntervalTicks = this.attackInterval * 20
+    if (this.isInfiniteInterval) {
+      return 0.2
+    } else {
+      return 0.2 + ((attackIntervalTicks + 0.5) / attackCooldownTicks) ** 2 * 0.8
+    }
+  }
+  get intervalSharpnessMultiplier() {
+    let attackCooldownTicks = 20 / this.attackSpeed
+    let attackIntervalTicks = this.attackInterval * 20
+    if (this.isInfiniteInterval) {
+      return 0
+    } else {
+      return (attackIntervalTicks + 0.5) / attackCooldownTicks
+    }
+  }
+  get isInfiniteInterval() {
+    return !isFinite(this.attackInterval)
+  }
+  get useCrit() {
+    return (this.intervalMultiplier > 0.848)
+  }
+  get damage() {
+    if ( !this.isInfiniteInterval && (this.isMaxDamage || this.useInterval == false)) {
+      return this.maxDamage
+    } else {
+      var damage = Math.max(0,this.baseDamage + this.effect.bonus("strength") + this.effect.bonus("weakness")) * this.intervalMultiplier
+      if (this.useCrit) {
+        damage *= this.critBonus
+      }
+      damage += this.sharpnessBonus * this.intervalSharpnessMultiplier
+      return damage
+    }
+  }
+  get isMaxDamage() {
+    return this.attackInterval >= this.attackCooldown  
+  }
   get DPS() {
-    return this.damage / this.attackCooldown
+    if (this.useInterval) {
+      return this.damage / this.attackInterval
+    } else {
+      return this.damage / this.attackCooldown
+    }
   }
 }
 class Armour {
@@ -737,13 +808,21 @@ class Results {
     return this.damageDealt / this.attacker.damage * 100;
   }
   get DPS() {
-    return this.damageDealt / this.attacker.attackCooldown
+    if (weapon.useInterval) {
+      return this.damageDealt / this.attacker.attackInterval
+    } else {
+      return this.damageDealt / this.attacker.attackCooldown
+    }
   }
   get hitsToKill() {
     return Math.ceil(this.defender.hitpoints / this.damageDealt);
   }
   get timeToKill() {
-    return this.hitsToKill * this.attacker.attackCooldown;
+    if (weapon.useInterval) {
+      return this.hitsToKill * this.attacker.attackInterval;
+    } else {
+      return this.hitsToKill * this.attacker.attackCooldown;
+    }
   }
 
 
@@ -891,7 +970,7 @@ $(document).ready(function () {
 
   //Normal boxes
   $(".selectTool").mousedown(function (event) {
-    let temp = $(this).attr("id").replace (/[^\d.]/g, '' )-1;
+    let temp = $(this).attr("class").split(/\s+/)[0].replace (/[^\d.]/g, '' );
 
     if (weapon.tool == temp) {
       weapon.tool = 6
@@ -900,7 +979,7 @@ $(document).ready(function () {
     }
     updateHTML()
   });
-  $("#tool").mousedown(function (event) {
+  $(".tool").mousedown(function (event) {
     if (event.which === 3) {
       weapon.material = weapon.material - 1 < 0 ? toolMaterialList.length-1 : weapon.material - 1;
     } else {
@@ -1026,42 +1105,110 @@ $(document).ready(function () {
       effect.wither = random(10) == 0 ? 1 : 0;
   }
   do {
-    effect.strength = random(2) == 0 ? random(6) : 0;
-    effect.weakness = random(10) == 0 ? random(6) : 0;
-    effect.haste = random(2) == 0 ? random(6) : 0;
-    effect.miningFatigue = random(2) == 0 ? random(6) : 0;
-    effect.regeneration = random(2) == 0 ? random(6) : 0;
-    effect.resistance = random(2) == 0 ? random(5) : 0;
+    let strength = random(2) == 0 ? random(6) : 0;
+    if (effect.strength != strength) {
+      effect.strength = strength
+    }
+    let weakness = random(10) == 0 ? random(6) : 0;
+    if (effect.weakness != weakness) {
+      effect.weakness = weakness
+    }
+    let haste = random(2) == 0 ? random(6) : 0;
+    if (effect.haste != haste) {
+      effect.haste = haste
+    }
+    let miningFatigue = random(2) == 0 ? random(6) : 0;
+    if (effect.miningFatigue != miningFatigue) {
+      effect.miningFatigue = miningFatigue
+    }
+    let regeneration = random(2) == 0 ? random(6) : 0;
+    if (effect.regeneration != regeneration) {
+      effect.regeneration = regeneration
+    }
+    let resistance = random(2) == 0 ? random(5) : 0;
+    if (effect.resistance != resistance) {
+      effect.resistance = resistance
+    }
   } while (!effect.strength && !effect.weakness && !effect.haste && !effect.miningFatigue && !effect.regeneration && !effect.resistance);
 
     updateHTML()
   });
   $(".effectReset").mousedown(function (event) {
-    effect.strength = 0
-    effect.weakness = 0
-    effect.haste = 0
-    effect.miningFatigue = 0
-    effect.regeneration = 0
-    effect.resistance = 0
-    effect.fireResistance = 0
-    effect.speed = 0
-    effect.slowness = 0
-    effect.waterBreathing = 0
-    effect.invisibility = 0
-    effect.glowing = 0
-    effect.healthBoost = 0
-    effect.absorption = 0
-    effect.jumpBoost = 0
-    effect.slowFalling = 0
-    effect.levitation = 0
-    effect.saturation = 0
-    effect.hunger = 0
-    effect.nausea = 0
-    effect.nightVision = 0
-    effect.blindness = 0
-    effect.darkness = 0
-    effect.poison = 0
-    effect.wither = 0
+    if (effect.strength != 0) {
+      effect.strength = 0
+    }
+    if (effect.weakness != 0) {
+      effect.weakness = 0
+    }
+    if (effect.haste != 0) {
+      effect.haste = 0
+    }
+    if (effect.miningFatigue != 0) {
+      effect.miningFatigue = 0
+    }
+    if (effect.regeneration != 0) {
+      effect.regeneration = 0
+    }
+    if (effect.resistance != 0) {
+      effect.resistance = 0
+    }
+    if (effect.fireResistance != 0) {
+      effect.fireResistance = 0
+    }
+    if (effect.speed != 0) {
+      effect.speed = 0
+    }
+    if (effect.slowness != 0) {
+      effect.slowness = 0
+    }
+    if (effect.waterBreathing != 0) {
+      effect.waterBreathing = 0
+    }
+    if (effect.invisibility != 0) {
+      effect.invisibility = 0
+    }
+    if (effect.glowing != 0) {
+      effect.glowing = 0
+    }
+    if (effect.healthBoost != 0) {
+      effect.healthBoost = 0
+    }
+    if (effect.absorption != 0) {
+      effect.absorption = 0
+    }
+    if (effect.jumpBoost != 0) {
+      effect.jumpBoost = 0
+    }
+    if (effect.slowFalling != 0) {
+      effect.slowFalling = 0
+    }
+    if (effect.levitation != 0) {
+      effect.levitation = 0
+    }
+    if (effect.saturation != 0) {
+      effect.saturation = 0
+    }
+    if (effect.hunger != 0) {
+      effect.hunger = 0
+    }
+    if (effect.nausea != 0) {
+      effect.nausea = 0
+    }
+    if (effect.nightVision != 0) {
+      effect.nightVision = 0
+    }
+    if (effect.blindness != 0) {
+      effect.blindness = 0
+    }
+    if (effect.darkness != 0) {
+      effect.darkness = 0
+    }
+    if (effect.poison != 0) {
+      effect.poison = 0
+    }
+    if (effect.wither != 0) {
+      effect.wither = 0
+    }
     updateHTML()
   });
   $(".armourUp").mousedown(function (event) {
@@ -1082,6 +1229,10 @@ $(document).ready(function () {
     armour.chestplate = armour.chestplate > 0 ? armour.chestplate-1 : 6;
     armour.leggings = armour.leggings > 0 ? armour.leggings-1 : 6;
     armour.boots = armour.boots > 0 ? armour.boots-1 : 6;
+    updateHTML()
+  });
+  $(".cooldownReset").mousedown(function (event) {
+    weapon.useInterval = false
     updateHTML()
   });
   //Number boxes
@@ -1146,12 +1297,86 @@ $(document).ready(function () {
     updateHTML();
 
   });
-  $("#hitpointsValue").change(function () {
+  $(".hitpointsValue").change(function () {
     armour.hitpoints = $(this).val();
     if (armour.hitpoints == 0) {
       $(this).val(1).trigger('change');
     }
     updateHTML();
+  });
+  $("#attackCooldownContainer").mousedown(function () {
+    if ($(this).hasClass("editable")) {
+      $(this).removeClass("editable")
+    }
+    else if ($(this).find("img").length > 1 ){
+      $(this).addClass("editable")
+    }
+  });
+
+  $("#attackCooldownContainer").mousemove(function(event) {
+    if ($(this).hasClass("editable") && $(this).find("img").length > 1) {
+      var offset = $(this).offset();
+      var mouseLeft = event.pageX - offset.left
+      var mouseTop = event.pageY - offset.top
+      // console.log(mouseLeft + " "+ mouseTop)
+      var hoveredImage = (mouseLeft / 26) <<0
+      hoveredImage += 10 * (((6 + mouseTop) / 36) << 0)
+      hoveredImage = hoveredImage > 149 ? 149 : hoveredImage
+      var interval = hoveredImage >= 5 ? hoveredImage * 2 + 1 + (mouseTop % 36 <= 16) : 10
+      weapon.attackInterval = interval / 20
+      weapon.useInterval = true
+      updateHTML()
+      var imagesLength = $(this).find("img:not(.extraImage)").length
+      var extraImages = 1 + hoveredImage - imagesLength
+      $(this).find("img.extraImage").remove()
+      for (i=0; i<extraImages; i++) {     
+        $(this).find("span").eq(0).append("<img class='extraImage' height='32px' width='26px' >");
+      }
+      if (hoveredImage < 5) {
+        $(".immunityInfo").addClass("show")
+        hoveredImage = 4
+      } else {
+        $(".immunityInfo").removeClass("show")
+      }
+      var $img = $(this).find("img")
+      if (extraImages < 0 && imagesLength > 5) {
+        $img.slice(0, hoveredImage).attr("src", redCooldownImage)
+        $img.slice(hoveredImage, imagesLength).attr("src", cooldownImage)    
+        if ((mouseTop % 36) <= 16 || hoveredImage == 4) {
+          $img.eq(hoveredImage).attr("src", redCooldownImage)
+        } else {
+          $img.eq(hoveredImage).attr("src", bottomRedCooldownImage)
+        }
+      }
+      else if ( extraImages == 0 && imagesLength > 5){
+        $img.slice(0, imagesLength - 1).attr("src", cooldownImage)    
+        if (weapon.attackCooldown * 20 % 2) {
+          if ((mouseTop % 36) <= 16) {
+            $img.eq(hoveredImage).attr("src", topRedCooldownImage)
+          } else {
+            $img.eq(hoveredImage).attr("src", halfCooldownImage)
+          }
+        } else {
+          if ((mouseTop % 36) <= 16) {
+            $img.eq(hoveredImage).attr("src", cooldownImage)
+          } else {
+            $img.slice(0, hoveredImage).attr("src", redCooldownImage)
+            $img.eq(hoveredImage).attr("src", bottomRedCooldownImage)
+          }
+
+        }
+      }
+      else if ( extraImages > 0){
+       $img.slice(0, imagesLength).attr("src", cooldownImage)  
+        if (weapon.attackCooldown * 20 % 2) {
+         $img.eq(imagesLength - 1).attr("src", topRedCooldownImage)
+        }
+       $img.slice(imagesLength).attr("src", redCooldownImage)
+        if ((mouseTop % 36) >= 16) {
+         $img.eq(hoveredImage).attr("src", halfRedCooldownImage)
+        }
+      }
+    }
   });
 
   updateProfiles()
@@ -1162,6 +1387,9 @@ $(document).ready(function () {
 });
 
 function updateHTML() {
+  if (weapon.useInterval == false) {
+    $("#attackCooldownContainer").removeClass("editable")
+  }
   $(".effect").each(function() {
     let effectName = $(this).attr('class').split(' ')[0];
     let value = effect[effectName]
@@ -1176,33 +1404,33 @@ function updateHTML() {
     }
     let numeral = romanNumeral(value).length <= 6 ? romanNumeral(value) : value
     $(this).parent().attr("data-before", numeral);
-    if ($(this).parent().parent().attr("id") != "effectTable") {
-      $("#effectTable ."+effectName+ " .inputValue").val(value)
-      $("#effectTable ."+effectName).attr("data-before", numeral);
+    if (!$(this).parent().parent().hasClass("effectTable")) {
+      $(".effectTable ."+effectName+ " .inputValue").val(value)
+      $(".effectTable ."+effectName).attr("data-before", numeral);
     }
 
     if ($(this).find(".inputValue").val() == 0) {
       $(this).addClass("off")
     } else {
       $(this).removeClass("off")
-      if ($(this).parent().attr("id") == "effectTable") {
-        $(this).clone(true).appendTo("#effectLine");
+      if ($(this).parent().hasClass("effectTable")) {
+        $(this).clone(true).appendTo(".effectLine");
       }
 
     }
-    if ($(this).parent().attr("id") == "effectLine") {
+    if ($(this).parent().hasClass("effectLine")) {
       $(this).remove()
     }
   });
   // $("#dice1").attr("title", "Left click for random weapon \nRight click to reset all")
   // $("#dice2").attr("title", "Left click for random armour \nRight click to reset all")
-  $("#selectTool1").css("background-image", "url(" +  swords[weapon.material][0] + ")")
-  $("#selectTool2").css("background-image", "url(" +  axes[weapon.material][0] + ")")
-  $("#selectTool3").css("background-image", "url(" +  pickaxes[weapon.material][0] + ")")
-  $("#selectTool4").css("background-image", "url(" +  shovels[weapon.material][0] + ")")
-  $("#selectTool5").css("background-image", "url(" +  hoes[weapon.material][0] + ")")
-  $("#selectTool6").css("background-image", "url(" +  trident[0] + ")")
-  $("#selectTool"+(weapon.tool+1)).css("background-image", "url(" + barrierImage + ")")
+  $(".selectTool0").css("background-image", "url(" +  swords[weapon.material][0] + ")")
+  $(".selectTool1").css("background-image", "url(" +  axes[weapon.material][0] + ")")
+  $(".selectTool2").css("background-image", "url(" +  pickaxes[weapon.material][0] + ")")
+  $(".selectTool3").css("background-image", "url(" +  shovels[weapon.material][0] + ")")
+  $(".selectTool4").css("background-image", "url(" +  hoes[weapon.material][0] + ")")
+  $(".selectTool5").css("background-image", "url(" +  trident[0] + ")")
+  $(".selectTool"+(weapon.tool)).css("background-image", "url(" + barrierImage + ")")
 
 
   $("#toolMaterial").css("background-image", "url(" + weapon.materialImage + ")");
@@ -1227,11 +1455,16 @@ function updateHTML() {
   } else {
     weaponDamageTitle += weapon.damage+" damage"
   }
-  $("#weaponDamage").empty().append(damagePointImages(weapon.damage)).attr("title", weaponDamageTitle);
+  $(".toolDescription").text(weapon.name);
+  $(".toolDamage").text(round(weapon.damage, 4));
+  $("#weaponDamage").empty().append(damagePointImages(weapon.damage, weapon.maxDamage)).attr("title", weaponDamageTitle);
   $("#attackSpeed").text(round(weapon.attackSpeed,3))
   let attackCooldownTitle = ""
   if (isFinite(weapon.attackCooldown)) {
-    attackCooldownTitle = weapon.attackCooldown + "s attack cooldown"
+    if (weapon.useInterval) {
+      attackCooldownTitle += weapon.attackInterval + "s attack interval \n"
+    }
+    attackCooldownTitle += weapon.attackCooldown + "s attack cooldown"
     if (effect.haste > 0) {
       attackCooldownTitle += "\nHaste: ÷ "+effect.bonus("haste",false,false,8)
     }
@@ -1241,10 +1474,11 @@ function updateHTML() {
   } else {
     attackCooldownTitle = "Infinite attack cooldown \nMining Fatigue: ÷ 0 \n(Always deal 20% damage)";
   }
-  $("#attackCooldown").empty().append(cooldownPointImages(weapon.attackCooldown)).attr("title", attackCooldownTitle)
+  $("#attackCooldown").attr("title", attackCooldownTitle)
+  if (weapon.useInterval == false) {
+    $("#attackCooldown").empty().append(cooldownPointImages(weapon.attackCooldown))
+  }
 
-  $("#toolDescription").text(weapon.name);
-  $("#toolDamage").text(weapon.damage);
   //Crit
   if (weapon.crit == true){
     $(".crit").addClass("on")
@@ -1256,10 +1490,10 @@ function updateHTML() {
 
   //Sharpness
   if (weapon.sharpness > 0) {
-    $("#tool").css("background-image", "url(" + weapon.enchantedToolImage + ")");
+    $(".tool").css("background-image", "url(" + weapon.enchantedToolImage + ")");
     $(".sharpness .inputValue").addClass("levelled");
   } else {
-    $("#tool").css("background-image", "url(" + weapon.toolImage + ")");
+    $(".tool").css("background-image", "url(" + weapon.toolImage + ")");
     $(".sharpness .inputValue").removeClass("levelled");
   }
   $(".sharpness .inputValue").val(weapon.sharpness);
@@ -1274,9 +1508,9 @@ function updateHTML() {
   //Damage
   $("#attackDamage").text(weapon.damage)
   if (weapon.attackSpeed > 2) {
-    $("#immunityInfo").text("Damage immunity limits DPS");
+    $(".immunityInfo").addClass("show")
   } else {
-    $("#immunityInfo").text("");
+    $(".immunityInfo").removeClass("show")
   }
   // (weapon.attackSpeed > 2) ? $("#immunityInfo").text("Damage immunity limits DPS") : $("#immunityInfo").text("");
   $("#damagePerSecond").text(round(weapon.DPS, 3));
@@ -1324,8 +1558,8 @@ function updateHTML() {
   $("#bootsDefence").empty().append(armourPointImages(armour.bootsDefence)).attr("title", pluralise(armour.bootsDefence / 2, "armour point"));
   $("#bootsToughness").empty().append(toughnessPointImages(armour.bootsToughness)).attr("title", pluralise(armour.bootsToughness / 2, "toughness point"));
   //Armour
-  $("#totalDefence").empty().append(armourPointImages(armour.defence)).attr("title", pluralise(armour.defence / 2, "armour point"));
-  $("#totalToughness").empty().append(toughnessPointImages(armour.toughness)).attr("title", pluralise(armour.toughness / 2, "toughness point"));
+  $(".totalDefence").empty().append(armourPointImages(armour.defence)).attr("title", pluralise(armour.defence / 2, "armour point"));
+  $(".totalToughness").empty().append(toughnessPointImages(armour.toughness)).attr("title", pluralise(armour.toughness / 2, "toughness point"));
   //Protection
   $("#protectionLevel").text(armour.protection);
   $("#protectionBonus").text(armour.protectionBonus);
@@ -1338,8 +1572,8 @@ function updateHTML() {
   $("#resistanceLevel").text(armour.resistance);
   $("#resistanceBonus").text(armour.resistanceBonus);
   //Hitpoints
-  $("#totalHitpoints").empty().append(hitpointImages(armour.hitpoints)).attr("title", pluralise(armour.hitpoints, "hitpoint"));
-  $("#hitpointsValue").val(armour.hitpoints);
+  $(".totalHitpoints").empty().append(hitpointImages(armour.hitpoints)).attr("title", pluralise(armour.hitpoints, "hitpoint"));
+  $(".hitpointsValue").val(armour.hitpoints);
   $(".hitpointBreak").css( "margin-top", Math.min(8,(armour.hitpoints-1)/20 << 0)*-2+"px"); //Clump lines of hearts closer where there are more
 
   //Tooltips for protection setters
@@ -1458,23 +1692,15 @@ function toughnessPointImages(num) {
   }
   return span;
 };
-function damagePointImages(num) {
+function damagePointImages(num, max=num) {
   let span = $("<span>");
-
   if (num > 0) {
-    let fullLines = (num / 20) << 0;
-    for (let i = 0; i < fullLines; i++) {
-      for (let i = 0; i < 10; i++) {
-        span.append("<img src=" + damageImage + " height='18px' width='18px' >");
-      }
-      span.append("<br>");
-    }
-    let extra = num%20;
-    let full = (extra / 2) << 0;
-    let fraction = extra % 2;
+    let full = (num / 2) << 0;
+    let fraction = num % 2;
     let quarter = fraction < 1 && fraction >= 0.5;
     let half = fraction < 1.5 && fraction >= 1;
     let threeQuarter = fraction < 2 && fraction >= 1.5;
+    let total = full + quarter + half + threeQuarter
 
     for (let i = 0; i < full; i++) {
       span.append("<img src=" + damageImage + " height='18px' width='18px' >");
@@ -1487,6 +1713,11 @@ function damagePointImages(num) {
     }
     if (threeQuarter) {
       span.append("<img src=" + threeQuarterDamageImage + " height='18px' width='18px' >");
+    }
+    let totalMax = Math.ceil(max / 2)
+    let extraImages = totalMax - total
+    for (let i = 0; i < extraImages; i++) {
+      span.append("<img class='lostDamage' src=" + emptyDamageImage + " height='18px' width='18px' >");
     }
   } else {
     span.append("<img src=" + emptyDamageImage + " height='18px' width='18px' >");
@@ -1657,7 +1888,7 @@ function loadProfileHandlers() {
 
       //Set protection value
       $("#protectionValue").val($(this).data("protection")).trigger("change");
-      $("#hitpointsValue").val($(this).data("hitpoints")).trigger("change");
+      $(".hitpointsValue").val($(this).data("hitpoints")).trigger("change");
 
       //Set header text to profile name
       $("#armour").text($(this).data("name"));
@@ -1797,7 +2028,7 @@ function makeEffectList() {
     var arrowDownButton = $("<button>").addClass("arrow arrowDown")
     arrowDownButton.append($("<p>").text("-"))
     arrowDownButton.appendTo(effectDiv)
-    effectDiv.appendTo("#effectTable")
+    effectDiv.appendTo(".effectTable")
   }
 }
 makeEffectList()
@@ -2314,7 +2545,7 @@ function makeArmourProfile({ name, fullSet: thisFullSet, helmet: thisHelmet, che
   } else {
     hitpoints = 20
   }
-  $("#hitpointsValue").val(hitpoints).trigger("change");
+  $(".hitpointsValue").val(hitpoints).trigger("change");
 
   //Test for valid name
   if (!(/^[a-zA-Z0-9_-]{0,14}$/.test(name))) {
