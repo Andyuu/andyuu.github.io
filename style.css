@@ -15,14 +15,20 @@
   --medium-grey: #999;
   --medium-grey-2: #777;
   --red: hsl(5, 100%, 50%);
+  --red-dim: hsla(5, 100%, 50%, 0.8);
   --red-tone-1: hsl(5, 100%, 40%);
   --blue: hsl(224, 100%, 50%);
+  --blue-dim: hsla(224, 100%, 50%, 0.8);
   --blue-tone-1: hsl(224, 100%, 40%);
   --purple: hsl(275, 100%, 50%);
   --purple-tone-1: hsl(275, 100%, 40%);
   --orange: hsl(30, 100%, 50%);
-  --light-grey: #BBB;
+  --green: hsl(125, 100%, 40%);
+  --green-dim: hsla(125, 100%, 40%, 0.8);
+  --light-grey: var(--background);
   --table-shadow: black;
+
+
 }
 [data-theme="light"] {
   --text: black;
@@ -32,30 +38,18 @@
   --background-zigzag-2: #c0c0c0;
   --background-border: #ddd;
   --background-header: #ccc;
-  --background-tone-1: #b0b0b0;
+  --background-tone-1: #aaa;
   --background-tone-2: #a8a8a8;
+  /* --red-dim: hsla(5, 100%, 50%, 0); */
+  /* --blue-dim: hsla(224, 100%, 50%, 0); */
   --medium-grey: #777;
   --medium-grey-2: #999;
+  --green: hsl(125, 100%, 25%);
+  --green-dim: hsla(125, 100%, 25%, 0.8);
   --light-grey: #fff;
   --table-shadow: #333;
 
 }
-body {
-  font-family:'Segoe UI';
-  color: var(--text);
-  width: 100%;
-  margin: auto;
-  margin-top: 160px;
-  background: linear-gradient(45deg, var(--background-zigzag-1) 25%, transparent 25%),
-  linear-gradient(135deg, var(--background-zigzag-1) 25%, transparent 25%) 0px 0,
-  linear-gradient(-45deg, var(--background-zigzag-1) 25%, transparent 25%) 0 25px,
-  linear-gradient(-135deg, var(--background-zigzag-1) 25%, transparent 25%) 0px 25px;
-  background-size: 50px 50px;
-  background-color: var(--background-zigzag-2);
-  /* overflow-x: hidden; */
-  scroll-behavior: smooth;
-}
-
 header {
   background-color: var(--background-header);
   font-family: Bungee;
@@ -192,15 +186,29 @@ input:checked + .themeSlider:before {
 .themeSlider.round:before {
   border-radius: 50%;
 }
+
 .relative {
   position: relative;
 }
-.container {
-  width: 40%;
-  float: left;
-  margin: 0;
-  box-sizing: border-box;
-  position: relative;
+
+body {
+  font-family:'Segoe UI';
+  color: var(--text);
+  width: 100%;
+  margin: auto;
+  margin-top: 160px;
+  background: linear-gradient(45deg, var(--background-zigzag-1) 25%, transparent 25%),
+  linear-gradient(135deg, var(--background-zigzag-1) 25%, transparent 25%) 0px 0,
+  linear-gradient(-45deg, var(--background-zigzag-1) 25%, transparent 25%) 0 25px,
+  linear-gradient(-135deg, var(--background-zigzag-1) 25%, transparent 25%) 0px 25px;
+  background-size: 50px 50px;
+  background-color: var(--background-zigzag-2);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 0 26px; */
+  flex-direction: column;
 }
 .gearContainer {
   width: 100%;
@@ -208,21 +216,68 @@ input:checked + .themeSlider:before {
   /* border: 1px solid red; */
   display: flex;
 }
-#middleHalf {
-  width: 20%;
+.container {
+  width: 100%;
+  display: block;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
 }
-#weapon {
-  color: var(--red);
+#leftHalf, #rightHalf {
+  min-width: 611px;
+}
+#leftHalf {
+  float: left;
+  flex-grow: 1;
+}
+#rightHalf {
+  float: right;
+  flex-grow: 1;
+}
+#middleHalf {
+  order: 1;
 }
 #vs {
+  display: none;
+  position: absolute;
+  top: 110px;
+  left: calc( 50% - 41.40625px);
   font-size: 60px;
   color: var(--orange) 
+}
+@media (min-width: 1264px) {
+  body {
+    flex-direction: row;
+  }
+  #leftHalf, #rightHalf {
+    width: 50%;
+  }
+  #vs {
+    display: block;
+  }
+}
+@media (min-width: 1800px) {
+  #leftHalf, #rightHalf {
+    width: 40%;
+  }
+  #middleHalf {
+    order: 0;
+  }
+  #middleHalf {
+    width: unset;
+  }
+}
+
+
+#weapon {
+  color: var(--red);
 }
 #armour {
   color: var(--blue);
 }
 #results {
-  color: forestgreen;
+  color: var(--green);
+  margin-top: 60px;
 }
 /* DICE */
 .quickControls {
@@ -473,12 +528,26 @@ input:checked + .themeSlider:before {
   80% { outline-color: red}
 }
 
+.resultsContainer {
+  width: 300px;
+  position: relative;
+  background-color: var(--background);
+  border: 8px solid var(--background-tone-1);
+  outline: 3px solid var(--green-dim);
+  box-shadow: 8px 10px 8px var(--table-shadow),
+              -8px 10px 8px var(--table-shadow);
+  border-radius: 20px;
+}
+.resultsContainer:nth-of-type(2) {
+  margin-top: 30px;
+}
 
 table {
   margin-left: 0;
   display: inline-block;
 }
 .gearTable {
+  position: relative;
   box-sizing: border-box;
   background-color: var(--background);
   min-width: calc( 611px - 50px);
@@ -491,10 +560,35 @@ table {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   overflow: hidden;
+  outline: 3px solid var(--red-dim);
+  outline-offset: -3px;
+  box-sizing: border-box;
+}
+.gearTable::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: var(--background);
 }
 .quickControls, .gearTable {
   box-shadow: 10px 10px 8px var(--table-shadow);
 }
+#rightHalf .quickControls, #rightHalf .gearTable {
+  box-shadow: -10px 10px 8px var(--table-shadow);
+}
+#rightHalf .gearTable::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: calc( 100% - 3px);
+  height: 100%;
+  width: 3px;
+  background-color: var(--background);
+}
+
 #rightHalf .gearTable{
   margin-right: 0;
   margin-left: auto;
@@ -503,6 +597,8 @@ table {
   border-right-width: 0px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+  z-index: 1;
+  outline-color: var(--blue-dim);
 }
 .verticalTop {
   vertical-align: top;
@@ -549,16 +645,16 @@ table {
   opacity: 100%;
 }
 
-#helmet.box {
+.helmet.box {
   background-image: url(Images/Helmet/Empty_Helmet.webp);
 }
-#chestplate.box {
+.chestplate.box {
   background-image: url(Images/Chestplate/Empty_Chestplate.webp);
 }
-#leggings.box {
+.leggings.box {
   background-image: url(Images/Leggings/Empty_Leggings.webp);
 }
-#boots.box {
+.boots.box {
   background-image: url(Images/Boots/Empty_Boots.webp);
 }
 .pixelated {
@@ -576,10 +672,10 @@ table {
   display: block;
   margin-bottom: 2px;
 }
-#helmetDefence, #bootsDefence {
+.helmetDefence, .bootsDefence {
   width: 36px;
 }
-#leggingsDefence {
+.leggingsDefence {
   width: 54px;
 }
 .totalDefence {
@@ -594,6 +690,8 @@ table {
 .totalToughness {
   width: 180px;
   height: 18px;
+  margin-top: 0px;
+  margin: 0;
 }
 .totalHitpoints{
   background-size: 18px;
@@ -601,17 +699,31 @@ table {
   height: auto;
   line-height: 18px;
 }
-#weaponDamageContainer {
+.totalHitpointsContainer{
+  display: inline-block;
+  vertical-align: bottom;
+  margin-bottom: -3px;
+  padding: 0;
+  height: auto;
+}
+.hitpointBreak {
+  display: block;
+  content: "";
+  margin: 0;
+  margin-top: 0px;
+}
+.weaponDamageContainer {
   width: 180px;
 }
-#attackCooldownContainer {
+.attackCooldownContainer {
+  position: relative;
   width: 260px;
   margin: 1px 0 0px -4px;
   line-height: 20px;
   border: 2px solid var(--background);
   cursor: pointer;
 }
-.editable#attackCooldownContainer {
+.editable.attackCooldownContainer {
   border-color: var(--orange);
   cursor: crosshair;
 }
@@ -623,30 +735,12 @@ table {
 .immunityInfo.show {
   opacity: 1;
 }
-[data-theme="light"] #attackCooldown img {
+[data-theme="light"] .attackCooldown img {
   filter: drop-shadow(1px 0 0 #777) 
   drop-shadow(-1px 0 0 #777)
   drop-shadow(0 1px 0 #777)
   drop-shadow(0 -1px 0 #777);
-
-  /* drop-shadow(2px 0 0 #999) 
-  drop-shadow(-2px 0 0 #999); */
-  /* border: 2px solid red; */
-  /* outline-offset: -3px; */
   clip-path: inset(2px 2px 2px 2px);
-}
-
-.totalHitpointsContainer{
-  display: inline-block;
-  vertical-align: bottom;
-  margin-bottom: -4px;
-  height: auto;
-}
-.hitpointBreak {
-  display: block;
-  content: "";
-  margin-top: 0px;
-
 }
 .profile .box, .profile p, .profile table{
   cursor: default;
@@ -701,11 +795,16 @@ th, td {
   border-radius: 24px;
   font-weight: bold;
   background-color: var(--light-grey);
+  /* background-color: hsl(221, 90%, 16%); */
+  outline: 3px solid var(--medium-grey);
   font-size: 24px;
   color: green;
   z-index: 1;
   font-family: Bungee;
   overflow: hidden;
+}
+.arrow:hover {
+  border-color: var(--text);
 }
 .arrowDown {
   left: calc(100% - 48px - 4px);
@@ -723,23 +822,46 @@ th, td {
 .hitpoints {
   padding: 0;
   width: 90px;
-  height: 40px;
+  height: 38px;
   color: red;
   font-size: 20px;
   margin: 0 auto;
+  position: relative;
+  float: left;
+  margin-top: 0px;
+  /* margin-bottom: -5px; */
+  margin-left: 0px;
+  margin-right: 3px;
 }
 .hitpoints > p {
   display: flex;
   justify-content: center;
-  line-height: 0.3;
-  margin: 0 auto;
+  line-height: 0px;
+  margin: 0px auto;
 }
+.hitpoints input {
+  position: absolute;
+  left: calc(50% - 20px);
+  line-height: normal;
+  top: 8px;
+  width: 40px;
+}
+.hitpoints .arrow {
+  top: 3px;
+}
+.hitpoints .arrow:hover {
+  outline-color: var(--text);
+}
+.hitpoints .arrow:active {
+  top: 5px;
+}
+
 .enchantment {
   /* vertical-align: center; */
   float: right;
   width: 60px;
   height: 75px;
-  transition: 0.1s;
+  /* transition: 0.1s; */
   background-image: url(Images/Protection.webp);
   background-size: 150%;
   background-position: center 100%;
@@ -770,8 +892,9 @@ th, td {
 .enchantment .arrow{
   top: 60%;
   left: 0px;
+  border: none;
   background-color: hsl(221, 90%, 16%);
-  outline: 2px solid var(--medium-grey);
+  outline: 3px solid var(--medium-grey);
 }
 .enchantment .arrowDown{
   left: calc(100% - 48px - 2px);
@@ -959,10 +1082,14 @@ drop-shadow(0 -2px 0 #555);
 .effect .arrow{
   display: none;
   background-color: #bbb;
-  border: none;
   outline: none;
+  /* background-color: initial; */
+  border: 2px solid var(--medium-grey);
   top: 30px;
   left: 0;
+}
+.effect .arrow:hover {
+  border-color:  var(--text);
 }
 .effect:hover .arrow, .effect:focus-within .arrow{
   display: block;
@@ -1091,17 +1218,244 @@ drop-shadow(0 -2px 0 #555);
   background-image: url(Images/Effect/Instant_Damage.webp);
   background-color: #430A09;
 }
-
-.totalStats {
+.resultsContainer .resultsIcon {
+  --icon-distance: -32px;
+  position: absolute;
+  z-index: 2;
+  top: calc(50% - 60px);
+  width: 40px;
+  height: 80px;
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: center calc(50% + 10px);
+  image-rendering: pixelated;
+  text-align: center;
+  font-size: 30px;
+  line-height: 0;
+  border: 5px solid var(--background);
+  background-color: var(--background-tone-2);
+  border-radius: 20px;
+  padding: 20px 0 0 0;
+  box-shadow: 6px 10px 8px var(--table-shadow),
+              -6px 10px 8px var(--table-shadow);
   font-weight: bold;
+  text-orientation: upright;
 }
-#middleHalf td{
-  font-size: 20px;
-  min-width: 60px;
+.resultsContainer .resultsAttackerIcon {
+  background-image: url(Images/Bow.webp);
+  left: var(--icon-distance);
+  transform: scaleX(-1);
+  outline: 3px solid var(--red-dim);
 }
-.reductions {
+.resultsContainer .resultsAttackerIcon > div {
+  transform: scaleX(-1);
+}
+.resultsContainer .resultsAttackerIcon:hover {
+  animation: bowPull 0.4s forwards;
+}
+.resultsContainer .resultsDefenderIcon {
+  background-image: url(Images/Chestplate/Diamond_Chestplate.webp);
+  background-image: url(Images/Shield.webp);
+  background-size: 32px 60px;
+  right: var(--icon-distance);
+  outline: 3px solid var(--blue-dim);
+}
+.resultsContainer:nth-of-type(2) .resultsAttackerIcon {
+  left: unset;
+  right: var(--icon-distance);
+  transform: scaleX(1);
+  outline: 3px solid var(--blue-dim);
+}
+.resultsContainer:nth-of-type(2) .resultsDefenderIcon {
+  right: unset;
+  left: var(--icon-distance);
+  transform: scaleX(-1);
+  outline: 3px solid var(--red-dim);
+}
+@keyframes bowPull {
+  0% { background-image: url(Images/Bow.webp);}
+  20% { background-image: url(Images/Bow_2.webp);}
+  50% { background-image: url(Images/Bow_3.webp);}
+  100% { background-image: url(Images/Bow_4.webp); outline-color: var(--orange);}
+}
+.flyingArrowContainer {
+  position: relative;
+  top: 30px;
+  transform: scaleX(-1);
+}
+.flyingArrow {
+  position: relative;
+  height: 32px;
+  width: 32px;
+  background-image: url(Images/Arrow.webp);
+  background-size: 100%;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  opacity: 0;
+  --flying-arrow-time: 0.75s;
+  --flying-arrow-height: 160;
+  --flying-arrow-angle: 20deg;
+  --flying-arrow-distance: 500px;
+  --flying-arrow-scale: 2;
+}
+.flyingArrow.animate {
+  animation:
+    arrowX var(--flying-arrow-time) linear forwards,
+    arrowY var(--flying-arrow-time) cubic-bezier(0,var(--flying-arrow-height),1,var(--flying-arrow-height)) forwards,
+    arrowR var(--flying-arrow-time) linear forwards,
+    arrowResetO 3s 3s forwards,
+    arrowResetP 0s 6s forwards;
+  animation-iteration-count: 1;
+}
+@keyframes arrowX {
+  to {
+    left: var(--flying-arrow-distance);
+  }
+}
+@keyframes arrowY {
+  to {
+    top:-1px;
+  }
+}
+@keyframes arrowR {
+   0%{ transform: rotate(var(--flying-arrow-angle)); opacity: 0; display: block;}
+   5%{ opacity: 0; }
+  10%{ opacity: 1; }
+  50%{ transform: rotate(45deg) }
+ 100%{ transform: rotate(calc(90deg - var(--flying-arrow-angle))) scale(var(--flying-arrow-scale)); opacity: 1;}
+}
+@keyframes arrowResetO {
+  to {opacity: 0;}
+}
+@keyframes arrowResetP {
+  to {top:0; left: 0;}
+}
+.resultsContainer h3 {
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.damageDealtIconsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.damageDealtIcons {
+  max-width: 180px;
+}
+.resultsTable {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.resultsTable .row {
+  margin: 0;
+  height: 30px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  flex-wrap: wrap;
+}
+.resultsTable .row:nth-of-type(n+5) {
   display: none;
 }
+.resultsTable .row:where(:nth-of-type(4n - 3), :nth-of-type(4n - 2)) {
+  background-color: var(--background-tone-1);
+}
+.resultsTable.expand  {
+  flex-direction: column;
+}
+.resultsTable.expand .row {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: var(--background);
+}
+.resultsTable.expand .row:nth-of-type(2n -1) {
+  background-color: var(--background-tone-1);
+}
+.resultsTable .row:last-of-type {
+  display: block;
+  width: 100%;
+}
+.resultsTable.expand .row:last-of-type {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.resultsTable .row:nth-of-type(5) {
+  font-weight: bold;
+}
+.resultsTable .row:nth-of-type(6),
+.resultsTable .row:nth-of-type(8),
+.resultsTable .row:nth-of-type(9) {
+  height: 50px;
+}
+.resultsTable .row:nth-of-type(7) {
+  height: 30px;
+}
+.resultsContainer .row hr {
+  position: absolute;
+  top: 21px;
+  width: 50%;
+  z-index: 1;
+}
+.composition {
+  background-color: #3e3e3e;
+  width: 80%;
+  height: 14px;
+  border: 2px solid black;
+}
+.composition div {
+  float: left;
+  width: 0;
+  height: 100%;
+  border-right: 2px solid black;
+}
+.defenceComposition {
+  background-color: hsl(235, 9%, 75%);
+  box-shadow: inset 0px -2px hsl(231, 3%, 43%);
+}
+.toughnessComposition {
+  background-color: hsl(173, 53%, 50%);
+  box-shadow: inset 0px -2px hsl(173, 61%, 29%);
+}
+.protectionComposition {
+  background-color: hsl(221, 90%, 16%);
+  box-shadow: inset 0px -2px hsl(221, 90%, 5%);
+}
+.resistanceComposition {
+  background-color: hsl(7, 45%, 41%);;
+  box-shadow: inset 0px -2px hsl(7, 45%, 23%);
+}
+.expander {
+  --expander-size: 7px;
+  border: solid var(--text);
+  border-width: 0 var(--expander-size) var(--expander-size) 0;
+  border-radius: calc(var(--expander-size) /2 );
+  display: inline-block;
+  padding: var(--expander-size);
+  position: relative;
+  /* left: calc(50% - 2 * var(--expander-size)); */
+  cursor: pointer;
+  transform: rotate(45deg);
+}
+.expander:hover {
+  border-color: var(--green);
+}
+.resultsTable.expand .expander {
+  transform: rotate(-135deg);
+  top: calc(var(--expander-size) + 3px);
+}
+
+
 .buttons {
   padding: 2px 10px;
   border: 2px solid #666;
@@ -1111,11 +1465,11 @@ drop-shadow(0 -2px 0 #555);
   color: var(--text);
   font-weight: bold;
 }
-.expander, .collapser {
+/* .expander, .collapser {
   font-size: 15px;
   padding: 1px 10px;
   float: right;
-}
+} */
 .buttons:hover {
   background-color: var(--medium-grey);
 }
@@ -1262,7 +1616,7 @@ drop-shadow(0 -2px 0 #555);
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   left: 0;
   top: 0;
   width: 100%;

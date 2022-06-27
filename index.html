@@ -17,8 +17,8 @@
   <div class="themeSwitchContainer">
     <p>Theme!</p>
     <label class="themeSwitch" for="checkbox">
-        <input type="checkbox" id="checkbox"/>
-        <div class="themeSlider round"></div>
+      <input type="checkbox" id="checkbox" />
+      <div class="themeSlider round"></div>
     </label>
   </div>
 </header>
@@ -28,44 +28,55 @@
 
   <!-- WEAPONS THING -->
   <div class="container" id="leftHalf">
-    <h1 id="weapon">Player-1</h1>
+    <h1 id="weapon">Player-1 👑</h1>
 
     <div class="gearContainer">
       <div class="quickControls">
-        <div class="dice weaponDice hasTooltip">
+        <div class="dice weaponDice hasTooltip noContextMenu">
           <div class="pip"></div>
           <span class="tooltip">Random Weapon</span>
         </div>
-        <div class="gearReset spin animation weaponReset hasTooltip">&#8634;<span class="tooltip">Reset Weapon</span></div>
+        <div class="gearReset spin animation weaponReset hasTooltip noContextMenu">&#8634;<span class="tooltip">Reset
+            Weapon</span>
+        </div>
         <hr>
         <div class="dice effectDice hasTooltip">
           <div class="pip"></div>
           <div class="pip"></div>
           <span class="tooltip">Random Effects</span>
         </div>
-        <div class="gearReset spin animation effectReset hasTooltip">&#8634;<span class="tooltip">Reset Effects</span></div>
+        <div class="gearReset spin animation effectReset hasTooltip noContextMenu">&#8634;<span class="tooltip">Reset
+            Effects</span>
+        </div>
         <hr>
-        <div class="dice armourDice hasTooltip">
+        <div class="dice armourDice hasTooltip noContextMenu">
           <div class="pip"></div>
           <div class="pip"></div>
           <div class="pip"></div>
           <span class="tooltip">Random Armour</span>
         </div>
-        <div class="gearReset spin animation armourReset hasTooltip">&#8634;<span class="tooltip">Reset Armour</span></div>
-        <div class="gearReset textMoveUp animation armourUp hasTooltip">&#x21e7;<span class="tooltip">Increment Armour</span></div>
-        <div class="gearReset textMoveDown animation armourDown hasTooltip">&#x21e9;<span class="tooltip">Decrement Armour</span></div>
+        <div class="gearReset spin animation armourReset hasTooltip noContextMenu">&#8634;<span class="tooltip">Reset
+            Armour</span>
+        </div>
+        <div class="gearReset textMoveUp animation armourUp hasTooltip noContextMenu">&#x21e7;<span
+            class="tooltip">Increment
+            Armour</span></div>
+        <div class="gearReset textMoveDown animation armourDown hasTooltip noContextMenu">&#x21e9;<span
+            class="tooltip">Decrement
+            Armour</span></div>
         <hr>
-        <div class="gearReset spin animation cooldownReset hasTooltip">&#8634;<span class="tooltip">Reset Cooldown</span></div>
+        <div class="gearReset spin animation cooldownReset hasTooltip noContextMenu">&#8634;<span class="tooltip">Reset
+            Cooldown</span></div>
         <hr>
-        <div class="gearFiles folder hasTooltip">&#128448;<span class="tooltip">Kit Folder</span></div>
-        <div class="gearFiles saveGear hasTooltip">&#128427;<span class="tooltip">Save Kit</span></div>
+        <div class="gearFiles folder hasTooltip noContextMenu">&#128448;<span class="tooltip">Kit Folder</span></div>
+        <div class="gearFiles saveGear hasTooltip noContextMenu">&#128427;<span class="tooltip">Save Kit</span></div>
       </div>
 
 
       <table class="gearTable" id="player1">
         <tr>
           <td class="relative">
-            <div class="number enchantment crit pixelated"></div>
+            <div class="number enchantment crit noContextMenu pixelated"></div>
             <div class="number enchantment sharpness">
               <button class="arrow arrowUp">
                 <p>+</p>
@@ -84,26 +95,26 @@
 
         <tr>
           <td rowspan="2">
-            <div class="box tool"></div><span class="toolDescription">No Sword</span>
+            <div class="box tool noContextMenu"></div><span class="toolDescription">No Sword</span>
             <br>Damage: &nbsp;<span class="toolDamage">4</span>
           </td>
           <td rowspan="2">
-          <div class="selectTools">
-            <div class="selectTool0 box selectTool"></div>
-            <div class="selectTool3 box selectTool"></div>
-            <br>
-            <div class="selectTool1 box selectTool"></div>
-            <div class="selectTool4 box selectTool"></div>
-            <br>
-            <div class="selectTool2 box selectTool"></div>
-            <div class="selectTool5 box selectTool"></div>
-          </div>
+            <div class="selectTools">
+              <div class="selectTool0 box selectTool noContextMenu"></div>
+              <div class="selectTool3 box selectTool noContextMenu"></div>
+              <br>
+              <div class="selectTool1 box selectTool noContextMenu"></div>
+              <div class="selectTool4 box selectTool noContextMenu"></div>
+              <br>
+              <div class="selectTool2 box selectTool noContextMenu"></div>
+              <div class="selectTool5 box selectTool noContextMenu"></div>
+            </div>
           </td>
           <td rowspan="4" colspan="2" class="verticalBottom">
             <table>
               <tr>
                 <td>
-                  <div class="number enchantment protection" id="helmetProtection">
+                  <div class="number enchantment protection helmetProtection">
                     <button class="arrow arrowUp">
                       <p>+</p>
                     </button>
@@ -114,16 +125,16 @@
                   </div>
                 </td>
                 <td>
-                  <div class="box armour" id="helmet"></div>
+                  <div class="box armour helmet noContextMenu"></div>
                 </td>
                 <td>
-                  <span class="armourDefence pixelated" id="helmetDefence"></span>
-                  <span class="armourToughness pixelated" id="helmetToughness"></span>
+                  <span class="armourDefence pixelated helmetDefence"></span>
+                  <span class="armourToughness pixelated helmetToughness"></span>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <div class="number enchantment protection" id="chestplateProtection">
+                  <div class="number enchantment protection chestplateProtection">
                     <button class="arrow arrowUp">
                       <p>+</p>
                     </button>
@@ -134,16 +145,16 @@
                   </div>
                 </td>
                 <td>
-                  <div class="box armour" id="chestplate"></div>
+                  <div class="box armour chestplate noContextMenu"></div>
                 </td>
                 <td>
-                  <span class="armourDefence pixelated" id="chestplateDefence"></span>
-                  <span class="armourToughness pixelated" id="chestplateToughness"></span>
+                  <span class="armourDefence pixelated chestplateDefence"></span>
+                  <span class="armourToughness pixelated chestplateToughness"></span>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <div class="number enchantment protection" id="leggingsProtection">
+                  <div class="number enchantment protection leggingsProtection">
                     <button class="arrow arrowUp">
                       <p>+</p>
                     </button>
@@ -154,16 +165,16 @@
                   </div>
                 </td>
                 <td>
-                  <div class="box armour" id="leggings"></div>
+                  <div class="box armour leggings noContextMenu"></div>
                 </td>
                 <td>
-                  <span class="armourDefence pixelated" id="leggingsDefence"></span>
-                  <span class="armourToughness pixelated" id="leggingsToughness"></span>
+                  <span class="armourDefence pixelated leggingsDefence"></span>
+                  <span class="armourToughness pixelated leggingsToughness"></span>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <div class="number enchantment protection" id="bootsProtection">
+                  <div class="number enchantment protection bootsProtection">
                     <button class="arrow arrowUp">
                       <p>+</p>
                     </button>
@@ -174,47 +185,36 @@
                   </div>
                 </td>
                 <td>
-                  <div class="box armour" id="boots"></div>
+                  <div class="box armour boots noContextMenu"></div>
                 </td>
                 <td>
-                  <span class="armourDefence pixelated" id="bootsDefence"></span>
-                  <span class="armourToughness pixelated" id="bootsToughness"></span>
+                  <span class="armourDefence pixelated bootsDefence"></span>
+                  <span class="armourToughness pixelated bootsToughness"></span>
                 </td>
               </tr>
             </table>
           </td>
-
         </tr>
-
-
         <tr>
-          <!-- <td>
-          <div class="box potion" id="shield"></div>
-        </td> -->
         </tr>
-
-
         <tr>
           <td rowspan="3" colspan="2" class="verticalTop">
-            <div id="weaponDamageContainer"><span class="pixelated" id="weaponDamage"></span></div>
-            Attack speed: &nbsp;<span class="damageBonus" id="attackSpeed">4.0</span>
-            <div id="attackCooldownContainer">
-              <span class="pixelated" id="attackCooldown"></span>
+            <div class="weaponDamageContainer"><span class="pixelated weaponDamage"></span></div>
+            Attack speed: &nbsp;<span class="damageBonus attackSpeed">4.0</span>
+            <div class="attackCooldownContainer">
+              <span class="pixelated attackCooldown"></span>
             </div>
             <div class="immunityInfo" colspan="3">Damage immunity limits attack rate</div>
           </td>
         </tr>
-
-
-        <tr>
-        </tr>
-
         <tr>
         </tr>
         <tr>
-          <td colspan="5">
+        </tr>
+        <tr>
+          <td colspan="5" style="height: 36px;">
             <table>
-              <td>
+              <td class="verticalTop">
                 <div class="number hitpoints">
                   <p>Health</p>
                   <button class="arrow arrowUp">
@@ -229,7 +229,7 @@
               <td colspan="2" class="verticalBottom">
                 <div class="totalHitpointsContainer"><span class="pixelated totalHitpoints"></span></div>
               </td>
-              <td colspan="2" class="verticalBottom">
+              <td colspan="2" class="verticalTop">
                 <span class="finalValues pixelated totalDefence"></span>
                 <span class="finalValues pixelated totalToughness"></span>
               </td>
@@ -249,99 +249,305 @@
     <!-- RESULTS BIT -->
   </div>
   <div class="container" id="middleHalf">
-    <h1 id="vs">VS</h1>
     <h1 id="results">Results</h1>
-    <table border="0">
-      <tr>
-        <td>Damage Dealt:</td>
-        <td><span id="damageDealt">1</span></td>
-        <td><span id="percentDamageDealt">100</span>%</td>
-      </tr>
-      <tr>
-        <td>Per Second:</td>
-        <td><span id="damageDealtPerSecond">2</span></td>
-      </tr>
-      <tr>
-        <td>Hits to kill:</td>
-        <td><span id="hitsToKill">20</span></td>
-      </tr>
-      <tr>
-        <td>Time to kill:</td>
-        <td><span id="timeToKill">10</span>s</td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Reduced by:</td>
-        <td><span id="timeToKill"></span></td>
-      </tr>
-      <tr class="reductions" id="armourReductionRow">
-        <td>- Armour</td>
-        <td><span id="armourReduction">0</span>%</td>
-      </tr>
-      <tr class="reductions" id="defenceReductionRow">
-        <td>&nbsp;&nbsp;^ Defence</td>
-        <td><span id="defenceReduction">0</span>%</td>
-      </tr>
-      <tr class="reductions" id="toughnessReductionRow">
-        <td>&nbsp;&nbsp;^ Toughness</td>
-        <td><span id="toughnessReduction">0</span>%</td>
-      </tr>
-      <tr class="reductions" id="protectionReductionRow">
-        <td>- Protection</td>
-        <td><span id="protectionReduction">0</span>%</td>
-      </tr>
-      <tr class="reductions" id="resistanceReductionRow">
-        <td>- Resistance</td>
-        <td><span id="resistanceReduction">0</span>%</td>
-      </tr>
-    </table>
+    <div class="resultsContainer">
+      <div class="resultsIcon resultsAttackerIcon"><div>&#10140;</div>
+        <div class="flyingArrowContainer">
+          <div class="flyingArrow"></div>
+        </div>
+      </div>
+      <div class="resultsIcon resultsDefenderIcon"><div>&#10140;</div></div>
+      <h3><span class="damageDealt">1</span> DAMAGE</h3>
+      <span class="damageDealtIconsContainer"><div class="damageDealtIcons pixelated"></div></span>
+      <div class="resultsTable">
+        <div class="row"><span class="damageDealtPerSecond">2</span>&nbsp;DPS</div>
+        <div class="row"><span class="timeToKill">10</span>&nbsp;to kill</div>
+        <div class="row"><span class="hitsToKill">20</span>&nbsp;hits to kill</div>
+        <div class="row"><span class="percentDamageDealt">0</span>% blocked</div>
+        <div class="row reductions reductionRow">Reduced by<hr></div>
+        <!-- <div class="row"><hr></div> -->
+        <div class="reductions armourReductionRow row"><span class="armourReduction">0</span>% armour<br>
+          <div class="reductions composition armourComposition">
+            <div class="defenceComposition"></div>
+            <div class="toughnessComposition"></div>
+          </div>
+        </div>
+        <div class="reductions defenceReductionRow row"><span class="defenceReduction">0</span>% defence,&nbsp;
+        <span class="toughnessReduction">0</span>% toughness</div>
+        <div class="reductions protectionReductionRow row"><span class="protectionReduction">0</span>% protection
+          <div class="reductions composition">
+            <div class="protectionComposition"></div>
+          </div>
+        </div>
+        <div class="reductions resistanceReductionRow row"><span class="resistanceReduction">0</span>% resistance
+          <div class="reductions composition">
+            <div class="resistanceComposition"></div>
+          </div>
+        </div>
+        <div class="row row1"><div class="expander"></div></div>
+      </div>
+    </div>
+
+
+    <div class="resultsContainer">
+      <div class="resultsIcon resultsAttackerIcon"><div>&#10140;</div>
+        <div class="flyingArrowContainer">
+          <div class="flyingArrow"></div>
+        </div>
+      </div>
+      <div class="resultsIcon resultsDefenderIcon"><div>&#10140;</div></div>
+      <h3><span class="damageDealt">1</span> DAMAGE</h3>
+      <span class="damageDealtIconsContainer"><div class="damageDealtIcons pixelated"></div></span>
+      <div class="resultsTable">
+        <div class="row"><span class="damageDealtPerSecond">2</span>&nbsp;DPS</div>
+        <div class="row"><span class="timeToKill">10</span>&nbsp;to kill</div>
+        <div class="row"><span class="hitsToKill">20</span>&nbsp;hits to kill</div>
+        <div class="row"><span class="percentDamageDealt">100</span>% blocked</div>
+        <div class="row reductions reductionRow">Reduced by<hr></div>
+        <div class="reductions armourReductionRow row"><span class="armourReduction">0</span>% armour<br>
+          <div class="composition armourComposition">
+            <div class="defenceComposition"></div>
+            <div class="toughnessComposition"></div>
+          </div>
+        </div>
+        <div class="reductions defenceReductionRow row"><span class="defenceReduction">0</span>% defence,&nbsp;
+        <span class="toughnessReduction">0</span>% toughness</div>
+        <div class="reductions protectionReductionRow row"><span class="protectionReduction">0</span>% protection
+          <div class="composition">
+            <div class="protectionComposition"></div>
+          </div>
+        </div>
+        <div class="reductions resistanceReductionRow row"><span class="resistanceReduction">0</span>% resistance
+          <div class="composition">
+            <div class="resistanceComposition"></div>
+          </div>
+        </div>
+        <div class="row row1"><div class="expander"></div></div>
+      </div>
+    </div>
   </div>
   <div class=container id="rightHalf">
     <!-- ARMOUR BIT  -->
     <h1 id="armour">Player-2</h1>
     <div class="gearContainer">
 
+      <table class="gearTable" id="player2">
+        <tr>
+          <td class="relative">
+            <div class="number enchantment crit noContextMenu pixelated"></div>
+            <div class="number enchantment sharpness">
+              <button class="arrow arrowUp">
+                <p>+</p>
+              </button>
+              <input title="Sharpness" type="text" class="inputValue sharpnessValue" value=0>
+              <button class="arrow arrowDown">
+                <p>-</p>
+              </button>
+            </div>
+            <div class="effects"></div>
+            <div class="effectLine"></div>
+            <div class="effectTable"></div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td rowspan="2">
+            <div class="box tool noContextMenu"></div><span class="toolDescription">No Sword</span>
+            <br>Damage: &nbsp;<span class="toolDamage">4</span>
+          </td>
+          <td rowspan="2">
+            <div class="selectTools">
+              <div class="selectTool0 box selectTool noContextMenu"></div>
+              <div class="selectTool3 box selectTool noContextMenu"></div>
+              <br>
+              <div class="selectTool1 box selectTool noContextMenu"></div>
+              <div class="selectTool4 box selectTool noContextMenu"></div>
+              <br>
+              <div class="selectTool2 box selectTool noContextMenu"></div>
+              <div class="selectTool5 box selectTool noContextMenu"></div>
+            </div>
+          </td>
+          <td rowspan="4" colspan="2" class="verticalBottom">
+            <table>
+              <tr>
+                <td>
+                  <div class="number enchantment protection helmetProtection">
+                    <button class="arrow arrowUp">
+                      <p>+</p>
+                    </button>
+                    <input title="Protection" type="text" class="inputValue protectionValue" value=0>
+                    <button class="arrow arrowDown">
+                      <p>-</p>
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="box armour helmet noContextMenu"></div>
+                </td>
+                <td>
+                  <span class="armourDefence pixelated helmetDefence"></span>
+                  <span class="armourToughness pixelated helmetToughness"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="number enchantment protection chestplateProtection">
+                    <button class="arrow arrowUp">
+                      <p>+</p>
+                    </button>
+                    <input title="Protection" type="text" class="inputValue protectionValue" value=0>
+                    <button class="arrow arrowDown">
+                      <p>-</p>
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="box armour chestplate noContextMenu"></div>
+                </td>
+                <td>
+                  <span class="armourDefence pixelated chestplateDefence"></span>
+                  <span class="armourToughness pixelated chestplateToughness"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="number enchantment protection leggingsProtection">
+                    <button class="arrow arrowUp">
+                      <p>+</p>
+                    </button>
+                    <input title="Protection" type="text" class="inputValue protectionValue" value=0>
+                    <button class="arrow arrowDown">
+                      <p>-</p>
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="box armour leggings noContextMenu"></div>
+                </td>
+                <td>
+                  <span class="armourDefence pixelated leggingsDefence"></span>
+                  <span class="armourToughness pixelated leggingsToughness"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="number enchantment protection bootsProtection">
+                    <button class="arrow arrowUp">
+                      <p>+</p>
+                    </button>
+                    <input title="Protection" type="text" class="inputValue protectionValue" value=0>
+                    <button class="arrow arrowDown">
+                      <p>-</p>
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="box armour boots noContextMenu"></div>
+                </td>
+                <td>
+                  <span class="armourDefence pixelated bootsDefence"></span>
+                  <span class="armourToughness pixelated bootsToughness"></span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+          <td rowspan="3" colspan="2" class="verticalTop">
+            <div class="weaponDamageContainer"><span class="pixelated weaponDamage"></span></div>
+            Attack speed: &nbsp;<span class="damageBonus attackSpeed">4.0</span>
+            <div class="attackCooldownContainer">
+              <span class="pixelated attackCooldown"></span>
+            </div>
+            <div class="immunityInfo" colspan="3">Damage immunity limits attack rate</div>
+          </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <table>
+              <td class="verticalTop">
+                <div class="number hitpoints">
+                  <p>Health</p>
+                  <button class="arrow arrowUp">
+                    <p>+</p>
+                  </button>
+                  <input title="20 hitpoints" type="text" class="inputValue hitpointsValue" value=20>
+                  <button class="arrow arrowDown">
+                    <p>-</p>
+                  </button>
+                </div>
+              </td>
+              <td colspan="2" class="verticalBottom">
+                <div class="totalHitpointsContainer"><span class="pixelated totalHitpoints"></span></div>
+              </td>
+              <td colspan="2" class="verticalTop">
+                <span class="finalValues pixelated totalDefence"></span>
+                <span class="finalValues pixelated totalToughness"></span>
+              </td>
+            </table>
+          </td>
+        </tr>
+      </table>
       <div class="quickControls">
-        <div class="dice weaponDice hasTooltip">
+        <div class="dice weaponDice hasTooltip noContextMenu">
           <div class="pip"></div>
           <span class="tooltip leftTooltip">Random Weapon</span>
         </div>
-        <div class="gearReset spin animation weaponReset hasTooltip">&#8634;<span class="tooltip leftTooltip">Reset Weapon</span></div>
+        <div class="gearReset spin animation weaponReset hasTooltip noContextMenu">&#8634;<span
+            class="tooltip leftTooltip">Reset
+            Weapon</span></div>
         <hr>
-        <div class="dice effectDice hasTooltip">
+        <div class="dice effectDice hasTooltip noContextMenu">
           <div class="pip"></div>
           <div class="pip"></div>
           <span class="tooltip leftTooltip">Random Effects</span>
         </div>
-        <div class="gearReset spin animation effectReset hasTooltip">&#8634;<span class="tooltip leftTooltip">Reset Effects</span></div>
+        <div class="gearReset spin animation effectReset hasTooltip noContextMenu">&#8634;<span
+            class="tooltip leftTooltip">Reset
+            Effects</span></div>
         <hr>
-        <div class="dice armourDice hasTooltip">
+        <div class="dice armourDice hasTooltip noContextMenu">
           <div class="pip"></div>
           <div class="pip"></div>
           <div class="pip"></div>
           <span class="tooltip leftTooltip">Random Armour</span>
         </div>
-        <div class="gearReset spin animation armourReset hasTooltip">&#8634;<span class="tooltip leftTooltip">Reset Armour</span></div>
-        <div class="gearReset textMoveUp animation armourUp hasTooltip">&#x21e7;<span class="tooltip leftTooltip">Increment Armour</span></div>
-        <div class="gearReset textMoveDown animation armourDown hasTooltip">&#x21e9;<span class="tooltip leftTooltip">Decrement Armour</span></div>
+        <div class="gearReset spin animation armourReset hasTooltip noContextMenu">&#8634;<span
+            class="tooltip leftTooltip">Reset
+            Armour</span></div>
+        <div class="gearReset textMoveUp animation armourUp hasTooltip noContextMenu">&#x21e7;<span
+            class="tooltip leftTooltip">Increment Armour</span></div>
+        <div class="gearReset textMoveDown animation armourDown hasTooltip noContextMenu">&#x21e9;<span
+            class="tooltip leftTooltip">Decrement Armour</span></div>
         <hr>
-        <div class="gearFiles folder hasTooltip">&#128448;<span class="tooltip leftTooltip">Kit Folder</span></div>
-        <div class="gearFiles saveGear hasTooltip">&#128427;<span class="tooltip leftTooltip">Save Kit</span></div>
+        <div class="gearReset spin animation cooldownReset hasTooltip noContextMenu">&#8634;<span
+            class="tooltip leftTooltip">Reset
+            Cooldown</span></div>
+        <hr>
+        <div class="gearFiles folder hasTooltip noContextMenu">&#128448;<span class="tooltip leftTooltip">Kit
+            Folder</span></div>
+        <div class="gearFiles saveGear hasTooltip noContextMenu">&#128427;<span class="tooltip leftTooltip">Save
+            Kit</span></div>
       </div>
     </div>
-    <hr>
-    <!-- ARMOUR PROFILES -->
-    <button class="buttons" id="saveArmour">New Armour Profile [ALT+A]</button>
+  </div>
+  <!-- <hr> -->
+  <!-- ARMOUR PROFILES -->
+  <!-- <button class="buttons" id="saveArmour">New Armour Profile [ALT+A]</button>
     <button class="buttons collapser">-</button>
     <button class="buttons expander">+</button>
     <button class="buttons folder">Profile Folder</button>
-    <div class="profileContainer" id="armourProfiles">
-    </div>
-  </div>
+    <div class="profileContainer" id="armourProfiles"> -->
 
 
+  <h1 id="vs">VS</h1>
   <div id="folderModal" class="modal">
     <div class="modalContent">
       <span class="closeModal" id="closeModal">&times;</span>
@@ -379,7 +585,8 @@
         <!-- &#8204; is used to prevent autofill    -->
         <div id="groupSelected">
           <label>N&#8204;ame</label><br><input title="Group name" type="text" id="groupName" spellcheck="false"><br><br>
-          <label>Description</label><br><textarea title="Group description" id="groupDescription" spellcheck="false"></textarea><br><br>
+          <label>Description</label><br><textarea title="Group description" id="groupDescription"
+            spellcheck="false"></textarea><br><br>
           <div class="previewMove" id="previewBack"></div>
           <div id="previewReel"></div>
           <div class="previewMove" id="previewForward"></div>
@@ -394,7 +601,6 @@
     </div>
   </div>
 
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' defer></script>

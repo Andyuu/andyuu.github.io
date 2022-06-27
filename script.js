@@ -191,7 +191,8 @@ var topRedCooldownImage = "Images/Icon/Top_Red_Hourglass.webp"
 var bottomRedCooldownImage = "Images/Icon/Bottom_Red_Hourglass.webp"
 var emptyCooldownImage = "Images/Icon/Empty_Hourglass.webp"
 var infiniteCooldownImage = "Images/Icon/Infinite.webp"
-
+var arrowImage = "Images/Arrow.webp"
+var goldenArrowImage = "Images/Golden_Arrow.webp"
 
 var maxProfiles = 16
 var weaponProfileNum = 0
@@ -884,7 +885,7 @@ $(document).ready(function () {
   });
 
   //Profiles
-  $(".box, .arrow").contextmenu(function () {
+  $(".noContextMenu, .arrow").contextmenu(function () {
     return false;
   }); //Hide context menu on right click
   $(".box").mousedown(function (event) {
@@ -906,13 +907,13 @@ $(document).ready(function () {
     }
   }); //Deselect Profiles on user click  
   $(document).bind('keydown', 'alt+w', function () {
-    if ($("#saveWeapon").attr("disabled") == "disabled") {
+    if ($(".saveWeapon").attr("disabled") == "disabled") {
       return false;
     } else {
-      $("#saveWeapon").trigger("click");
+      $(".saveWeapon").trigger("click");
     }
   }); //Alt + W triggers "#saveWeapon"
-  $("#saveWeapon").click(function () {
+  $(".saveWeapon").click(function () {
     //Increase profile number if below max
     if (weaponProfileNum < maxProfiles) {
       weaponProfileNum++
@@ -934,13 +935,13 @@ $(document).ready(function () {
 
   }); //Save weapon profile
   $(document).bind('keydown', 'alt+a', function () {
-    if ($("#saveArmour").attr("disabled") == "disabled") {
+    if ($(".saveArmour").attr("disabled") == "disabled") {
       return false;
     } else {
-      $("#saveArmour").trigger("click");
+      $(".saveArmour").trigger("click");
     }
   }); //Alt + A triggers "#saveArmour"
-  $("#saveArmour").click(function () {
+  $(".saveArmour").click(function () {
     //Increase profile number if below max
     if (armourProfileNum < maxProfiles) {
       armourProfileNum++
@@ -964,8 +965,13 @@ $(document).ready(function () {
   $(".collapser").click(function () {
     $(this).siblings(".profileContainer").children().addClass("collapse")
   });
-  $(".expander").click(function () {
-    $(this).siblings(".profileContainer").children().removeClass("collapse")
+  $(".expander").mousedown(function () {
+    // $(this).siblings(".profileContainer").children().removeClass("collapse")
+    if ($(this).parent().parent().hasClass("expand")) {
+      $(this).parent().parent().removeClass("expand")
+    } else {
+      $(this).parent().parent().addClass("expand")
+    }
   });
 
   //Normal boxes
@@ -995,7 +1001,7 @@ $(document).ready(function () {
     }
     updateHTML();
   });
-  $("#helmet").mousedown(function (event) {
+  $(".helmet").mousedown(function (event) {
     if (event.which === 3) {
       armour.helmet = armour.helmet - 1 < 0 ? helmetMaterialList.length-1 : armour.helmet - 1;
     } else {
@@ -1003,7 +1009,7 @@ $(document).ready(function () {
     }
     updateHTML();
   });
-  $("#chestplate").mousedown(function (event) {
+  $(".chestplate").mousedown(function (event) {
     if (event.which === 3) {
       armour.chestplate = armour.chestplate - 1 < 0 ? armourMaterialList.length-1 : armour.chestplate - 1;
     } else {
@@ -1011,7 +1017,7 @@ $(document).ready(function () {
     }
     updateHTML();
   });
-  $("#leggings").mousedown(function (event) {
+  $(".leggings").mousedown(function (event) {
     if (event.which === 3) {
       armour.leggings = armour.leggings - 1 < 0 ? armourMaterialList.length-1 : armour.leggings - 1;
     } else {
@@ -1019,7 +1025,7 @@ $(document).ready(function () {
     }
     updateHTML();
   });
-  $("#boots").mousedown(function (event) {
+  $(".boots").mousedown(function (event) {
     if (event.which === 3) {
       armour.boots = armour.boots - 1 < 0 ? armourMaterialList.length-1 : armour.boots - 1;
     } else {
@@ -1278,16 +1284,16 @@ $(document).ready(function () {
     updateHTML();
   });
   $(".protectionValue").change(function () {
-    if ($(this).parent().is("#helmetProtection")) {
+    if ($(this).parent().hasClass("helmetProtection")) {
       armour.helmetProtection = Number($(this).val());
     }
-    else if ($(this).parent().is("#chestplateProtection")) {
+    else if ($(this).parent().hasClass("chestplateProtection")) {
       armour.chestplateProtection = Number($(this).val());
     }
-    else if ($(this).parent().is("#leggingsProtection")) {
+    else if ($(this).parent().hasClass("leggingsProtection")) {
       armour.leggingsProtection = Number($(this).val());
     }
-    else if ($(this).parent().is("#bootsProtection")) {
+    else if ($(this).parent().hasClass("bootsProtection")) {
       armour.bootsProtection = Number($(this).val());
     }
     
@@ -1304,7 +1310,7 @@ $(document).ready(function () {
     }
     updateHTML();
   });
-  $("#attackCooldownContainer").mousedown(function () {
+  $(".attackCooldownContainer").mousedown(function () {
     if ($(this).hasClass("editable")) {
       $(this).removeClass("editable")
     }
@@ -1312,8 +1318,7 @@ $(document).ready(function () {
       $(this).addClass("editable")
     }
   });
-
-  $("#attackCooldownContainer").mousemove(function(event) {
+  $(".attackCooldownContainer").mousemove(function(event) {
     if ($(this).hasClass("editable") && $(this).find("img").length > 1) {
       var offset = $(this).offset();
       var mouseLeft = event.pageX - offset.left
@@ -1378,7 +1383,36 @@ $(document).ready(function () {
       }
     }
   });
+  $(".resultsContainer .resultsAttackerIcon .flyingArrow").on("animationend webkitAnimationEnd", function(event) {
+    event.stopPropagation()
+  });
 
+  $(".resultsContainer .resultsAttackerIcon").on("animationend webkitAnimationEnd", function() {
+    $(this).on("mouseleave", function() {
+      let $flyingArrow = $(this).find(".flyingArrow")
+      if (random(10) == 0) {
+        $flyingArrow.css("background-image", "url("+goldenArrowImage+")")
+      } else {
+        $flyingArrow.css("background-image", "url("+arrowImage+")")
+      }
+      let randomMaxHeight = 150
+      let randomMaxDistance = 800
+
+      let randomHeight = random(randomMaxHeight)
+      let height = 150 + randomHeight
+      let randomDistance = random(randomMaxDistance)
+      let distance = 500 + random(randomDistance)
+      let angle = (randomMaxHeight - randomHeight )/ 10 << 0
+      angle = angle + (randomMaxDistance/2 - randomDistance)/20
+      $flyingArrow.css("--flying-arrow-height",height)
+      $flyingArrow.css("--flying-arrow-angle",angle+"deg")
+      $flyingArrow.css("--flying-arrow-distance",distance+"px")
+      $flyingArrow.removeClass("animate")
+      $(this).width()
+      $flyingArrow.addClass("animate")
+      $(this).off("mouseleave");
+    });
+  });
   updateProfiles()
   updateHTML()
 
@@ -1388,7 +1422,7 @@ $(document).ready(function () {
 
 function updateHTML() {
   if (weapon.useInterval == false) {
-    $("#attackCooldownContainer").removeClass("editable")
+    $(".attackCooldownContainer").removeClass("editable")
   }
   $(".effect").each(function() {
     let effectName = $(this).attr('class').split(' ')[0];
@@ -1457,8 +1491,8 @@ function updateHTML() {
   }
   $(".toolDescription").text(weapon.name);
   $(".toolDamage").text(round(weapon.damage, 4));
-  $("#weaponDamage").empty().append(damagePointImages(weapon.damage, weapon.maxDamage)).attr("title", weaponDamageTitle);
-  $("#attackSpeed").text(round(weapon.attackSpeed,3))
+  $(".weaponDamage").empty().append(damagePointImages(weapon.damage, weapon.maxDamage)).attr("title", weaponDamageTitle);
+  $(".attackSpeed").text(round(weapon.attackSpeed,3))
   let attackCooldownTitle = ""
   if (isFinite(weapon.attackCooldown)) {
     if (weapon.useInterval) {
@@ -1474,9 +1508,9 @@ function updateHTML() {
   } else {
     attackCooldownTitle = "Infinite attack cooldown \nMining Fatigue: ÷ 0 \n(Always deal 20% damage)";
   }
-  $("#attackCooldown").attr("title", attackCooldownTitle)
+  $(".attackCooldown").attr("title", attackCooldownTitle)
   if (weapon.useInterval == false) {
-    $("#attackCooldown").empty().append(cooldownPointImages(weapon.attackCooldown))
+    $(".attackCooldown").empty().append(cooldownPointImages(weapon.attackCooldown))
   }
 
   //Crit
@@ -1519,54 +1553,54 @@ function updateHTML() {
 
   //Helmet
   if (armour.helmetProtection > 0) {
-    $("#helmet").css("background-image", "url(" + armour.enchantedHelmetImage + ")");
-    $("#helmetProtection .inputValue").addClass("levelled");
+    $(".helmet").css("background-image", "url(" + armour.enchantedHelmetImage + ")");
+    $(".helmetProtection .inputValue").addClass("levelled");
   } else {
-    $("#helmet").css("background-image", "url(" + armour.helmetImage + ")");
-    $("#helmetProtection .inputValue").removeClass("levelled");
+    $(".helmet").css("background-image", "url(" + armour.helmetImage + ")");
+    $(".helmetProtection .inputValue").removeClass("levelled");
   }
-  $("#helmetDefence").empty().append(armourPointImages(armour.helmetDefence)).attr("title", pluralise(armour.helmetDefence / 2, "armour point"));
-  $("#helmetToughness").empty().append(toughnessPointImages(armour.helmetToughness)).attr("title", pluralise(armour.helmetToughness / 2, "toughness point"));
+  $(".helmetDefence").empty().append(armourPointImages(armour.helmetDefence)).attr("title", pluralise(armour.helmetDefence / 2, "armour point"));
+  $(".helmetToughness").empty().append(toughnessPointImages(armour.helmetToughness)).attr("title", pluralise(armour.helmetToughness / 2, "toughness point"));
   //Chestplate
   if (armour.chestplateProtection > 0) {
-    $("#chestplate").css("background-image", "url(" + armour.enchantedChestplateImage + ")");
-    $("#chestplateProtection .inputValue").addClass("levelled");
+    $(".chestplate").css("background-image", "url(" + armour.enchantedChestplateImage + ")");
+    $(".chestplateProtection .inputValue").addClass("levelled");
   } else {
-    $("#chestplate").css("background-image", "url(" + armour.chestplateImage + ")");
-    $("#chestplateProtection .inputValue").removeClass("levelled");
+    $(".chestplate").css("background-image", "url(" + armour.chestplateImage + ")");
+    $(".chestplateProtection .inputValue").removeClass("levelled");
   }
-  $("#chestplateDefence").empty().append(armourPointImages(armour.chestplateDefence)).attr("title", pluralise(armour.chestplateDefence / 2, "armour point"));
-  $("#chestplateToughness").empty().append(toughnessPointImages(armour.chestplateToughness)).attr("title", pluralise(armour.chestplateToughness / 2, "toughness point"));
+  $(".chestplateDefence").empty().append(armourPointImages(armour.chestplateDefence)).attr("title", pluralise(armour.chestplateDefence / 2, "armour point"));
+  $(".chestplateToughness").empty().append(toughnessPointImages(armour.chestplateToughness)).attr("title", pluralise(armour.chestplateToughness / 2, "toughness point"));
   //Leggings
   if (armour.leggingsProtection > 0) {
-    $("#leggings").css("background-image", "url(" + armour.enchantedLeggingsImage + ")");
-    $("#leggingsProtection .inputValue").addClass("levelled");
+    $(".leggings").css("background-image", "url(" + armour.enchantedLeggingsImage + ")");
+    $(".leggingsProtection .inputValue").addClass("levelled");
   } else {
-    $("#leggings").css("background-image", "url(" + armour.leggingsImage + ")");
-    $("#leggingsProtection .inputValue").removeClass("levelled");
+    $(".leggings").css("background-image", "url(" + armour.leggingsImage + ")");
+    $(".leggingsProtection .inputValue").removeClass("levelled");
   }
-  $("#leggingsDefence").empty().append(armourPointImages(armour.leggingsDefence)).attr("title", pluralise(armour.leggingsDefence / 2, "armour point"));
-  $("#leggingsToughness").empty().append(toughnessPointImages(armour.leggingsToughness)).attr("title", pluralise(armour.leggingsToughness / 2, "toughness point"));
+  $(".leggingsDefence").empty().append(armourPointImages(armour.leggingsDefence)).attr("title", pluralise(armour.leggingsDefence / 2, "armour point"));
+  $(".leggingsToughness").empty().append(toughnessPointImages(armour.leggingsToughness)).attr("title", pluralise(armour.leggingsToughness / 2, "toughness point"));
   //Boots
   if (armour.bootsProtection > 0) {
-    $("#boots").css("background-image", "url(" + armour.enchantedBootsImage + ")");
-    $("#bootsProtection .inputValue").addClass("levelled");
+    $(".boots").css("background-image", "url(" + armour.enchantedBootsImage + ")");
+    $(".bootsProtection .inputValue").addClass("levelled");
   } else {
-    $("#boots").css("background-image", "url(" + armour.bootsImage + ")");
-    $("#bootsProtection .inputValue").removeClass("levelled");
+    $(".boots").css("background-image", "url(" + armour.bootsImage + ")");
+    $(".bootsProtection .inputValue").removeClass("levelled");
   }
-  $("#bootsDefence").empty().append(armourPointImages(armour.bootsDefence)).attr("title", pluralise(armour.bootsDefence / 2, "armour point"));
-  $("#bootsToughness").empty().append(toughnessPointImages(armour.bootsToughness)).attr("title", pluralise(armour.bootsToughness / 2, "toughness point"));
+  $(".bootsDefence").empty().append(armourPointImages(armour.bootsDefence)).attr("title", pluralise(armour.bootsDefence / 2, "armour point"));
+  $(".bootsToughness").empty().append(toughnessPointImages(armour.bootsToughness)).attr("title", pluralise(armour.bootsToughness / 2, "toughness point"));
   //Armour
   $(".totalDefence").empty().append(armourPointImages(armour.defence)).attr("title", pluralise(armour.defence / 2, "armour point"));
   $(".totalToughness").empty().append(toughnessPointImages(armour.toughness)).attr("title", pluralise(armour.toughness / 2, "toughness point"));
   //Protection
   $("#protectionLevel").text(armour.protection);
   $("#protectionBonus").text(armour.protectionBonus);
-  $("#helmetProtection .protectionValue").val(armour.helmetProtection);
-  $("#chestplateProtection .protectionValue").val(armour.chestplateProtection);
-  $("#leggingsProtection .protectionValue").val(armour.leggingsProtection);
-  $("#bootsProtection .protectionValue").val( armour.bootsProtection);
+  $(".helmetProtection .protectionValue").val(armour.helmetProtection);
+  $(".chestplateProtection .protectionValue").val(armour.chestplateProtection);
+  $(".leggingsProtection .protectionValue").val(armour.leggingsProtection);
+  $(".bootsProtection .protectionValue").val( armour.bootsProtection);
 
   //Resistance
   $("#resistanceLevel").text(armour.resistance);
@@ -1574,62 +1608,29 @@ function updateHTML() {
   //Hitpoints
   $(".totalHitpoints").empty().append(hitpointImages(armour.hitpoints)).attr("title", pluralise(armour.hitpoints, "hitpoint"));
   $(".hitpointsValue").val(armour.hitpoints);
-  $(".hitpointBreak").css( "margin-top", Math.min(8,(armour.hitpoints-1)/20 << 0)*-2+"px"); //Clump lines of hearts closer where there are more
+  $(".hitpointBreak").css( "margin-top", Math.min(8,(armour.hitpoints-1)/20 << 0)*-2 + 1+"px"); //Clump lines of hearts closer where there are more
 
   //Tooltips for protection setters
   if (armour.helmet > 0) {
-    $("#helmetProtection .inputValue").attr("title", "Protection "+armour.helmetProtection+" "+armour.helmetName.toLowerCase()+" helmet \n"+ armour.helmetProtection*4+"% extra damage reduction")
+    $(".helmetProtection .inputValue").attr("title", "Protection "+armour.helmetProtection+" "+armour.helmetName.toLowerCase()+" helmet \n"+ armour.helmetProtection*4+"% extra damage reduction")
   } else {
-    $("#helmetProtection .inputValue").attr("title", "Protection "+armour.helmetProtection+" emptiness \n"+ armour.helmetProtection*4+"% damage reduction \n(in theory)")
+    $(".helmetProtection .inputValue").attr("title", "Protection "+armour.helmetProtection+" emptiness \n"+ armour.helmetProtection*4+"% damage reduction \n(in theory)")
   }
   if (armour.chestplate > 0) {
-    $("#chestplateProtection .inputValue").attr("title", "Protection "+armour.chestplateProtection+" "+armour.chestplateName.toLowerCase()+" chestplate \n"+ armour.chestplateProtection*4+"% extra damage reduction")
+    $(".chestplateProtection .inputValue").attr("title", "Protection "+armour.chestplateProtection+" "+armour.chestplateName.toLowerCase()+" chestplate \n"+ armour.chestplateProtection*4+"% extra damage reduction")
   } else {
-    $("#chestplateProtection .inputValue").attr("title", "Protection "+armour.chestplateProtection+" emptiness \n"+ armour.chestplateProtection*4+"% damage reduction \n(in theory)")
+    $(".chestplateProtection .inputValue").attr("title", "Protection "+armour.chestplateProtection+" emptiness \n"+ armour.chestplateProtection*4+"% damage reduction \n(in theory)")
   }
   if (armour.leggings > 0) {
-    $("#leggingsProtection .inputValue").attr("title", "Protection "+armour.leggingsProtection+" "+armour.leggingsName.toLowerCase()+" leggings \n"+ armour.leggingsProtection*4+"% extra damage reduction")
+    $(".leggingsProtection .inputValue").attr("title", "Protection "+armour.leggingsProtection+" "+armour.leggingsName.toLowerCase()+" leggings \n"+ armour.leggingsProtection*4+"% extra damage reduction")
   } else {
-    $("#leggingsProtection .inputValue").attr("title", "Protection "+armour.leggingsProtection+" emptiness \n"+ armour.leggingsProtection*4+"% damage reduction \n(in theory)")
+    $(".leggingsProtection .inputValue").attr("title", "Protection "+armour.leggingsProtection+" emptiness \n"+ armour.leggingsProtection*4+"% damage reduction \n(in theory)")
   }
   if (armour.boots > 0) {
-    $("#bootsProtection .inputValue").attr("title", "Protection "+armour.bootsProtection+" "+armour.bootsName.toLowerCase()+" boots \n"+ armour.bootsProtection*4+"% extra damage reduction")
+    $(".bootsProtection .inputValue").attr("title", "Protection "+armour.bootsProtection+" "+armour.bootsName.toLowerCase()+" boots \n"+ armour.bootsProtection*4+"% extra damage reduction")
   } else {
-    $("#bootsProtection .inputValue").attr("title", "Protection "+armour.bootsProtection+" emptiness \n"+ armour.bootsProtection*4+"% damage reduction \n(in theory)")
+    $(".bootsProtection .inputValue").attr("title", "Protection "+armour.bootsProtection+" emptiness \n"+ armour.bootsProtection*4+"% damage reduction \n(in theory)")
   }
-  
-  //Results 
-  if (weapon.damage && armour.defence) {
-    $("#armourReductionRow").show()
-  } else {
-    $("#armourReductionRow").hide()
-  }
-  if (weapon.damage && armour.toughness) {
-    $('#defenceReductionRow, #toughnessReductionRow').show();
-  } else {
-    $('#defenceReductionRow, #toughnessReductionRow').hide();
-  }
-  if (weapon.damage && armour.protection) {
-    $('#protectionReductionRow').show();
-  } else {
-    $('#protectionReductionRow').hide();
-  }
-  if (weapon.damage && armour.resistance) {
-    $('#resistanceReductionRow').show();
-  } else {
-    $('#resistanceReductionRow').hide();
-  }
-  $("#armourReduction").text(round(results.armourReduction, 2));
-  $("#defenceReduction").text(round(results.defenceReduction, 2));
-  $("#toughnessReduction").text(round(results.toughnessReduction, 2));
-  $("#resistanceReduction").text(armour.resistanceBonus);
-  $("#protectionReduction").text(armour.protectionBonus);
-  $("#damageDealt").text(round(results.damageDealt, 3));
-  $("#percentDamageDealt").text(round(results.percentDamageDealt, 2));
-  $("#damageDealtPerSecond").text(round(results.DPS, 3));
-  $("#hitsToKill").text(results.hitsToKill);
-  $("#timeToKill").text(round(results.timeToKill, 2));
-
   $(".gearContainer").each(function() {
     if ($(this).height() > 553) {
       $(this).addClass("tallContainer")
@@ -1637,6 +1638,71 @@ function updateHTML() {
       $(this).removeClass("tallContainer")
     }
   });
+  
+  //Results
+
+
+  let defencePercentage = 0
+  if (results.defenceReduction) {
+    defencePercentage = results.defenceReduction * results.defenceReduction / results.armourReduction
+    defencePercentage = defencePercentage > 1 ? defencePercentage : 1
+    $(".defenceComposition").css("border-right-width", "2px")
+  } else {
+    $(".defenceComposition").css("border-right-width", "0px")
+  }
+  $(".defenceComposition").css("width", defencePercentage +"%")
+
+  let toughnessPercentage = 0
+  if (results.toughnessReduction) {
+    toughnessPercentage = results.toughnessReduction * results.toughnessReduction / results.armourReduction
+    toughnessPercentage = toughnessPercentage > 1 ? toughnessPercentage : 1
+    $(".toughnessComposition").css("border-right-width", "2px")
+  } else {
+    $(".toughnessComposition").css("border-right-width", "0px")
+  }
+  $(".toughnessComposition").css("width", toughnessPercentage +"%")
+
+  if (armour.protection) {
+    $(".protectionComposition").css("border-right-width", "2px")
+  } else {
+    $(".protectionComposition").css("border-right-width", "0px")
+  }
+  $(".protectionComposition").css("width", armour.protectionBonus +"%")
+
+  if (effect.resistance) {
+    $(".resistanceComposition").css("border-right-width", "2px")
+  } else {
+    $(".resistanceComposition").css("border-right-width", "0px")
+  }
+  $(".resistanceComposition").css("width", 100 - effect.bonus("resistance")*100 +"%")
+
+  $(".armourReduction").text(round(results.armourReduction, 2));
+  $(".defenceReduction").text(round(results.defenceReduction, 2));
+  $(".toughnessReduction").text(round(results.toughnessReduction, 2));
+  $(".resistanceReduction").text(round(100 - 100 *effect.bonus("resistance")));
+  $(".protectionReduction").text(armour.protectionBonus);
+  $(".damageDealt").text(round(results.damageDealt, 3));
+  $(".damageDealtIcons").empty().append(damagePointImages(results.damageDealt));
+  $(".percentDamageDealt").text(round(100 -results.percentDamageDealt, 2));
+  $(".damageDealtPerSecond").text(round(results.DPS, 3));
+  $(".hitsToKill").text(results.hitsToKill);
+  let time = round(results.timeToKill,8)
+  if (time >= 60) {
+    let h = (time/3600 <<0)
+    let m = (time%3600 /60 <<0)
+    let s = (time%3600 %60 <<0)
+
+    s = s >= 10 ? s : "0"+s
+    time = m +":"+ s
+    if (h) {
+      m = m >= 10 ? m : "0"+m
+      time = h +":"+ m +":"+ s
+    }
+  } else {
+    time += "s"
+  }
+  $(".timeToKill").text(time);
+
 };
 
 function armourPointImages(num) {
@@ -1877,10 +1943,10 @@ function loadProfileHandlers() {
 
       //Set armour values
       armourMaterials = $(this).data("armourMaterials").slice();
-      $("#helmet").trigger("mousedown", false);
-      $("#chestplate").trigger("mousedown", false);
-      $("#leggings").trigger("mousedown", false);
-      $("#boots").trigger("mousedown", false);
+      $(".helmet").trigger("mousedown", false);
+      $(".chestplate").trigger("mousedown", false);
+      $(".leggings").trigger("mousedown", false);
+      $(".boots").trigger("mousedown", false);
 
       //Set resistance value
       effect[2] = $(this).data("resistance");
@@ -2515,10 +2581,10 @@ function makeArmourProfile({ name, fullSet: thisFullSet, helmet: thisHelmet, che
     }
   }
 
-  $("#helmet").trigger("mousedown", false);
-  $("#chestplate").trigger("mousedown", false);
-  $("#leggings").trigger("mousedown", false);
-  $("#boots").trigger("mousedown", false);
+  $(".helmet").trigger("mousedown", false);
+  $(".chestplate").trigger("mousedown", false);
+  $(".leggings").trigger("mousedown", false);
+  $(".boots").trigger("mousedown", false);
 
   //Protection
   if (thisProtection >= 0 && thisProtection <= 20) {
