@@ -25,6 +25,7 @@
   --orange: hsl(30, 100%, 50%);
   --green: hsl(125, 100%, 40%);
   --green-dim: hsla(125, 100%, 40%, 0.8);
+  --gold: hsl(51, 100%, 50%);
   --light-grey: var(--background);
   --table-shadow: black;
 
@@ -46,6 +47,7 @@
   --medium-grey-2: #999;
   --green: hsl(125, 100%, 25%);
   --green-dim: hsla(125, 100%, 25%, 0.8);
+  --gold: hsl(61, 100%, 50%);
   --light-grey: #fff;
   --table-shadow: #333;
 
@@ -269,10 +271,10 @@ body {
 }
 
 
-#weapon {
+#player1Name {
   color: var(--red);
 }
-#armour {
+#player2Name {
   color: var(--blue);
 }
 #results {
@@ -1400,6 +1402,10 @@ drop-shadow(0 -2px 0 #555);
 }
 .resultsTable .row:nth-of-type(7) {
   height: 30px;
+}
+.row.highlight {
+ font-weight: bold;
+ color: var(--gold);
 }
 .resultsContainer .row hr {
   position: absolute;
